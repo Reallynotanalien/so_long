@@ -6,11 +6,18 @@
 /*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/01/27 17:51:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:14:22 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	open_map(char *argv, t_game *game)
+{
+	game->map = open(argv, O_RDONLY);
+	if (game->map < 0)
+		ft_putstr_fd("File could not be opened\n", 2);
+}
 
 bool	validate_extension(char *argv)
 {
@@ -22,26 +29,35 @@ bool	validate_extension(char *argv)
 	return (false);
 }
 
-bool	validate_map(char *argv)
+bool	validate_map(char *argv, t_game game)
 {
 	if (!validate_extension(argv))
 		return (false);
+	open_map(argv, &game);
+	/* OPEN MAP AND READ IT WITH GNL */
+	/* MAP IS A RECTANGLE */
+	/* MAP ONLY HAS WALLS AT THE BORDERS (1) */
+	/* MAP ONLY HAS ONE EXIT (E) */
+	/* MAP HAS AT LEAST ONE COLLECTIBLE (C) */
+	/* MAP ONLY HAS ONE STARTING POSITION (P) */
+	/* MAP CONTAINS A VALID PATH */
+	/* MAP MUST NOT CONTAINS CHARACTERS OTHER THAN 0, 1, C, P, E) */
 	return (true);
 }
 
 int	main(int argc, char **argv)
 {
+	t_game	game;
+
+	game.map = 0;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
-	if (!validate_map(argv[1]))
+	if (!validate_map(argv[1], game))
 		ft_putstr_fd("Map is invalid\n", 2);
 	return (0);
 	/*1- Parsing*/
 	/*- Create a "game" struct and malloc it
-	- Create a function to check that map is a .ber
 	- Initiate MLX
-	- Open map and read it (with gnl)
-	- Check if map is valid (validate_map) (rectangle/nb of characters is OK, only walls in the borders)
 	- XPM files: look for png files and redimension in another size
 	- mlx_new_window: creates a new window
 	- mlx_xpm_file_to_image

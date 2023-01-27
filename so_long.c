@@ -6,17 +6,35 @@
 /*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/01/27 18:14:22 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:33:12 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+char	*malloc_lines(char *argv, t_game *game)
+{
+	open_map(argv, game);
+	close(game->fd);
+}
+
+char	**malloc_columns(char *argv, t_game *game)
+{
+	open_map(argv, game);
+	close(game->fd);
+}
+
 void	open_map(char *argv, t_game *game)
 {
-	game->map = open(argv, O_RDONLY);
-	if (game->map < 0)
+	game->fd = open(argv, O_RDONLY);
+	if (game->fd < 0)
 		ft_putstr_fd("File could not be opened\n", 2);
+}
+
+void	read_map(char *argv, t_game *game)
+{
+	malloc_lines(argv, game);
+	malloc_columns(argv, game);
 }
 
 bool	validate_extension(char *argv)
@@ -33,7 +51,7 @@ bool	validate_map(char *argv, t_game game)
 {
 	if (!validate_extension(argv))
 		return (false);
-	open_map(argv, &game);
+	read_map(argv, &game);
 	/* OPEN MAP AND READ IT WITH GNL */
 	/* MAP IS A RECTANGLE */
 	/* MAP ONLY HAS WALLS AT THE BORDERS (1) */
@@ -49,7 +67,7 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	game.map = 0;
+	game.map = NULL;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	if (!validate_map(argv[1], game))

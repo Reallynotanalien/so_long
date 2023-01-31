@@ -16,7 +16,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = so_long
 
-FILES = so_long.c
+FILES = so_long.c \
+		get_next_line_utils.c \
+		get_next_line.c \
 
 OBJS = $(FILES:.c=.o)
 

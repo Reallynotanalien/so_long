@@ -18,10 +18,23 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 typedef struct game
 {
 	char	**map;
+	int		lines;
+	int		columns;
 	int		fd;
 }				t_game;
+
+char			*get_next_line(int fd);
+char			*copy_from_src(char *dest, const char *src, unsigned int len);
+unsigned int	scan_for_nl(const char *src);
+char			*null_calloc(char **str, unsigned int count, unsigned int size);
+void			free_if_not_empty(char	**str);
+unsigned int	find_len_until(const char *str, const char to_find);
 
 #endif

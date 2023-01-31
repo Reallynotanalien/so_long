@@ -12,23 +12,52 @@
 
 #include "so_long.h"
 
-char	*malloc_lines(char *argv, t_game *game)
-{
-	open_map(argv, game);
-	close(game->fd);
-}
-
-char	**malloc_columns(char *argv, t_game *game)
-{
-	open_map(argv, game);
-	close(game->fd);
-}
-
 void	open_map(char *argv, t_game *game)
 {
 	game->fd = open(argv, O_RDONLY);
 	if (game->fd < 0)
 		ft_putstr_fd("File could not be opened\n", 2);
+}
+
+void	malloc_lines(char *argv, t_game *game)
+{
+	game->lines = 0;
+	open_map(argv, game);
+	while (get_next_line(game->fd))
+		game->lines++;
+	game->map = malloc(sizeof(char **) * game->lines);
+	close(game->fd);
+}
+
+void	malloc_columns(char *argv, t_game *game)
+{
+	char	*str;
+	int		i;
+	int		last;
+
+	game->columns = 0;
+	i = 1;
+	last = 0;
+	open_map(argv, game);
+	while (game->lines > i)
+	{
+		game->columns = 0;
+		str = get_next_line(game->fd);
+		while (str[game->columns] != '\n')
+			game->columns++;
+		if (last != 0 && last != game->columns)
+			ft_putstr_fd("Map is not a rectangle\n", 2);
+		last = game->columns;
+		i++;
+		free(str);
+	}
+	i = 0;
+	while (game->lines > i)
+	{
+		game->map = ft_calloc(sizeof(char *), game->columns + 1);
+		i++;
+	}
+	close(game->fd);
 }
 
 void	read_map(char *argv, t_game *game)
@@ -60,6 +89,7 @@ bool	validate_map(char *argv, t_game game)
 	/* MAP ONLY HAS ONE STARTING POSITION (P) */
 	/* MAP CONTAINS A VALID PATH */
 	/* MAP MUST NOT CONTAINS CHARACTERS OTHER THAN 0, 1, C, P, E) */
+	/*FREE MAP LINES + COLUMS + POINTER*/
 	return (true);
 }
 

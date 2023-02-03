@@ -6,20 +6,51 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 15:27:28 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 15:54:55 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	validate_borders(t_game *game)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	j = 1;
+	while (game->map[0][i] != '\n')
+	{
+		if (game->map[0][i] != BORDER)
+			return (false);
+		i++;
+	}
+	while (j < game->lines)
+	{
+		if (game->map[j][i - 1] != BORDER)
+			return (false);
+		if (game->map[j][0] != BORDER)
+			return (false);
+		j++;
+	}
+	i = 0;
+	while (ft_strlen(game->map[j - 1]) > (size_t)i)
+	{
+		if (game->map[j - 1][i] != BORDER)
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 bool	check_if_rectangle(t_game *game)
 {
 	int i;
 
 	i = 0;
-	while (game->lines > i)
+	while (game->lines > i + 1)
 	{
-		if (ft_strlen(game->map[i]) != (size_t)game->columns)
+		if (ft_strlen(game->map[i]) - 1 != (size_t)game->columns)
 			return(false);
 		i++;
 	}
@@ -103,14 +134,18 @@ bool	validate_map(char *argv, t_game game)
 		ft_putstr_fd("Map is not a rectangle\n", 2);
 		return (false);
 	}
-	/* MAP IS A RECTANGLE */
+	if (!validate_borders(&game))
+	{
+		ft_putstr_fd("Map has broken borders\n", 2);
+		return (false);
+	}
 	/* MAP ONLY HAS WALLS AT THE BORDERS (1) */
 	/* MAP ONLY HAS ONE EXIT (E) */
 	/* MAP HAS AT LEAST ONE COLLECTIBLE (C) */
 	/* MAP ONLY HAS ONE STARTING POSITION (P) */
 	/* MAP CONTAINS A VALID PATH FLOODFILL*/
 	/* MAP MUST NOT CONTAINS CHARACTERS OTHER THAN 0, 1, C, P, E) */
-	/*FREE MAP LINES + COLUMS + POINTER*/
+	/* FREE MAP LINES + COLUMS + POINTER*/
 	return (true);
 }
 

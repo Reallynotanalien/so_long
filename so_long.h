@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/01/27 18:31:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:42:54 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef PLAYER
+#  define PLAYER 'P'
+# endif
+
+# ifndef BORDER
+#  define BORDER '1'
+# endif
+
+# ifndef EXIT
+#  define EXIT 'E'
+# endif
+
+# ifndef COLLECTIBLE
+#  define COLLECTIBLE 'C'
 # endif
 
 typedef struct game

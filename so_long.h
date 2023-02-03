@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 15:58:43 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 17:39:13 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 #  define PLAYER 'P'
 # endif
 
-# ifndef BORDER
-#  define BORDER '1'
+# ifndef WALL
+#  define WALL '1'
 # endif
 
 # ifndef EXIT
@@ -37,6 +37,12 @@
 # ifndef COLLECTIBLE
 #  define COLLECTIBLE 'C'
 # endif
+
+typedef struct coordinates
+{
+	int	x;
+	int	y;
+}				t_coordin;
 
 typedef struct game
 {

@@ -6,11 +6,94 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 16:14:54 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 18:12:02 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+t_coordin	find_player(t_game *game)
+{
+	t_coordin	axe;
+
+	axe.x = 0;
+	while (game->lines > axe.x + 1)
+	{
+		axe.y = 0;;
+		while (game->map[axe.x][axe.y] != '\n')
+		{
+			if (game->map[axe.x][axe.y] == PLAYER)
+				return (axe);
+			axe.y++;
+		}
+		axe.x++;
+	}
+	axe.x = 0;
+	axe.y = 0;
+	return (axe);
+}
+
+void	flood(char	**map, int x, int y, t_game *game)
+{
+	while (map[x][y] != WALL && map[x][y] != 'X')
+	{
+		if (map[x][y] == COLLECTIBLE)
+		{
+			game->collect_num--;
+			map[x][y] = 'X';
+			flood(map, x + 1, y, game);
+			flood(map, x - 1, y, game);
+			flood(map, x, y + 1, game);
+			flood(map, x, y - 1, game);
+		}
+		if (map[x][y] == EXIT)
+		{
+			game->exit_num--;
+			map[x][y] = 'X';
+			flood(map, x + 1, y, game);
+			flood(map, x - 1, y, game);
+			flood(map, x, y + 1, game);
+			flood(map, x, y - 1, game);
+		}
+		if (map[x][y] == '0')
+		{
+			map[x][y] = 'X';
+			flood(map, x + 1, y, game);
+			flood(map, x - 1, y, game);
+			flood(map, x, y + 1, game);
+			flood(map, x, y - 1, game);
+		}
+		if (map[x][y] == PLAYER)
+		{
+			map[x][y] = 'X';
+			flood(map, x + 1, y, game);
+			flood(map, x - 1, y, game);
+			flood(map, x, y + 1, game);
+			flood(map, x, y - 1, game);
+		}
+	}
+}
+
+bool	flood_fill(t_game *game)
+{
+	t_coordin	play;
+	char		**map;
+
+	play = find_player(game);
+	map = game->map;
+	flood(map, play.x, play.y, game);
+	if (game->collect_num != 0)
+	{
+		ft_putstr_fd("Cannot get to all the collectibles\n", 2);
+		return (false);
+	}
+	if (game->exit_num != 0)
+	{
+		ft_putstr_fd("Cannot get to the exit\n", 2);
+		return (false);
+	}
+	return (true);
+}
 
 bool	validate_characters(t_game *game)
 {
@@ -32,7 +115,7 @@ bool	validate_characters(t_game *game)
 				game->collect_num++;
 			else if (game->map[i][j] == EXIT)
 				game->exit_num++;
-			else if (game->map[i][j] != BORDER && game->map[i][j] != '0')
+			else if (game->map[i][j] != WALL && game->map[i][j] != '0')
 			{
 				ft_putstr_fd("Invalid character found\n", 2);
 				return (false);
@@ -59,7 +142,7 @@ bool	validate_characters(t_game *game)
 	return (true);
 }
 
-bool	validate_borders(t_game *game)
+bool	validate_walls(t_game *game)
 {
 	int	i;
 	int	j;
@@ -68,22 +151,22 @@ bool	validate_borders(t_game *game)
 	j = 1;
 	while (game->map[0][i] != '\n')
 	{
-		if (game->map[0][i] != BORDER)
+		if (game->map[0][i] != WALL)
 			return (false);
 		i++;
 	}
 	while (j < game->lines)
 	{
-		if (game->map[j][i - 1] != BORDER)
+		if (game->map[j][i - 1] != WALL)
 			return (false);
-		if (game->map[j][0] != BORDER)
+		if (game->map[j][0] != WALL)
 			return (false);
 		j++;
 	}
 	i = 0;
 	while (ft_strlen(game->map[j - 1]) > (size_t)i)
 	{
-		if (game->map[j - 1][i] != BORDER)
+		if (game->map[j - 1][i] != WALL)
 			return (false);
 		i++;
 	}
@@ -144,17 +227,17 @@ void	read_map(char *argv, t_game *game)
 
 	i = 0;
 	malloc_lines(argv, game);
-	printf("lines: %i\n", game->lines);
+	// printf("lines: %i\n", game->lines);
 	// malloc_columns(argv, game);
 	open_map(argv, game);
 	while (game->lines > i)
 	{
 		game->map[i] = get_next_line(game->fd);
-		printf("%s", game->map[i]);
+		// printf("%s", game->map[i]);
 		game->columns = ft_strlen(game->map[i]);
 		i++;
 	}
-	printf("\ncolumns: %i\n", game->columns);
+	// printf("\ncolumns: %i\n", game->columns);
 	close(game->fd);
 }
 
@@ -181,18 +264,16 @@ bool	validate_map(char *argv, t_game game)
 		ft_putstr_fd("Map is not a rectangle\n", 2);
 		return (false);
 	}
-	if (!validate_borders(&game))
+	if (!validate_walls(&game))
 	{
-		ft_putstr_fd("Map has broken borders\n", 2);
+		ft_putstr_fd("Map has broken WALLs\n", 2);
 		return (false);
 	}
 	if (!validate_characters(&game))
 		return (false);
-	/* MAP ONLY HAS ONE EXIT (E) */
-	/* MAP HAS AT LEAST ONE COLLECTIBLE (C) */
-	/* MAP ONLY HAS ONE STARTING POSITION (P) */
+	if (!flood_fill(&game))
+		return (false);
 	/* MAP CONTAINS A VALID PATH FLOODFILL*/
-	/* MAP MUST NOT CONTAINS CHARACTERS OTHER THAN 0, 1, C, P, E) */
 	/* FREE MAP LINES + COLUMS + POINTER*/
 	return (true);
 }
@@ -207,8 +288,7 @@ int	main(int argc, char **argv)
 	if (!validate_map(argv[1], game))
 		ft_putstr_fd("Map is invalid\n", 2);
 	return (0);
-	/*1- Parsing*/
-	/*- Create a "game" struct and malloc it
+	/*
 	- Initiate MLX
 	- XPM files: look for png files and redimension in another size
 	- mlx_new_window: creates a new window

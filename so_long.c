@@ -6,11 +6,58 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 15:54:55 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 16:14:54 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	validate_characters(t_game *game)
+{
+	int	i;
+	int j;
+
+	i = 1;
+	game->player_num = 0;
+	game->collect_num = 0;
+	game->exit_num = 0;
+	while (game->lines > i + 1)
+	{
+		j = 1;
+		while (game->map[i][j] != '\n')
+		{
+			if (game->map[i][j] == PLAYER)
+				game->player_num++;
+			else if (game->map[i][j] == COLLECTIBLE)
+				game->collect_num++;
+			else if (game->map[i][j] == EXIT)
+				game->exit_num++;
+			else if (game->map[i][j] != BORDER && game->map[i][j] != '0')
+			{
+				ft_putstr_fd("Invalid character found\n", 2);
+				return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+	if (game->player_num != 1)
+	{
+		ft_putstr_fd("Map doesn't have the right amount of players\n", 2);
+		return (false);
+	}
+	if (game->collect_num < 1)
+	{
+		ft_putstr_fd("Map doesn't have any collectibles\n", 2);
+		return (false);
+	}
+	if (game->exit_num != 1)
+	{
+		ft_putstr_fd("Map doesn't have the right amount of exits\n", 2);
+		return (false);
+	}
+	return (true);
+}
 
 bool	validate_borders(t_game *game)
 {
@@ -139,7 +186,8 @@ bool	validate_map(char *argv, t_game game)
 		ft_putstr_fd("Map has broken borders\n", 2);
 		return (false);
 	}
-	/* MAP ONLY HAS WALLS AT THE BORDERS (1) */
+	if (!validate_characters(&game))
+		return (false);
 	/* MAP ONLY HAS ONE EXIT (E) */
 	/* MAP HAS AT LEAST ONE COLLECTIBLE (C) */
 	/* MAP ONLY HAS ONE STARTING POSITION (P) */

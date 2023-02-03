@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 15:42:54 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 15:58:43 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct game
 	char	**map;
 	int		lines;
 	int		columns;
+	int		player_num;
+	int		collect_num;
+	int		exit_num;
 	int		fd;
 }				t_game;
 

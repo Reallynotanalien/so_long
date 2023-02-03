@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/01/27 18:33:12 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:52:43 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	check_if_rectangle(t_game *game)
+{
+	if (game->columns == 0)
+		return(false);
+	return(true);
+}
 
 void	open_map(char *argv, t_game *game)
 {
@@ -33,37 +40,25 @@ void	malloc_columns(char *argv, t_game *game)
 {
 	char	*str;
 	int		i;
-	int		last;
 
 	game->columns = 0;
-	i = 1;
-	last = 0;
-	open_map(argv, game);
-	while (game->lines > i)
-	{
-		game->columns = 0;
-		str = get_next_line(game->fd);
-		while (str[game->columns] != '\n')
-			game->columns++;
-		if (last != 0 && last != game->columns)
-			ft_putstr_fd("Map is not a rectangle\n", 2);
-		last = game->columns;
-		i++;
-		free(str);
-	}
 	i = 0;
-	while (game->lines > i)
-	{
+	open_map(argv, game);
+	str = get_next_line(game->fd);
+	while (str[game->columns] != '\n')
+		game->columns++;
+	free(str);
+	while (game->lines >= i++)
 		game->map = ft_calloc(sizeof(char *), game->columns + 1);
-		i++;
-	}
 	close(game->fd);
 }
 
 void	read_map(char *argv, t_game *game)
 {
 	malloc_lines(argv, game);
+	printf("lines: %i\n", game->lines);
 	malloc_columns(argv, game);
+	printf("columns: %i\n", game->columns);
 }
 
 bool	validate_extension(char *argv)

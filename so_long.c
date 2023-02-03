@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 14:52:43 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 15:27:28 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 bool	check_if_rectangle(t_game *game)
 {
-	if (game->columns == 0)
-		return(false);
+	int i;
+
+	i = 0;
+	while (game->lines > i)
+	{
+		if (ft_strlen(game->map[i]) != (size_t)game->columns)
+			return(false);
+		i++;
+	}
 	return(true);
 }
 
@@ -39,26 +46,38 @@ void	malloc_lines(char *argv, t_game *game)
 void	malloc_columns(char *argv, t_game *game)
 {
 	char	*str;
-	int		i;
+	// int		i;
 
 	game->columns = 0;
-	i = 0;
+	// i = 0;
 	open_map(argv, game);
 	str = get_next_line(game->fd);
 	while (str[game->columns] != '\n')
 		game->columns++;
 	free(str);
-	while (game->lines >= i++)
-		game->map = ft_calloc(sizeof(char *), game->columns + 1);
+	// while (game->lines >= i++)
+	// 	game->map = ft_calloc(sizeof(char *), game->columns + 1);
 	close(game->fd);
 }
 
 void	read_map(char *argv, t_game *game)
 {
+	int	i;
+
+	i = 0;
 	malloc_lines(argv, game);
 	printf("lines: %i\n", game->lines);
-	malloc_columns(argv, game);
-	printf("columns: %i\n", game->columns);
+	// malloc_columns(argv, game);
+	open_map(argv, game);
+	while (game->lines > i)
+	{
+		game->map[i] = get_next_line(game->fd);
+		printf("%s", game->map[i]);
+		game->columns = ft_strlen(game->map[i]);
+		i++;
+	}
+	printf("\ncolumns: %i\n", game->columns);
+	close(game->fd);
 }
 
 bool	validate_extension(char *argv)
@@ -74,15 +93,22 @@ bool	validate_extension(char *argv)
 bool	validate_map(char *argv, t_game game)
 {
 	if (!validate_extension(argv))
+	{
+		ft_putstr_fd("Extension is not valid\n", 2);
 		return (false);
+	}
 	read_map(argv, &game);
-	/* OPEN MAP AND READ IT WITH GNL */
+	if(!check_if_rectangle(&game))
+	{
+		ft_putstr_fd("Map is not a rectangle\n", 2);
+		return (false);
+	}
 	/* MAP IS A RECTANGLE */
 	/* MAP ONLY HAS WALLS AT THE BORDERS (1) */
 	/* MAP ONLY HAS ONE EXIT (E) */
 	/* MAP HAS AT LEAST ONE COLLECTIBLE (C) */
 	/* MAP ONLY HAS ONE STARTING POSITION (P) */
-	/* MAP CONTAINS A VALID PATH */
+	/* MAP CONTAINS A VALID PATH FLOODFILL*/
 	/* MAP MUST NOT CONTAINS CHARACTERS OTHER THAN 0, 1, C, P, E) */
 	/*FREE MAP LINES + COLUMS + POINTER*/
 	return (true);

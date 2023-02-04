@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 23:46:41 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/04 00:52:42 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,17 @@ bool	flood_fill(t_game *game)
 {
 	t_coordin	play;
 	char		**map;
-
+	int			i;
+	
+	map = malloc(sizeof(char **) * game->lines);
 	play = find_player(game);
-	map = game->map;
+	i = 0;
+	while (game->lines > i)
+	{
+		map[i] = ft_calloc(sizeof(char), ft_strlen(game->map[i]));
+		ft_memmove(map[i], game->map[i], ft_strlen(game->map[i]));
+		i++;
+	}
 	flood(map, play.x, play.y, game);
 	if (game->collect_num != 0)
 	{
@@ -190,14 +198,12 @@ bool	check_if_rectangle(t_game *game)
 void	open_map(char *argv, t_game *game)
 {
 	game->fd = open(argv, O_RDONLY);
-	printf("I opened\n");
 	if (game->fd < 0)
 		ft_putstr_fd("File could not be opened\n", 2);
 }
 
 void	malloc_lines(char *argv, t_game *game)
 {
-	printf("!!!\n");
 	open_map(argv, game);
 	while (get_next_line(game->fd))
 		game->lines++;
@@ -283,26 +289,44 @@ int	main(int argc, char **argv)
 	t_game	game;
 	void	*mlx;
 	void	**base;
+	void	**play;
 	int		size;
+	int		x;
+	int		y;
 
 	ft_memset(&game, 0, sizeof(t_game));
-	size = 16;
+	size = 32;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	if (!validate_map(argv[1], &game))
 		ft_putstr_fd("Map is invalid\n", 2);
 	mlx = mlx_init();
-	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines), "Bonnie");
+	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines + 80), "Bonnie & Friends");
 	base = mlx_xpm_file_to_image(mlx, "./Assets/Tile.xpm", &size, &size);
-	mlx_put_image_to_window(mlx, game.mlx_win, base, 0, 0);
+	play = mlx_xpm_file_to_image(mlx, "./Assets/Char.xpm", &size, &size);
+	x = 0;
+	y = 0;
+	while (game.lines > x)
+	{
+		y = 0;
+		while (y < game.columns)
+		{
+			if (game.map[x][y] == PLAYER)
+			{
+				mlx_put_image_to_window(mlx, game.mlx_win, play, x * size, y * size);
+				printf("i'm a player %i %i\n", x * size, y * size);
+			}
+			else
+				mlx_put_image_to_window(mlx, game.mlx_win, base, x, y);
+			y++;
+		}
+		x++;
+	}
 	mlx_loop(mlx);
 	return (0);
 	/*
-	- mlx_new_window: creates a new window
-	- mlx_xpm_file_to_image
 	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */
 
-	/*2- Initialize the struct (NULL, or mlx_init)*/
 	/*3- Analyse map and show depending on element mlx_put_image_to_window*/
 	/*4- Keyboard interactions: mlx_key_hooks, ft_event_key function (authorizes the character to move)*/
 	/*5- Make images appear in a loop (mlx_loop, mlx_hook to close window with X */

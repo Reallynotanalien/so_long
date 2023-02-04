@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/04 00:52:42 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/04 01:09:07 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,8 @@ int	main(int argc, char **argv)
 	void	*mlx;
 	void	**base;
 	void	**play;
+	void	**wal;
+	void	**coll;
 	int		size;
 	int		x;
 	int		y;
@@ -303,21 +305,26 @@ int	main(int argc, char **argv)
 	mlx = mlx_init();
 	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines + 80), "Bonnie & Friends");
 	base = mlx_xpm_file_to_image(mlx, "./Assets/Tile.xpm", &size, &size);
-	play = mlx_xpm_file_to_image(mlx, "./Assets/Char.xpm", &size, &size);
+	play = mlx_xpm_file_to_image(mlx, "./Assets/Character.xpm", &size, &size);
+	wal = mlx_xpm_file_to_image(mlx, "./Assets/Wall.xpm", &size, &size);
+	coll = mlx_xpm_file_to_image(mlx, "./Assets/Collectible.xpm", &size, &size);
 	x = 0;
 	y = 0;
 	while (game.lines > x)
 	{
 		y = 0;
 		while (y < game.columns)
-		{
+		{	
+			mlx_put_image_to_window(mlx, game.mlx_win, base, y * size, x * size);
 			if (game.map[x][y] == PLAYER)
 			{
-				mlx_put_image_to_window(mlx, game.mlx_win, play, x * size, y * size);
+				mlx_put_image_to_window(mlx, game.mlx_win, play, y * size, x * size);
 				printf("i'm a player %i %i\n", x * size, y * size);
 			}
-			else
-				mlx_put_image_to_window(mlx, game.mlx_win, base, x, y);
+			else if (game.map[x][y] == WALL)
+				mlx_put_image_to_window(mlx, game.mlx_win, wal, y * size, x * size);
+			else if (game.map[x][y] == COLLECTIBLE)
+				mlx_put_image_to_window(mlx, game.mlx_win, coll, y * size, x * size);
 			y++;
 		}
 		x++;

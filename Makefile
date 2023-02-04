@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+         #
+#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/01/27 17:24:26 by kafortin         ###   ########.fr        #
+#    Updated: 2023/02/03 22:49:59 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 		@$(MAKE) -C ./Libft
 		@echo "Compiling so_long..."
-		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a ./minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 		@echo "Completed! 🤠"
 
 clean:

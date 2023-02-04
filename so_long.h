@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 17:39:13 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 23:32:31 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "./Libft/libft.h"
+# include "./minilibx_opengl_20191021/mlx.h"
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -47,6 +48,7 @@ typedef struct coordinates
 typedef struct game
 {
 	char	**map;
+	void	*mlx_win;
 	int		lines;
 	int		columns;
 	int		player_num;

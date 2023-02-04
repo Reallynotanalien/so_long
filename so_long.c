@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/03 18:12:02 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/03 23:46:41 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,13 +190,14 @@ bool	check_if_rectangle(t_game *game)
 void	open_map(char *argv, t_game *game)
 {
 	game->fd = open(argv, O_RDONLY);
+	printf("I opened\n");
 	if (game->fd < 0)
 		ft_putstr_fd("File could not be opened\n", 2);
 }
 
 void	malloc_lines(char *argv, t_game *game)
 {
-	game->lines = 0;
+	printf("!!!\n");
 	open_map(argv, game);
 	while (get_next_line(game->fd))
 		game->lines++;
@@ -251,29 +252,28 @@ bool	validate_extension(char *argv)
 	return (false);
 }
 
-bool	validate_map(char *argv, t_game game)
+bool	validate_map(char *argv, t_game *game)
 {
 	if (!validate_extension(argv))
 	{
 		ft_putstr_fd("Extension is not valid\n", 2);
 		return (false);
 	}
-	read_map(argv, &game);
-	if(!check_if_rectangle(&game))
+	read_map(argv, game);
+	if(!check_if_rectangle(game))
 	{
 		ft_putstr_fd("Map is not a rectangle\n", 2);
 		return (false);
 	}
-	if (!validate_walls(&game))
+	if (!validate_walls(game))
 	{
 		ft_putstr_fd("Map has broken WALLs\n", 2);
 		return (false);
 	}
-	if (!validate_characters(&game))
+	if (!validate_characters(game))
 		return (false);
-	if (!flood_fill(&game))
+	if (!flood_fill(game))
 		return (false);
-	/* MAP CONTAINS A VALID PATH FLOODFILL*/
 	/* FREE MAP LINES + COLUMS + POINTER*/
 	return (true);
 }
@@ -281,16 +281,23 @@ bool	validate_map(char *argv, t_game game)
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	void	*mlx;
+	void	**base;
+	int		size;
 
-	game.map = NULL;
+	ft_memset(&game, 0, sizeof(t_game));
+	size = 16;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
-	if (!validate_map(argv[1], game))
+	if (!validate_map(argv[1], &game))
 		ft_putstr_fd("Map is invalid\n", 2);
+	mlx = mlx_init();
+	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines), "Bonnie");
+	base = mlx_xpm_file_to_image(mlx, "./Assets/Tile.xpm", &size, &size);
+	mlx_put_image_to_window(mlx, game.mlx_win, base, 0, 0);
+	mlx_loop(mlx);
 	return (0);
 	/*
-	- Initiate MLX
-	- XPM files: look for png files and redimension in another size
 	- mlx_new_window: creates a new window
 	- mlx_xpm_file_to_image
 	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */

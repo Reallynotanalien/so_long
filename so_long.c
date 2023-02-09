@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/09 17:08:29 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:20:57 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 t_coordin	find_player(t_game *game)
 {
 	t_coordin	axe;
-	int	i;
-
-	i = 0;
+	
 	axe.x = 0;
 	while (game->lines > axe.x)
 	{
@@ -30,8 +28,6 @@ t_coordin	find_player(t_game *game)
 		}
 		axe.x++;
 	}
-	// axe.x = 0;
-	// axe.y = 0;
 	return (axe);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 10:22:48 by kafortin          #+#    #+#             */
-/*   Updated: 2022/07/15 09:41:48 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:39:08 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*erase_returned_line(char *text, unsigned int llen)
 	return (temp);
 }
 
-char	*get_next_line(int fd)
+char	*getnl(int fd)
 {
 	static char		*text;
 	char			*line;

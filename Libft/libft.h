@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:30:13 by kafortin          #+#    #+#             */
-/*   Updated: 2022/12/01 15:10:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/09 15:40:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int		ft_strcmp(const char *str1, const char *str2);
 int		ft_tablen(void **tab);
 void	ft_strcpy(char *dest, const char *src);
 char	*search_and_replace(char *str, char search, char replace);
+char	*get_next_line(int fd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/04 16:26:42 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/09 17:08:29 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 t_coordin	find_player(t_game *game)
 {
 	t_coordin	axe;
+	int	i;
 
+	i = 0;
 	axe.x = 0;
-	while (game->lines > axe.x + 1)
+	while (game->lines > axe.x)
 	{
-		axe.y = 0;;
-		while (game->map[axe.x][axe.y] != '\n')
+		axe.y = 0;
+		while (game->columns > axe.y)
 		{
 			if (game->map[axe.x][axe.y] == PLAYER)
 				return (axe);
@@ -28,8 +30,8 @@ t_coordin	find_player(t_game *game)
 		}
 		axe.x++;
 	}
-	axe.x = 0;
-	axe.y = 0;
+	// axe.x = 0;
+	// axe.y = 0;
 	return (axe);
 }
 
@@ -79,7 +81,7 @@ bool	flood_fill(t_game *game)
 	t_coordin	play;
 	char		**map;
 	int			i;
-	
+
 	map = malloc(sizeof(char **) * game->lines);
 	play = find_player(game);
 	i = 0;
@@ -106,16 +108,16 @@ bool	flood_fill(t_game *game)
 bool	validate_characters(t_game *game)
 {
 	int	i;
-	int j;
+	int	j;
 
-	i = 1;
+	i = 0;
 	game->player_num = 0;
 	game->collect_num = 0;
 	game->exit_num = 0;
-	while (game->lines > i + 1)
+	while (game->lines > i)
 	{
-		j = 1;
-		while (game->map[i][j] != '\n')
+		j = 0;
+		while (game->columns > j)
 		{
 			if (game->map[i][j] == PLAYER)
 				game->player_num++;
@@ -154,10 +156,10 @@ bool	validate_walls(t_game *game)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 1;
-	while (game->map[0][i] != '\n')
+	while (i < game->columns)
 	{
 		if (game->map[0][i] != WALL)
 			return (false);
@@ -186,9 +188,9 @@ bool	check_if_rectangle(t_game *game)
 	int i;
 
 	i = 0;
-	while (game->lines > i + 1)
+	while (game->lines > i)
 	{
-		if (ft_strlen(game->map[i]) - 1 != (size_t)game->columns)
+		if (ft_strlen(game->map[i]) != (size_t)game->columns)
 			return(false);
 		i++;
 	}
@@ -213,18 +215,17 @@ void	malloc_lines(char *argv, t_game *game)
 
 void	malloc_columns(char *argv, t_game *game)
 {
-	char	*str;
-	// int		i;
+	int		i;
 
 	game->columns = 0;
-	// i = 0;
+	i = 0;
 	open_map(argv, game);
-	str = get_next_line(game->fd);
-	while (str[game->columns] != '\n')
-		game->columns++;
-	free(str);
-	// while (game->lines >= i++)
-	// 	game->map = ft_calloc(sizeof(char *), game->columns + 1);
+	game->columns = ft_strlen(get_next_line(game->fd));
+	while (game->lines >= i)
+	{
+		game->map[i] = ft_calloc(sizeof(char *), game->columns + 1);
+		i++;
+	}
 	close(game->fd);
 }
 
@@ -234,17 +235,14 @@ void	read_map(char *argv, t_game *game)
 
 	i = 0;
 	malloc_lines(argv, game);
-	// printf("lines: %i\n", game->lines);
-	// malloc_columns(argv, game);
+	malloc_columns(argv, game);
 	open_map(argv, game);
 	while (game->lines > i)
 	{
-		game->map[i] = get_next_line(game->fd);
-		// printf("%s", game->map[i]);
+		ft_memcpy(game->map[i], get_next_line(game->fd), game->columns + 1);
 		game->columns = ft_strlen(game->map[i]);
 		i++;
-	}
-	// printf("\ncolumns: %i\n", game->columns);
+	}	
 	close(game->fd);
 }
 

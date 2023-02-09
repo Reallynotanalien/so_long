@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/09 17:20:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:45:26 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_coordin	find_player(t_game *game)
 {
 	t_coordin	axe;
-	
+
 	axe.x = 0;
 	while (game->lines > axe.x)
 	{
@@ -278,6 +278,13 @@ bool	validate_map(char *argv, t_game *game)
 	return (true);
 }
 
+int	deal_key(int key, void *param)
+{
+	ft_putnbr_fd(key, 1);
+	param = NULL;
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -324,6 +331,7 @@ int	main(int argc, char **argv)
 		}
 		x++;
 	}
+	mlx_key_hook(game.mlx_win, deal_key, (void *)0);
 	mlx_loop(mlx);
 	return (0);
 	/*

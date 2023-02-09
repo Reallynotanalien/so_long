@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/04 16:13:16 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/04 16:26:42 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,7 @@ int	main(int argc, char **argv)
 	void	**play;
 	void	**wal;
 	void	**coll;
+	void	**exit;
 	int		size;
 	int		x;
 	int		y;
@@ -303,11 +304,12 @@ int	main(int argc, char **argv)
 	if (!validate_map(argv[1], &game))
 		ft_putstr_fd("Map is invalid\n", 2);
 	mlx = mlx_init();
-	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines + 80), "Bonnie & Friends");
+	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines), "Bonnie & Friends");
 	base = mlx_xpm_file_to_image(mlx, "./Assets/tile2.xpm", &size, &size);
 	play = mlx_xpm_file_to_image(mlx, "./Assets/character_right.xpm", &size, &size);
 	wal = mlx_xpm_file_to_image(mlx, "./Assets/tree.xpm", &size, &size);
 	coll = mlx_xpm_file_to_image(mlx, "./Assets/carrot.xpm", &size, &size);
+	exit = mlx_xpm_file_to_image(mlx, "./Assets/exit_face.xpm", &size, &size);
 	x = 0;
 	y = 0;
 	while (game.lines > x)
@@ -322,6 +324,8 @@ int	main(int argc, char **argv)
 				mlx_put_image_to_window(mlx, game.mlx_win, wal, y * 32, x * 32);
 			else if (game.map[x][y] == COLLECTIBLE)
 				mlx_put_image_to_window(mlx, game.mlx_win, coll, y * 32, x * 32);
+			else if (game.map[x][y] == EXIT)
+				mlx_put_image_to_window(mlx, game.mlx_win, exit, y * 32, x * 32);
 			y++;
 		}
 		x++;

@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 15:46:28 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 18:00:36 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,51 @@ bool	validate_map(char *argv, t_game *game)
 	return (true);
 }
 
+int	end_game(t_game *game)
+{
+	mlx_clear_window(game->mlx, game->mlx_win);
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	exit(0);
+	return (0);
+}
+
+void	arrow_down(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, ((game->columns / 2) - 1) * 32, (game->lines / 2) * 32);
+	if (game->map[game->lines / 2][(game->columns / 2) - 1] == WALL)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wal, ((game->columns / 2) - 1) * 32, (game->lines / 2) * 32);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->arrow, ((game->columns / 2) - 1) * 32, ((game->lines / 2) + 1) * 32);
+	game->arrow_position = 2;
+}
+
+void	arrow_up(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, ((game->columns / 2) - 1) * 32, ((game->lines / 2) + 1) * 32);
+	if (game->map[(game->lines / 2) + 1][(game->columns / 2) - 1] == WALL)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->wal, ((game->columns / 2) - 1) * 32, ((game->lines / 2) + 1) * 32);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->arrow, ((game->columns / 2) - 1) * 32, ((game->lines / 2)) * 32);
+	game->arrow_position = 1;
+}
+
+void	select_option(t_game *game)
+{
+	if (game->arrow_position == 1)
+		ft_putstr_fd("RESTART\n", 1);
+	else if (game->arrow_position == 2)
+		end_game(game);
+}
+
+int	restart_game(int key, void *game)
+{
+	if (key == 125)
+		arrow_down(game);
+	if (key == 126)
+		arrow_up(game);
+	if (key == 36)
+		select_option(game);
+	return (0);
+}
+
 void	move_up(t_game *game)
 {
 	game->location.x--;
@@ -354,7 +399,15 @@ void	move_right(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x * 32);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->left, game->location.y * 32, game->location.x * 32);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->right_kiss, (game->location.y - 1) * 32, game->location.x * 32);
 				ft_putstr_fd("YOU WIN!!\n", 1);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->start_sign, (game->columns / 2) * 32, (game->lines / 2) * 32);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit_sign, (game->columns / 2) * 32, ((game->lines / 2) + 1) * 32);
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->arrow, ((game->columns / 2) - 1) * 32, (game->lines / 2) * 32);
+				game->arrow_position = 1;
+				mlx_key_hook(game->mlx_win, restart_game, game);
 				return ;
 			}
 			else
@@ -426,10 +479,14 @@ int	main(int argc, char **argv)
 	game.play = mlx_xpm_file_to_image(game.mlx, "./Assets/character_face.xpm", &size, &size);
 	game.wal = mlx_xpm_file_to_image(game.mlx, "./Assets/tree.xpm", &size, &size);
 	game.coll = mlx_xpm_file_to_image(game.mlx, "./Assets/carrot.xpm", &size, &size);
-	game.exit = mlx_xpm_file_to_image(game.mlx, "./Assets/exit_face.xpm", &size, &size);
+	game.exit = mlx_xpm_file_to_image(game.mlx, "./Assets/character_face.xpm", &size, &size);
 	game.left = mlx_xpm_file_to_image(game.mlx, "./Assets/character_left.xpm", &size, &size);
 	game.right = mlx_xpm_file_to_image(game.mlx, "./Assets/character_right.xpm", &size, &size);
 	game.up = mlx_xpm_file_to_image(game.mlx, "./Assets/character_back.xpm", &size, &size);
+	game.right_kiss = mlx_xpm_file_to_image(game.mlx, "./Assets/character_right_kiss.xpm", &size, &size);
+	game.arrow = mlx_xpm_file_to_image(game.mlx, "./Assets/arrow.xpm", &size, &size);
+	game.exit_sign = mlx_xpm_file_to_image(game.mlx, "./Assets/exit_sign.xpm", &size, &size);
+	game.start_sign = mlx_xpm_file_to_image(game.mlx, "./Assets/start_sign.xpm", &size, &size);
 	game.location = find_player(&game);
 	x = 0;
 	y = 0;
@@ -451,11 +508,10 @@ int	main(int argc, char **argv)
 		}
 		x++;
 	}
+	mlx_hook(game.mlx_win, 17, 0, end_game, &game);
 	mlx_key_hook(game.mlx_win, deal_key, &game);
 	mlx_loop(game.mlx);
 	return (0);
 	/*
 	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */
-
-	/*5- Make images appear in a loop (mlx_loop, mlx_hook to close window with X */
 }

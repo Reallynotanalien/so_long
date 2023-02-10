@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 15:34:24 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 17:55:35 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ typedef struct game
 	void		**left;
 	void		**right;
 	void		**up;
+	void		**right_kiss;
+	void		**exit_sign;
+	void		**start_sign;
+	void		**arrow;
+	int			arrow_position;
 	t_coordin	location;
 }				t_game;
 

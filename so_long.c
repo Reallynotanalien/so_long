@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/09 17:45:26 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:51:29 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,7 +281,8 @@ bool	validate_map(char *argv, t_game *game)
 int	deal_key(int key, void *param)
 {
 	ft_putnbr_fd(key, 1);
-	param = NULL;
+	if (param == NULL)
+		return (0);
 	return (0);
 }
 

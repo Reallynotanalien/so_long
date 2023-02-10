@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/09 15:48:14 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:58:18 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,5 @@ typedef struct game
 	int		exit_num;
 	int		fd;
 }				t_game;
-
-char			*copy_from_src(char *dest, const char *src, unsigned int len);
-unsigned int	scan_for_nl(const char *src);
-char			*null_calloc(char **str, unsigned int count, unsigned int size);
-void			free_if_not_empty(char	**str);
-unsigned int	find_len_until(const char *str, const char to_find);
 
 #endif

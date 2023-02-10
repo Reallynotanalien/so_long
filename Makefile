@@ -6,7 +6,7 @@
 #    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/03 22:49:59 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/02/10 14:58:10 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,6 @@ CFLAGS = -Wall -Wextra -Werror -g
 NAME = so_long
 
 FILES = so_long.c \
-		get_next_line_utils.c \
-		get_next_line.c \
 
 OBJS = $(FILES:.c=.o)
 

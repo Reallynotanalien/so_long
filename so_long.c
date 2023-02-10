@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 15:38:42 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 15:46:28 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ void	flood(char	**map, int x, int y, t_game *game)
 bool	flood_fill(t_game *game)
 {
 	t_coordin	play;
+	int			collect_num;
 	char		**map;
 	int			i;
 
+	collect_num = game->collect_num;
 	map = malloc(sizeof(char **) * game->lines);
 	play = find_player(game);
 	i = 0;
@@ -98,6 +100,7 @@ bool	flood_fill(t_game *game)
 		ft_putstr_fd("Cannot get to the exit\n", 2);
 		return (false);
 	}
+	game->collect_num = collect_num;
 	return (true);
 }
 
@@ -291,6 +294,16 @@ void	move_up(t_game *game)
 			game->collect_num--;
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
 		}
+		else if (game->map[game->location.x][game->location.y] == EXIT)
+		{
+			if (game->collect_num == 0)
+			{
+				ft_putstr_fd("YOU WIN!!\n", 1);
+				return ;
+			}
+			else
+				game->location.x++;
+		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x + 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->up, game->location.y * 32, game->location.x * 32);
 	}
@@ -308,6 +321,16 @@ void	move_down(t_game *game)
 			game->map[game->location.x][game->location.y] = 0;
 			game->collect_num--;
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
+		}
+		else if (game->map[game->location.x][game->location.y] == EXIT)
+		{
+			if (game->collect_num == 0)
+			{
+				ft_putstr_fd("YOU WIN!!\n", 1);
+				return ;
+			}
+			else
+				game->location.x--;
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x - 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->play, game->location.y * 32, game->location.x * 32);
@@ -327,6 +350,16 @@ void	move_right(t_game *game)
 			game->collect_num--;
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
 		}
+		else if (game->map[game->location.x][game->location.y] == EXIT)
+		{
+			if (game->collect_num == 0)
+			{
+				ft_putstr_fd("YOU WIN!!\n", 1);
+				return ;
+			}
+			else
+				game->location.y--;
+		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y - 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->right, game->location.y * 32, game->location.x * 32);
 	}
@@ -345,6 +378,16 @@ void	move_left(t_game *game)
 			game->collect_num--;
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
 		}
+		else if (game->map[game->location.x][game->location.y] == EXIT)
+		{
+			if (game->collect_num == 0)
+			{
+				ft_putstr_fd("YOU WIN!!\n", 1);
+				return ;
+			}
+			else
+				game->location.y++;
+		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y + 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->left, game->location.y * 32, game->location.x * 32);
 	}
@@ -360,7 +403,7 @@ int	deal_key(int key, void *game)
 		move_down(game);
 	if (key == 126)
 		move_up(game);
-	ft_putnbr_fd(key, 1);
+	// ft_putnbr_fd(key, 1);
 	return (0);
 }
 

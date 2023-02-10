@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 14:58:18 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 15:34:24 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,24 @@ typedef struct coordinates
 
 typedef struct game
 {
-	char	**map;
-	void	*mlx_win;
-	int		lines;
-	int		columns;
-	int		player_num;
-	int		collect_num;
-	int		exit_num;
-	int		fd;
+	char		**map;
+	void		*mlx_win;
+	int			lines;
+	int			columns;
+	int			player_num;
+	int			collect_num;
+	int			exit_num;
+	int			fd;
+	void		*mlx;
+	void		**base;
+	void		**play;
+	void		**wal;
+	void		**coll;
+	void		**exit;
+	void		**left;
+	void		**right;
+	void		**up;
+	t_coordin	location;
 }				t_game;
 
 #endif

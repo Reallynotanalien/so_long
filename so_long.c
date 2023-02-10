@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 14:51:29 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 15:38:42 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,23 +278,95 @@ bool	validate_map(char *argv, t_game *game)
 	return (true);
 }
 
-int	deal_key(int key, void *param)
+void	move_up(t_game *game)
 {
+	game->location.x--;
+	if (game->map[game->location.x][game->location.y] == WALL)
+		game->location.x++;
+	else
+	{
+		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
+		{
+			game->map[game->location.x][game->location.y] = 0;
+			game->collect_num--;
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
+		}
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x + 1) * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->up, game->location.y * 32, game->location.x * 32);
+	}
+}
+
+void	move_down(t_game *game)
+{
+	game->location.x++;
+	if (game->map[game->location.x][game->location.y] == WALL)
+		game->location.x--;
+	else
+	{
+		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
+		{
+			game->map[game->location.x][game->location.y] = 0;
+			game->collect_num--;
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
+		}
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x - 1) * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->play, game->location.y * 32, game->location.x * 32);
+	}
+}
+
+void	move_right(t_game *game)
+{
+	game->location.y++;
+	if (game->map[game->location.x][game->location.y] == WALL)
+		game->location.y--;
+	else
+	{
+		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
+		{
+			game->map[game->location.x][game->location.y] = 0;
+			game->collect_num--;
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
+		}
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y - 1) * 32, game->location.x * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->right, game->location.y * 32, game->location.x * 32);
+	}
+}
+
+void	move_left(t_game *game)
+{
+	game->location.y--;
+	if (game->map[game->location.x][game->location.y] == WALL)
+		game->location.y++;
+	else
+	{
+		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
+		{
+			game->map[game->location.x][game->location.y] = 0;
+			game->collect_num--;
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x *32);
+		}
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y + 1) * 32, game->location.x * 32);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->left, game->location.y * 32, game->location.x * 32);
+	}
+}
+
+int	deal_key(int key, void *game)
+{
+	if (key == 123)
+		move_left(game);
+	if (key == 124)
+		move_right(game);
+	if (key == 125)
+		move_down(game);
+	if (key == 126)
+		move_up(game);
 	ft_putnbr_fd(key, 1);
-	if (param == NULL)
-		return (0);
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	void	*mlx;
-	void	**base;
-	void	**play;
-	void	**wal;
-	void	**coll;
-	void	**exit;
 	int		size;
 	int		x;
 	int		y;
@@ -305,13 +377,17 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	if (!validate_map(argv[1], &game))
 		ft_putstr_fd("Map is invalid\n", 2);
-	mlx = mlx_init();
-	game.mlx_win = mlx_new_window(mlx, (size * game.columns), (size * game.lines), "Bonnie & Friends");
-	base = mlx_xpm_file_to_image(mlx, "./Assets/tile2.xpm", &size, &size);
-	play = mlx_xpm_file_to_image(mlx, "./Assets/character_right.xpm", &size, &size);
-	wal = mlx_xpm_file_to_image(mlx, "./Assets/tree.xpm", &size, &size);
-	coll = mlx_xpm_file_to_image(mlx, "./Assets/carrot.xpm", &size, &size);
-	exit = mlx_xpm_file_to_image(mlx, "./Assets/exit_face.xpm", &size, &size);
+	game.mlx = mlx_init();
+	game.mlx_win = mlx_new_window(game.mlx, (size * game.columns), (size * game.lines), "Bonnie & Friends");
+	game.base = mlx_xpm_file_to_image(game.mlx, "./Assets/tile2.xpm", &size, &size);
+	game.play = mlx_xpm_file_to_image(game.mlx, "./Assets/character_face.xpm", &size, &size);
+	game.wal = mlx_xpm_file_to_image(game.mlx, "./Assets/tree.xpm", &size, &size);
+	game.coll = mlx_xpm_file_to_image(game.mlx, "./Assets/carrot.xpm", &size, &size);
+	game.exit = mlx_xpm_file_to_image(game.mlx, "./Assets/exit_face.xpm", &size, &size);
+	game.left = mlx_xpm_file_to_image(game.mlx, "./Assets/character_left.xpm", &size, &size);
+	game.right = mlx_xpm_file_to_image(game.mlx, "./Assets/character_right.xpm", &size, &size);
+	game.up = mlx_xpm_file_to_image(game.mlx, "./Assets/character_back.xpm", &size, &size);
+	game.location = find_player(&game);
 	x = 0;
 	y = 0;
 	while (game.lines > x)
@@ -319,26 +395,24 @@ int	main(int argc, char **argv)
 		y = 0;
 		while (y < game.columns)
 		{	
-			mlx_put_image_to_window(mlx, game.mlx_win, base, y * 32, x * 32);
+			mlx_put_image_to_window(game.mlx, game.mlx_win, game.base, y * 32, x * 32);
 			if (game.map[x][y] == PLAYER)
-				mlx_put_image_to_window(mlx, game.mlx_win, play, y * 32, x * 32);
+				mlx_put_image_to_window(game.mlx, game.mlx_win, game.play, y * 32, x * 32);
 			else if (game.map[x][y] == WALL)
-				mlx_put_image_to_window(mlx, game.mlx_win, wal, y * 32, x * 32);
+				mlx_put_image_to_window(game.mlx, game.mlx_win, game.wal, y * 32, x * 32);
 			else if (game.map[x][y] == COLLECTIBLE)
-				mlx_put_image_to_window(mlx, game.mlx_win, coll, y * 32, x * 32);
+				mlx_put_image_to_window(game.mlx, game.mlx_win, game.coll, y * 32, x * 32);
 			else if (game.map[x][y] == EXIT)
-				mlx_put_image_to_window(mlx, game.mlx_win, exit, y * 32, x * 32);
+				mlx_put_image_to_window(game.mlx, game.mlx_win, game.exit, y * 32, x * 32);
 			y++;
 		}
 		x++;
 	}
-	mlx_key_hook(game.mlx_win, deal_key, (void *)0);
-	mlx_loop(mlx);
+	mlx_key_hook(game.mlx_win, deal_key, &game);
+	mlx_loop(game.mlx);
 	return (0);
 	/*
 	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */
 
-	/*3- Analyse map and show depending on element mlx_put_image_to_window*/
-	/*4- Keyboard interactions: mlx_key_hooks, ft_event_key function (authorizes the character to move)*/
 	/*5- Make images appear in a loop (mlx_loop, mlx_hook to close window with X */
 }

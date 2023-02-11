@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 21:24:04 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 21:27:34 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -520,25 +520,22 @@ int	deal_key(int key, void *game)
 
 void	initialize_sprites(t_game *game)
 {
-	int	size;
-
-	size = 32;
 	game->base = mlx_xpm_file_to_image(game->mlx, "./Assets/tile2.xpm", &game->size, &game->size);
 	game->play = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &game->size);
 	game->wal = mlx_xpm_file_to_image(game->mlx, "./Assets/tree.xpm", &game->size, &game->size);
 	game->coll = mlx_xpm_file_to_image(game->mlx, "./Assets/carrot.xpm", &game->size, &game->size);
-	game->exit = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &size);
-	game->left = mlx_xpm_file_to_image(game->mlx, "./Assets/character_left.xpm", &size, &size);
-	game->right = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right.xpm", &size, &size);
-	game->up = mlx_xpm_file_to_image(game->mlx, "./Assets/character_back.xpm", &size, &size);
-	game->right_kiss = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right_kiss.xpm", &size, &size);
-	game->arrow = mlx_xpm_file_to_image(game->mlx, "./Assets/arrow.xpm", &size, &size);
-	game->exit_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/exit_sign.xpm", &size, &size);
-	game->start_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/start_sign.xpm", &size, &size);
-	game->zero = mlx_xpm_file_to_image(game->mlx, "./Assets/zero.xpm", &size, &size);
-	game->one = mlx_xpm_file_to_image(game->mlx, "./Assets/one.xpm", &size, &size);
-	game->two = mlx_xpm_file_to_image(game->mlx, "./Assets/two.xpm", &size, &size);
-	game->three = mlx_xpm_file_to_image(game->mlx, "./Assets/three.xpm", &size, &size);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &game->size);
+	game->left = mlx_xpm_file_to_image(game->mlx, "./Assets/character_left.xpm", &game->size, &game->size);
+	game->right = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right.xpm", &game->size, &game->size);
+	game->up = mlx_xpm_file_to_image(game->mlx, "./Assets/character_back.xpm", &game->size, &game->size);
+	game->right_kiss = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right_kiss.xpm", &game->size, &game->size);
+	game->arrow = mlx_xpm_file_to_image(game->mlx, "./Assets/arrow.xpm", &game->size, &game->size);
+	game->exit_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/exit_sign.xpm", &game->size, &game->size);
+	game->start_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/start_sign.xpm", &game->size, &game->size);
+	game->zero = mlx_xpm_file_to_image(game->mlx, "./Assets/zero.xpm", &game->size, &game->size);
+	game->one = mlx_xpm_file_to_image(game->mlx, "./Assets/one.xpm", &game->size, &game->size);
+	game->two = mlx_xpm_file_to_image(game->mlx, "./Assets/two.xpm", &game->size, &game->size);
+	game->three = mlx_xpm_file_to_image(game->mlx, "./Assets/three.xpm", &game->size, &game->size);
 }
 
 int	main(int argc, char **argv)

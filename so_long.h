@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 17:55:35 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 21:22:00 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef SIZE
+#  define SIZE 32
 # endif
 
 # ifndef PLAYER
@@ -55,6 +59,7 @@ typedef struct game
 	int			collect_num;
 	int			exit_num;
 	int			fd;
+	int			size;
 	void		*mlx;
 	void		**base;
 	void		**play;
@@ -68,7 +73,12 @@ typedef struct game
 	void		**exit_sign;
 	void		**start_sign;
 	void		**arrow;
+	void		**zero;
+	void		**one;
+	void		**two;
+	void		**three;
 	int			arrow_position;
+	int			moves;
 	t_coordin	location;
 }				t_game;
 

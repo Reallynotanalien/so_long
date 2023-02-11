@@ -6,11 +6,36 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 18:00:36 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/10 21:24:04 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	putnbr_screen(t_game *game, int moves, int position)
+{
+	if (moves <= 9 && moves >= 0)
+	{
+		if (moves == 0)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->zero, position, game->lines * 32);
+		else if (moves == 1)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->one, position, game->lines * 32);
+		else if (moves == 2)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->two, position, game->lines * 32);
+		else if (moves == 3)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->three, position, game->lines * 32);
+	}
+	else if (moves >= 10 && moves <= 99)
+	{
+		putnbr_screen(game, moves / 10, position);
+		putnbr_screen(game, moves % 10, position + 32);
+	}
+	// else
+	// {
+	// 	putnbr_screen(game, moves / 10, position);
+	// 	putnbr_screen(game, moves % 100, position + 64);
+	// }
+}
 
 t_coordin	find_player(t_game *game)
 {
@@ -343,6 +368,10 @@ void	move_up(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
+				game->moves++;
+				putnbr_screen(game, game->moves, 0);
+				ft_putnbr_fd(game->moves, 1);
+				ft_putstr_fd("\n", 1);
 				ft_putstr_fd("YOU WIN!!\n", 1);
 				return ;
 			}
@@ -351,6 +380,10 @@ void	move_up(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x + 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->up, game->location.y * 32, game->location.x * 32);
+		game->moves++;
+		putnbr_screen(game, game->moves, 0);
+		ft_putnbr_fd(game->moves, 1);
+		ft_putstr_fd("\n", 1);
 	}
 }
 
@@ -371,6 +404,10 @@ void	move_down(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
+				game->moves++;
+				putnbr_screen(game, game->moves, 0);
+				ft_putnbr_fd(game->moves, 1);
+				ft_putstr_fd("\n", 1);
 				ft_putstr_fd("YOU WIN!!\n", 1);
 				return ;
 			}
@@ -379,6 +416,10 @@ void	move_down(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, (game->location.x - 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->play, game->location.y * 32, game->location.x * 32);
+		game->moves++;
+		putnbr_screen(game, game->moves, 0);
+		ft_putnbr_fd(game->moves, 1);
+		ft_putstr_fd("\n", 1);
 	}
 }
 
@@ -402,6 +443,10 @@ void	move_right(t_game *game)
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, game->location.y * 32, game->location.x * 32);
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->left, game->location.y * 32, game->location.x * 32);
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->right_kiss, (game->location.y - 1) * 32, game->location.x * 32);
+				game->moves++;
+				putnbr_screen(game, game->moves, 0);
+				ft_putnbr_fd(game->moves, 1);
+				ft_putstr_fd("\n", 1);
 				ft_putstr_fd("YOU WIN!!\n", 1);
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->start_sign, (game->columns / 2) * 32, (game->lines / 2) * 32);
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit_sign, (game->columns / 2) * 32, ((game->lines / 2) + 1) * 32);
@@ -415,6 +460,10 @@ void	move_right(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y - 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->right, game->location.y * 32, game->location.x * 32);
+		game->moves++;
+		putnbr_screen(game, game->moves, 0);
+		ft_putnbr_fd(game->moves, 1);
+		ft_putstr_fd("\n", 1);
 	}
 }
 
@@ -435,6 +484,10 @@ void	move_left(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
+				game->moves++;
+				putnbr_screen(game, game->moves, 0);
+				ft_putnbr_fd(game->moves, 1);
+				ft_putstr_fd("\n", 1);
 				ft_putstr_fd("YOU WIN!!\n", 1);
 				return ;
 			}
@@ -443,6 +496,10 @@ void	move_left(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->base, (game->location.y + 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->left, game->location.y * 32, game->location.x * 32);
+		game->moves++;
+		putnbr_screen(game, game->moves, 0);
+		ft_putnbr_fd(game->moves, 1);
+		ft_putstr_fd("\n", 1);
 	}
 }
 
@@ -450,44 +507,57 @@ int	deal_key(int key, void *game)
 {
 	if (key == 123)
 		move_left(game);
-	if (key == 124)
+	else if (key == 124)
 		move_right(game);
-	if (key == 125)
+	else if (key == 125)
 		move_down(game);
-	if (key == 126)
+	else if (key == 126)
 		move_up(game);
-	// ft_putnbr_fd(key, 1);
+	else if (key == 53)
+		end_game(game);
 	return (0);
+}
+
+void	initialize_sprites(t_game *game)
+{
+	int	size;
+
+	size = 32;
+	game->base = mlx_xpm_file_to_image(game->mlx, "./Assets/tile2.xpm", &game->size, &game->size);
+	game->play = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &game->size);
+	game->wal = mlx_xpm_file_to_image(game->mlx, "./Assets/tree.xpm", &game->size, &game->size);
+	game->coll = mlx_xpm_file_to_image(game->mlx, "./Assets/carrot.xpm", &game->size, &game->size);
+	game->exit = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &size);
+	game->left = mlx_xpm_file_to_image(game->mlx, "./Assets/character_left.xpm", &size, &size);
+	game->right = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right.xpm", &size, &size);
+	game->up = mlx_xpm_file_to_image(game->mlx, "./Assets/character_back.xpm", &size, &size);
+	game->right_kiss = mlx_xpm_file_to_image(game->mlx, "./Assets/character_right_kiss.xpm", &size, &size);
+	game->arrow = mlx_xpm_file_to_image(game->mlx, "./Assets/arrow.xpm", &size, &size);
+	game->exit_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/exit_sign.xpm", &size, &size);
+	game->start_sign = mlx_xpm_file_to_image(game->mlx, "./Assets/start_sign.xpm", &size, &size);
+	game->zero = mlx_xpm_file_to_image(game->mlx, "./Assets/zero.xpm", &size, &size);
+	game->one = mlx_xpm_file_to_image(game->mlx, "./Assets/one.xpm", &size, &size);
+	game->two = mlx_xpm_file_to_image(game->mlx, "./Assets/two.xpm", &size, &size);
+	game->three = mlx_xpm_file_to_image(game->mlx, "./Assets/three.xpm", &size, &size);
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	int		size;
 	int		x;
 	int		y;
 
 	ft_memset(&game, 0, sizeof(t_game));
-	size = 32;
+	game.size = SIZE;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	if (!validate_map(argv[1], &game))
 		ft_putstr_fd("Map is invalid\n", 2);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, (size * game.columns), (size * game.lines), "Bonnie & Friends");
-	game.base = mlx_xpm_file_to_image(game.mlx, "./Assets/tile2.xpm", &size, &size);
-	game.play = mlx_xpm_file_to_image(game.mlx, "./Assets/character_face.xpm", &size, &size);
-	game.wal = mlx_xpm_file_to_image(game.mlx, "./Assets/tree.xpm", &size, &size);
-	game.coll = mlx_xpm_file_to_image(game.mlx, "./Assets/carrot.xpm", &size, &size);
-	game.exit = mlx_xpm_file_to_image(game.mlx, "./Assets/character_face.xpm", &size, &size);
-	game.left = mlx_xpm_file_to_image(game.mlx, "./Assets/character_left.xpm", &size, &size);
-	game.right = mlx_xpm_file_to_image(game.mlx, "./Assets/character_right.xpm", &size, &size);
-	game.up = mlx_xpm_file_to_image(game.mlx, "./Assets/character_back.xpm", &size, &size);
-	game.right_kiss = mlx_xpm_file_to_image(game.mlx, "./Assets/character_right_kiss.xpm", &size, &size);
-	game.arrow = mlx_xpm_file_to_image(game.mlx, "./Assets/arrow.xpm", &size, &size);
-	game.exit_sign = mlx_xpm_file_to_image(game.mlx, "./Assets/exit_sign.xpm", &size, &size);
-	game.start_sign = mlx_xpm_file_to_image(game.mlx, "./Assets/start_sign.xpm", &size, &size);
+	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns), (SIZE * game.lines) + SIZE, "Bonnie & Friends");
+	initialize_sprites(&game);
 	game.location = find_player(&game);
+	game.moves = 0;
 	x = 0;
 	y = 0;
 	while (game.lines > x)
@@ -508,6 +578,7 @@ int	main(int argc, char **argv)
 		}
 		x++;
 	}
+	mlx_put_image_to_window(game.mlx, game.mlx_win, game.zero, 0, game.lines * 32);
 	mlx_hook(game.mlx_win, 17, 0, end_game, &game);
 	mlx_key_hook(game.mlx_win, deal_key, &game);
 	mlx_loop(game.mlx);

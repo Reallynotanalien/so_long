@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/13 18:17:58 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:21:32 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,6 @@ bool	check_if_rectangle(t_game *game)
 		i++;
 	}
 	return(true);
-}
-
-void	open_map(char *argv, t_game *game)
-{
-	game->fd = open(argv, O_RDONLY);
-	if (game->fd < 0)
-		ft_putstr_fd("File could not be opened\n", 2);
 }
 
 void	malloc_lines(char *argv, t_game *game)

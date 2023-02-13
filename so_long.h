@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:54:02 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/13 18:21:27 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void		validate_map(char *argv, t_game *game);
 
 /*utils*/
 void		exit_error(char *error);
+void		open_map(char *argv, t_game *game);
 t_coordin	find_player(t_game *game);
 
 #endif

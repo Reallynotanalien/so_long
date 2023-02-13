@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/10 21:22:00 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/13 17:54:02 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
-# endif
 
 # ifndef SIZE
 #  define SIZE 32
@@ -49,18 +45,8 @@ typedef struct coordinates
 	int	y;
 }				t_coordin;
 
-typedef struct game
+typedef struct sprites
 {
-	char		**map;
-	void		*mlx_win;
-	int			lines;
-	int			columns;
-	int			player_num;
-	int			collect_num;
-	int			exit_num;
-	int			fd;
-	int			size;
-	void		*mlx;
 	void		**base;
 	void		**play;
 	void		**wal;
@@ -77,9 +63,32 @@ typedef struct game
 	void		**one;
 	void		**two;
 	void		**three;
+}				t_sprites;
+
+typedef struct game
+{
+	char		**map;
+	void		*mlx_win;
+	int			lines;
+	int			columns;
+	int			player_num;
+	int			collect_num;
+	int			exit_num;
+	int			fd;
+	int			size;
+	void		*mlx;
+	t_sprites	sprite;
 	int			arrow_position;
 	int			moves;
 	t_coordin	location;
 }				t_game;
+
+
+/*check_map*/
+void		validate_map(char *argv, t_game *game);
+
+/*utils*/
+void		exit_error(char *error);
+t_coordin	find_player(t_game *game);
 
 #endif

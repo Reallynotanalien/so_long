@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/13 18:21:27 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:55:01 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef struct sprites
 	void		**one;
 	void		**two;
 	void		**three;
+	void		**four;
+	void		**five;
+	void		**six;
+	void		**seven;
+	void		**eight;
+	void		**nine;
 }				t_sprites;
 
 typedef struct game

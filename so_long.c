@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/13 17:54:30 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:59:32 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ void	putnbr_screen(t_game *game, int moves, int position)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.two, position, game->lines * 32);
 		else if (moves == 3)
 			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.three, position, game->lines * 32);
+		else if (moves == 4)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.four, position, game->lines * 32);
+		else if (moves == 5)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.five, position, game->lines * 32);
+		else if (moves == 6)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.six, position, game->lines * 32);
+		else if (moves == 7)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.seven, position, game->lines * 32);
+		else if (moves == 8)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.eight, position, game->lines * 32);
+		else if (moves == 9)
+			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.nine, position, game->lines * 32);
 	}
 	else if (moves >= 10 && moves <= 99)
 	{
@@ -267,6 +279,12 @@ void	initialize_sprites(t_game *game)
 	game->sprite.one = mlx_xpm_file_to_image(game->mlx, "./Assets/one.xpm", &game->size, &game->size);
 	game->sprite.two = mlx_xpm_file_to_image(game->mlx, "./Assets/two.xpm", &game->size, &game->size);
 	game->sprite.three = mlx_xpm_file_to_image(game->mlx, "./Assets/three.xpm", &game->size, &game->size);
+	game->sprite.four = mlx_xpm_file_to_image(game->mlx, "./Assets/four.xpm", &game->size, &game->size);
+	game->sprite.five = mlx_xpm_file_to_image(game->mlx, "./Assets/five.xpm", &game->size, &game->size);
+	game->sprite.six = mlx_xpm_file_to_image(game->mlx, "./Assets/six.xpm", &game->size, &game->size);
+	game->sprite.seven = mlx_xpm_file_to_image(game->mlx, "./Assets/seven.xpm", &game->size, &game->size);
+	game->sprite.eight = mlx_xpm_file_to_image(game->mlx, "./Assets/eight.xpm", &game->size, &game->size);
+	game->sprite.nine = mlx_xpm_file_to_image(game->mlx, "./Assets/nine.xpm", &game->size, &game->size);
 }
 
 int	main(int argc, char **argv)

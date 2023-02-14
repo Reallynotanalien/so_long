@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/13 18:21:32 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:26:59 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,62 +157,18 @@ bool	check_if_rectangle(t_game *game)
 	return(true);
 }
 
-void	malloc_lines(char *argv, t_game *game)
-{
-	open_map(argv, game);
-	while (get_next_line(game->fd))
-		game->lines++;
-	game->map = malloc(sizeof(char **) * game->lines);
-	close(game->fd);
-}
-
-void	malloc_columns(char *argv, t_game *game)
-{
-	int		i;
-
-	game->columns = 0;
-	i = 0;
-	open_map(argv, game);
-	game->columns = ft_strlen(get_next_line(game->fd));
-	while (game->lines >= i)
-	{
-		game->map[i] = ft_calloc(sizeof(char *), game->columns + 1);
-		i++;
-	}
-	close(game->fd);
-}
-
-void	read_map(char *argv, t_game *game)
-{
-	int	i;
-
-	i = 0;
-	malloc_lines(argv, game);
-	malloc_columns(argv, game);
-	open_map(argv, game);
-	while (game->lines > i)
-	{
-		ft_memcpy(game->map[i], get_next_line(game->fd), game->columns + 1);
-		game->columns = ft_strlen(game->map[i]);
-		i++;
-	}	
-	close(game->fd);
-}
-
-bool	validate_extension(char *argv)
+void	validate_extension(char *argv)
 {
 	int	i;
 
 	i = (ft_strlen(argv) - 4);
-	if (ft_strncmp(".ber", &argv[i], 4) == 0)
-		return (true);
-	return (false);
+	if (ft_strncmp(".ber", &argv[i], 4) != 0)
+		exit_error("(extension should be .ber)\n");
 }
 
 void	validate_map(char *argv, t_game *game)
 {
-	if (!validate_extension(argv))
-		exit_error("(extension should be .ber)\n");
+	validate_extension(argv);
 	read_map(argv, game);
 	if (!check_if_rectangle(game))
 		exit_error("(map should be a rectangle)\n");

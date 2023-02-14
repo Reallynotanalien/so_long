@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
+#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/13 17:52:02 by kafortin         ###   ########.fr        #
+#    Updated: 2023/02/14 16:26:07 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = so_long
 
-FILES = check_map.c \
+FILES = read_map.c \
 		so_long.c \
 		utils.c \
+		validate_map.c \
 
 OBJS = $(FILES:.c=.o)
 

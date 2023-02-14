@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 15:55:01 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 16:28:15 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,15 @@ typedef struct game
 	t_coordin	location;
 }				t_game;
 
-
-/*check_map*/
-void		validate_map(char *argv, t_game *game);
+/*read_map*/
+void		open_map(char *argv, t_game *game);
+void		read_map(char *argv, t_game *game);
 
 /*utils*/
 void		exit_error(char *error);
-void		open_map(char *argv, t_game *game);
 t_coordin	find_player(t_game *game);
+
+/*validate_map*/
+void		validate_map(char *argv, t_game *game);
 
 #endif

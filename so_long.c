@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 16:19:02 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 16:43:16 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,9 @@ int	main(int argc, char **argv)
 	game.size = SIZE;
 	game.lines = 0;
 	game.columns = 0;
+	game.player_num = 0;
+	game.collect_num = 0;
+	game.exit_num = 0;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	validate_map(argv[1], &game);

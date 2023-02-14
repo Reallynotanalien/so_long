@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 16:26:59 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 16:43:22 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ void	validate_characters(t_game *game)
 	int	j;
 
 	i = 0;
-	game->player_num = 0;
-	game->collect_num = 0;
-	game->exit_num = 0;
 	while (game->lines > i)
 	{
 		j = 0;
@@ -112,38 +109,23 @@ void	validate_characters(t_game *game)
 		exit_error("(map should contain exactly one exit)\n");
 }
 
-bool	validate_walls(t_game *game)
+void	validate_walls(t_game *game)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 1;
 	while (i < game->columns)
 	{
-		if (game->map[0][i] != WALL)
-			return (false);
+		if (game->map[0][i] != WALL || game->map[game->lines - 1][i] != WALL)
+			exit_error("(map should be surrounded by walls)\n");
+		if (i < game->lines)
+			if (game->map[i][game->columns - 1] != WALL || game->map[i][0] != WALL)
+				exit_error("(map should be surrounded by walls)\n");
 		i++;
 	}
-	while (j < game->lines)
-	{
-		if (game->map[j][i - 1] != WALL)
-			return (false);
-		if (game->map[j][0] != WALL)
-			return (false);
-		j++;
-	}
-	i = 0;
-	while (ft_strlen(game->map[j - 1]) > (size_t)i)
-	{
-		if (game->map[j - 1][i] != WALL)
-			return (false);
-		i++;
-	}
-	return (true);
 }
 
-bool	check_if_rectangle(t_game *game)
+void	check_if_rectangle(t_game *game)
 {
 	int i;
 
@@ -151,10 +133,9 @@ bool	check_if_rectangle(t_game *game)
 	while (game->lines > i)
 	{
 		if (ft_strlen(game->map[i]) != (size_t)game->columns)
-			return(false);
+			exit_error("(map should be a rectangle)\n");
 		i++;
 	}
-	return(true);
 }
 
 void	validate_extension(char *argv)
@@ -170,10 +151,8 @@ void	validate_map(char *argv, t_game *game)
 {
 	validate_extension(argv);
 	read_map(argv, game);
-	if (!check_if_rectangle(game))
-		exit_error("(map should be a rectangle)\n");
-	if (!validate_walls(game))
-		exit_error("(map should be surrounded by walls)\n");
+	check_if_rectangle(game);
+	validate_walls(game);
 	validate_characters(game);
 	flood_fill(game);
 	/* FREE MAP LINES + COLUMS + POINTER*/

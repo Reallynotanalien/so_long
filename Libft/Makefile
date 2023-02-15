@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
+#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/09 15:40:18 by kafortin         ###   ########.fr        #
+#    Updated: 2023/02/14 16:59:22 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ FILES = ft_isalpha.c \
 		ft_strcpy.c \
 		search_and_replace.c \
 		ft_gnl.c \
+		ft_free_tab.c \
 		
 OBJS = $(FILES:.c=.o)
 

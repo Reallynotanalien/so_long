@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 16:49:24 by katherinefo      ###   ########.fr       */
+/*   Created: 2023/02/14 16:58:39 by katherinefo       #+#    #+#             */
+/*   Updated: 2023/02/14 16:59:01 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	exit_error(char *error)
+void	free_tab(char **tab)
 {
-	ft_putstr_fd("ERROR - MAP IS INVALID ", 2);
-	ft_putstr_fd(error, 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	if (tab)
+	{
+		free(tab);
+		tab = NULL;
+	}
 }

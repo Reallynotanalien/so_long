@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 16:43:16 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 16:49:09 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,7 +306,6 @@ int	main(int argc, char **argv)
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns), (SIZE * game.lines) + SIZE, "Bonnie & Friends");
 	initialize_sprites(&game);
-	game.location = find_player(&game);
 	game.moves = 0;
 	x = 0;
 	y = 0;

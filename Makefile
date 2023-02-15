@@ -6,7 +6,7 @@
 #    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/14 16:26:07 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/02/14 20:44:19 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = so_long
 
-FILES = read_map.c \
+FILES = flood_fill.c \
+		read_map.c \
 		so_long.c \
 		utils.c \
 		validate_map.c \

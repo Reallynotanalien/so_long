@@ -6,100 +6,38 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 16:43:22 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:43:29 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood(char	**map, int x, int y, t_game *game)
-{
-	while (map[x][y] != WALL && map[x][y] != 'X')
-	{
-		if (map[x][y] == COLLECTIBLE)
-		{
-			game->collect_num--;
-			map[x][y] = 'X';
-			flood(map, x + 1, y, game);
-			flood(map, x - 1, y, game);
-			flood(map, x, y + 1, game);
-			flood(map, x, y - 1, game);
-		}
-		if (map[x][y] == EXIT)
-		{
-			game->exit_num--;
-			map[x][y] = 'X';
-			flood(map, x + 1, y, game);
-			flood(map, x - 1, y, game);
-			flood(map, x, y + 1, game);
-			flood(map, x, y - 1, game);
-		}
-		if (map[x][y] == '0')
-		{
-			map[x][y] = 'X';
-			flood(map, x + 1, y, game);
-			flood(map, x - 1, y, game);
-			flood(map, x, y + 1, game);
-			flood(map, x, y - 1, game);
-		}
-		if (map[x][y] == PLAYER)
-		{
-			map[x][y] = 'X';
-			flood(map, x + 1, y, game);
-			flood(map, x - 1, y, game);
-			flood(map, x, y + 1, game);
-			flood(map, x, y - 1, game);
-		}
-	}
-}
-
-void	flood_fill(t_game *game)
-{
-	t_coordin	play;
-	int			collect_num;
-	char		**map;
-	int			i;
-
-	collect_num = game->collect_num;
-	map = malloc(sizeof(char **) * game->lines);
-	play = find_player(game);
-	i = 0;
-	while (game->lines > i)
-	{
-		map[i] = ft_calloc(sizeof(char), ft_strlen(game->map[i]));
-		ft_memmove(map[i], game->map[i], ft_strlen(game->map[i]));
-		i++;
-	}
-	flood(map, play.x, play.y, game);
-	if (game->collect_num != 0)
-		exit_error("(impossible to get to all the collectibles)\n");
-	if (game->exit_num != 0)
-		exit_error("(impossible to get to the exit)\n");
-	game->collect_num = collect_num;
-}
-
 void	validate_characters(t_game *game)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (game->lines > i)
+	x = 0;
+	while (game->lines > x)
 	{
-		j = 0;
-		while (game->columns > j)
+		y = 0;
+		while (game->columns > y)
 		{
-			if (game->map[i][j] == PLAYER)
+			if (game->map[x][y] == PLAYER)
+			{
 				game->player_num++;
-			else if (game->map[i][j] == COLLECTIBLE)
+				game->location.x = x;
+				game->location.y = y;
+			}
+			else if (game->map[x][y] == COLLECTIBLE)
 				game->collect_num++;
-			else if (game->map[i][j] == EXIT)
+			else if (game->map[x][y] == EXIT)
 				game->exit_num++;
-			else if (game->map[i][j] != WALL && game->map[i][j] != '0')
+			else if (game->map[x][y] != WALL && game->map[x][y] != '0')
 				exit_error("(invalid character found)\n");
-			j++;
+			y++;
 		}
-		i++;
+		x++;
 	}
 	if (game->player_num != 1)
 		exit_error("(map should contain exactly one player)\n");

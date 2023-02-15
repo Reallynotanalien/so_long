@@ -6,13 +6,13 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:57:17 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/15 10:45:46 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	initialize_sprites(t_game *game)
+void	init_sprites(t_game *game)
 {
 	game->sprite.base = mlx_xpm_file_to_image(game->mlx, "./Assets/tile2.xpm", &game->size, &game->size);
 	game->sprite.play = mlx_xpm_file_to_image(game->mlx, "./Assets/character_face.xpm", &game->size, &game->size);
@@ -38,7 +38,7 @@ void	initialize_sprites(t_game *game)
 	game->sprite.nine = mlx_xpm_file_to_image(game->mlx, "./Assets/nine.xpm", &game->size, &game->size);
 }
 
-void	initialize_data(t_game *game)
+void	init_data(t_game *game)
 {
 	game->size = SIZE;
 	game->lines = 0;
@@ -49,7 +49,7 @@ void	initialize_data(t_game *game)
 	game->moves = 0;
 }
 
-void	initialize_game_start(t_game *game)
+void	init_game_start(t_game *game)
 {
 	int	x;
 	int	y;

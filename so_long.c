@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 20:57:13 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/15 10:46:29 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,11 +268,12 @@ int	main(int argc, char **argv)
 	ft_memset(&game, 0, sizeof(t_game));
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
+	init_data(&game);
 	validate_map(argv[1], &game);
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns), (SIZE * game.lines) + SIZE, "Bonnie & Friends");
-	initialize_sprites(&game);
-	initialize_game_start(&game);
+	init_sprites(&game);
+	init_game_start(&game);
 	mlx_hook(game.mlx_win, 17, 0, end_game, &game);
 	mlx_key_hook(game.mlx_win, deal_key, &game);
 	mlx_loop(game.mlx);

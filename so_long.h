@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/14 20:44:04 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/14 20:58:08 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ typedef struct game
 
 /*flood_fill*/
 void		flood_fill(t_game *game);
+
+/*init*/
+void		initialize_sprites(t_game *game);
+void		initialize_game_start(t_game *game);
+void		initialize_data(t_game *game);
 
 /*read_map*/
 void		open_map(char *argv, t_game *game);

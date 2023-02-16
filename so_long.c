@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 16:21:27 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:20:19 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	putnbr_screen(t_game *game, int moves, int position)
 	}
 }
 
-int	end_game(t_game *game)
+void	game_moves(t_game *game)
 {
-	mlx_clear_window(game->mlx, game->mlx_win);
-	mlx_destroy_window(game->mlx, game->mlx_win);
-	exit(0);
-	return (0);
+	game->moves++;
+	putnbr_screen(game, game->moves, 0);
+	ft_putnbr_fd(game->moves, 1);
+	ft_putstr_fd(" ", 1);
 }
 
 void	arrow_down(t_game *game)
@@ -94,6 +94,16 @@ int	restart_game(int key, void *game)
 	return (0);
 }
 
+void	if_collectible(t_game *game)
+{
+	if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
+	{
+		game->map[game->location.x][game->location.y] = 0;
+		game->collect_num--;
+		put_image(game, game->sprite.base, game->location.x, game->location.y);
+	}
+}
+
 void	move_up(t_game *game)
 {
 	game->location.x--;
@@ -101,21 +111,15 @@ void	move_up(t_game *game)
 		game->location.x++;
 	else
 	{
-		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
-		{
-			game->map[game->location.x][game->location.y] = 0;
-			game->collect_num--;
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, game->location.x *32);
-		}
-		else if (game->map[game->location.x][game->location.y] == EXIT)
+		if_collectible(game);
+		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
 			if (game->collect_num == 0)
 			{
 				game->moves++;
 				putnbr_screen(game, game->moves, 0);
 				ft_putnbr_fd(game->moves, 1);
-				ft_putstr_fd("\n", 1);
-				ft_putstr_fd("YOU WIN!!\n", 1);
+				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}
 			else
@@ -123,10 +127,7 @@ void	move_up(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.up, game->location.y * 32, game->location.x * 32);
-		game->moves++;
-		putnbr_screen(game, game->moves, 0);
-		ft_putnbr_fd(game->moves, 1);
-		ft_putstr_fd("\n", 1);
+		game_moves(game);
 	}
 }
 
@@ -137,21 +138,15 @@ void	move_down(t_game *game)
 		game->location.x--;
 	else
 	{
-		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
-		{
-			game->map[game->location.x][game->location.y] = 0;
-			game->collect_num--;
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, game->location.x *32);
-		}
-		else if (game->map[game->location.x][game->location.y] == EXIT)
+		if_collectible(game);
+		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
 			if (game->collect_num == 0)
 			{
 				game->moves++;
 				putnbr_screen(game, game->moves, 0);
 				ft_putnbr_fd(game->moves, 1);
-				ft_putstr_fd("\n", 1);
-				ft_putstr_fd("YOU WIN!!\n", 1);
+				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}
 			else
@@ -159,10 +154,7 @@ void	move_down(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.play, game->location.y * 32, game->location.x * 32);
-		game->moves++;
-		putnbr_screen(game, game->moves, 0);
-		ft_putnbr_fd(game->moves, 1);
-		ft_putstr_fd("\n", 1);
+		game_moves(game);
 	}
 }
 
@@ -173,27 +165,21 @@ void	move_right(t_game *game)
 		game->location.y--;
 	else
 	{
-		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
-		{
-			game->map[game->location.x][game->location.y] = 0;
-			game->collect_num--;
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, game->location.x *32);
-		}
-		else if (game->map[game->location.x][game->location.y] == EXIT)
+		if_collectible(game);
+		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
 			if (game->collect_num == 0)
 			{
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, game->location.x * 32);
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.left, game->location.y * 32, game->location.x * 32);
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.right_kiss, (game->location.y - 1) * 32, game->location.x * 32);
+				put_image(game, game->sprite.base, game->location.x, game->location.y);
+				put_image(game, game->sprite.left, game->location.x, game->location.y);
+				put_image(game, game->sprite.right_kiss, (game->location.x), game->location.y - 1);
 				game->moves++;
 				putnbr_screen(game, game->moves, 0);
 				ft_putnbr_fd(game->moves, 1);
-				ft_putstr_fd("\n", 1);
-				ft_putstr_fd("YOU WIN!!\n", 1);
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.start_sign, (game->columns / 2) * 32, (game->lines / 2) * 32);
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.exit_sign, (game->columns / 2) * 32, ((game->lines / 2) + 1) * 32);
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.arrow, ((game->columns / 2) - 1) * 32, (game->lines / 2) * 32);
+				ft_putstr_fd("\nYOU WIN!!\n", 1);
+				put_image(game, game->sprite.start_sign, (game->lines / 2), (game->columns / 2));
+				put_image(game, game->sprite.exit_sign, (game->lines / 2) + 1, (game->columns / 2));
+				put_image(game, game->sprite.arrow, (game->lines / 2), (game->columns / 2) - 1);
 				game->arrow_position = 1;
 				mlx_key_hook(game->mlx_win, restart_game, game);
 				return ;
@@ -201,12 +187,9 @@ void	move_right(t_game *game)
 			else
 				game->location.y--;
 		}
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, (game->location.y - 1) * 32, game->location.x * 32);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.right, game->location.y * 32, game->location.x * 32);
-		game->moves++;
-		putnbr_screen(game, game->moves, 0);
-		ft_putnbr_fd(game->moves, 1);
-		ft_putstr_fd("\n", 1);
+		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
+		put_image(game, game->sprite.right, game->location.x, game->location.y);
+		game_moves(game);
 	}
 }
 
@@ -217,21 +200,15 @@ void	move_left(t_game *game)
 		game->location.y++;
 	else
 	{
-		if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
-		{
-			game->map[game->location.x][game->location.y] = 0;
-			game->collect_num--;
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, game->location.x *32);
-		}
-		else if (game->map[game->location.x][game->location.y] == EXIT)
+		if_collectible(game);
+		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
 			if (game->collect_num == 0)
 			{
 				game->moves++;
 				putnbr_screen(game, game->moves, 0);
 				ft_putnbr_fd(game->moves, 1);
-				ft_putstr_fd("\n", 1);
-				ft_putstr_fd("YOU WIN!!\n", 1);
+				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}
 			else
@@ -239,10 +216,7 @@ void	move_left(t_game *game)
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.left, game->location.y * 32, game->location.x * 32);
-		game->moves++;
-		putnbr_screen(game, game->moves, 0);
-		ft_putnbr_fd(game->moves, 1);
-		ft_putstr_fd("\n", 1);
+		game_moves(game);
 	}
 }
 
@@ -271,7 +245,8 @@ int	main(int argc, char **argv)
 	init_data(&game);
 	validate_map(argv[1], &game);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns), (SIZE * game.lines) + SIZE, "Bonnie & Friends");
+	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns),
+			(SIZE * game.lines) + SIZE, "Bonnie & Friends");
 	init_sprites(&game);
 	init_game_start(&game);
 	mlx_hook(game.mlx_win, 17, 0, end_game, &game);

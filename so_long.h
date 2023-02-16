@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 15:51:20 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:25:34 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void		read_map(char *argv, t_game *game);
 
 /*utils*/
 void		exit_error(char *error);
+int			end_game(t_game *game);	
 
 /*validate_map*/
 void		validate_map(char *argv, t_game *game);

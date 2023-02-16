@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 17:20:19 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:21:46 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,7 @@ void	move_up(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
-				game->moves++;
-				putnbr_screen(game, game->moves, 0);
-				ft_putnbr_fd(game->moves, 1);
+				game_moves(game);
 				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}
@@ -143,9 +141,7 @@ void	move_down(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
-				game->moves++;
-				putnbr_screen(game, game->moves, 0);
-				ft_putnbr_fd(game->moves, 1);
+				game_moves(game);
 				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}
@@ -173,9 +169,7 @@ void	move_right(t_game *game)
 				put_image(game, game->sprite.base, game->location.x, game->location.y);
 				put_image(game, game->sprite.left, game->location.x, game->location.y);
 				put_image(game, game->sprite.right_kiss, (game->location.x), game->location.y - 1);
-				game->moves++;
-				putnbr_screen(game, game->moves, 0);
-				ft_putnbr_fd(game->moves, 1);
+				game_moves(game);
 				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				put_image(game, game->sprite.start_sign, (game->lines / 2), (game->columns / 2));
 				put_image(game, game->sprite.exit_sign, (game->lines / 2) + 1, (game->columns / 2));
@@ -205,9 +199,7 @@ void	move_left(t_game *game)
 		{
 			if (game->collect_num == 0)
 			{
-				game->moves++;
-				putnbr_screen(game, game->moves, 0);
-				ft_putnbr_fd(game->moves, 1);
+				game_moves(game);
 				ft_putstr_fd("\nYOU WIN!!\n", 1);
 				return ;
 			}

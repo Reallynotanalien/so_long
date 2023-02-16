@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/16 15:55:11 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:23:56 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ void	init_sprites(t_game *game)
 	game->sprite.right = xpm_to_image(game, "./Assets/character_right.xpm");
 	game->sprite.up = xpm_to_image(game, "./Assets/character_back.xpm");
 	game->sprite.right_kiss = xpm_to_image(game, "./Assets/char_rkiss.xpm");
+	game->sprite.down_kiss = xpm_to_image(game, "./Assets/char_dkiss.xpm");
+	game->sprite.up_kiss = xpm_to_image(game, "./Assets/char_ukiss.xpm");
+	game->sprite.left_kiss = xpm_to_image(game, "./Assets/char_lkiss.xpm");
 	game->sprite.arrow = xpm_to_image(game, "./Assets/arrow.xpm");
 	game->sprite.exit_sign = xpm_to_image(game, "./Assets/exit_sign.xpm");
 	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");

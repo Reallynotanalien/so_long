@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 18:08:43 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:26:14 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,35 @@ void	if_collectible(t_game *game)
 	}
 }
 
+void	put_arrows(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = game->lines / 2;
+	y = game->columns / 2;
+	put_image(game, game->sprite.start_sign, x, y);
+	put_image(game, game->sprite.exit_sign, x + 1, y);
+	put_image(game, game->sprite.arrow, x, y - 1);
+	game->arrow_position = 1;
+}
+
+bool	win(t_game *game, void **player, void **exit)
+{
+	if (game->collect_num == 0)
+	{
+		put_image(game, game->sprite.base, game->location.x, game->location.y);
+		put_image(game, exit, game->location.x, game->location.y);
+		put_image(game, player, (game->location.x), game->location.y - 1);
+		game_moves(game);
+		ft_putstr_fd("\nYOU WIN!!\n", 1);
+		put_arrows(game);
+		mlx_key_hook(game->mlx_win, restart_game, game);
+		return (true);
+	}
+	return (false);
+}
+
 void	move_up(t_game *game)
 {
 	game->location.x--;
@@ -114,17 +143,9 @@ void	move_up(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (game->collect_num == 0)
-			{
-				game_moves(game);
-				ft_putstr_fd("\nYOU WIN!!\n", 1);
-				return ;
-			}
-			else
-			{
-				game->location.x++;
-				return ;
-			}
+			if (!win(game, game->sprite.up_kiss, game->sprite.play))
+				game->location.y--;
+			return ;
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.up, game->location.y * 32, game->location.x * 32);
@@ -142,17 +163,9 @@ void	move_down(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (game->collect_num == 0)
-			{
-				game_moves(game);
-				ft_putstr_fd("\nYOU WIN!!\n", 1);
-				return ;
-			}
-			else
-			{
-				game->location.x--;
-				return ;
-			}
+			if (!win(game, game->sprite.down_kiss, game->sprite.up))
+				game->location.y--;
+			return ;
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.play, game->location.y * 32, game->location.x * 32);
@@ -170,25 +183,9 @@ void	move_right(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (game->collect_num == 0)
-			{
-				put_image(game, game->sprite.base, game->location.x, game->location.y);
-				put_image(game, game->sprite.left, game->location.x, game->location.y);
-				put_image(game, game->sprite.right_kiss, (game->location.x), game->location.y - 1);
-				game_moves(game);
-				ft_putstr_fd("\nYOU WIN!!\n", 1);
-				put_image(game, game->sprite.start_sign, (game->lines / 2), (game->columns / 2));
-				put_image(game, game->sprite.exit_sign, (game->lines / 2) + 1, (game->columns / 2));
-				put_image(game, game->sprite.arrow, (game->lines / 2), (game->columns / 2) - 1);
-				game->arrow_position = 1;
-				mlx_key_hook(game->mlx_win, restart_game, game);
-				return ;
-			}
-			else
-			{
+			if (!win(game, game->sprite.right_kiss, game->sprite.left))
 				game->location.y--;
-				return ;
-			}
+			return ;
 		}
 		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
 		put_image(game, game->sprite.right, game->location.x, game->location.y);
@@ -206,17 +203,9 @@ void	move_left(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (game->collect_num == 0)
-			{
-				game_moves(game);
-				ft_putstr_fd("\nYOU WIN!!\n", 1);
-				return ;
-			}
-			else
-			{
-				game->location.y++;
-				return ;
-			}
+			if (!win(game, game->sprite.left_kiss, game->sprite.right))
+				game->location.y--;
+			return ;
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.left, game->location.y * 32, game->location.x * 32);

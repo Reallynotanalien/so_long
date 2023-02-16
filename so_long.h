@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 16:25:34 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:24:23 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ typedef struct sprites
 	void		**right;
 	void		**up;
 	void		**right_kiss;
+	void		**down_kiss;
+	void		**up_kiss;
+	void		**left_kiss;
 	void		**exit_sign;
 	void		**start_sign;
 	void		**arrow;

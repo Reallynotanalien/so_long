@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/16 15:46:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:55:11 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ void	init_game_start(t_game *game)
 		}
 		x++;
 	}
-	put_image(game, game->sprite.zero, x, y);
+	put_image(game, game->sprite.zero, game->lines, 0);
 }

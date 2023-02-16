@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 15:35:55 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:51:20 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,9 @@ void		flood_fill(t_game *game);
 
 /*init*/
 void		init_sprites(t_game *game);
-void		init_game_start(t_game *game);
 void		init_data(t_game *game);
+void		put_image(t_game *game, void **image, int x, int y);
+void		init_game_start(t_game *game);
 
 /*read_map*/
 void		open_map(char *argv, t_game *game);

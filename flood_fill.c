@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/14 20:43:34 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/16 15:50:17 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**create_map_copy(t_game *game)
 {
 	char	**map_copy;
 	int		i;
-	
+
 	map_copy = malloc(sizeof(char **) * game->lines);
 	i = 0;
 	while (game->lines > i)

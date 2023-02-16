@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 15:46:36 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:21:27 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,36 @@ void	putnbr_screen(t_game *game, int moves, int position)
 	if (moves <= 9 && moves >= 0)
 	{
 		if (moves == 0)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.zero, position, game->lines * 32);
+			put_image(game, game->sprite.zero, game->lines, position);
 		else if (moves == 1)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.one, position, game->lines * 32);
+			put_image(game, game->sprite.one, game->lines, position);
 		else if (moves == 2)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.two, position, game->lines * 32);
+			put_image(game, game->sprite.two, game->lines, position);
 		else if (moves == 3)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.three, position, game->lines * 32);
+			put_image(game, game->sprite.three, game->lines, position);
 		else if (moves == 4)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.four, position, game->lines * 32);
+			put_image(game, game->sprite.four, game->lines, position);
 		else if (moves == 5)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.five, position, game->lines * 32);
+			put_image(game, game->sprite.five, game->lines, position);
 		else if (moves == 6)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.six, position, game->lines * 32);
+			put_image(game, game->sprite.six, game->lines, position);
 		else if (moves == 7)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.seven, position, game->lines * 32);
+			put_image(game, game->sprite.seven, game->lines, position);
 		else if (moves == 8)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.eight, position, game->lines * 32);
+			put_image(game, game->sprite.eight, game->lines, position);
 		else if (moves == 9)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.nine, position, game->lines * 32);
+			put_image(game, game->sprite.nine, game->lines, position);
 	}
 	else if (moves >= 10 && moves <= 99)
 	{
 		putnbr_screen(game, moves / 10, position);
-		putnbr_screen(game, moves % 10, position + 32);
+		putnbr_screen(game, moves % 10, position + 1);
 	}
-	// else
-	// {
-	// 	putnbr_screen(game, moves / 10, position);
-	// 	putnbr_screen(game, moves % 100, position + 64);
-	// }
+	else
+	{
+		putnbr_screen(game, moves / 10, position);
+		putnbr_screen(game, moves % 10, position + 2);
+	}
 }
 
 int	end_game(t_game *game)

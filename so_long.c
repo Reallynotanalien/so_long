@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 17:21:46 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:08:43 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,10 @@ void	move_up(t_game *game)
 				return ;
 			}
 			else
+			{
 				game->location.x++;
+				return ;
+			}
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.up, game->location.y * 32, game->location.x * 32);
@@ -146,7 +149,10 @@ void	move_down(t_game *game)
 				return ;
 			}
 			else
+			{
 				game->location.x--;
+				return ;
+			}
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.play, game->location.y * 32, game->location.x * 32);
@@ -179,7 +185,10 @@ void	move_right(t_game *game)
 				return ;
 			}
 			else
+			{
 				game->location.y--;
+				return ;
+			}
 		}
 		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
 		put_image(game, game->sprite.right, game->location.x, game->location.y);
@@ -204,7 +213,10 @@ void	move_left(t_game *game)
 				return ;
 			}
 			else
+			{
 				game->location.y++;
+				return ;
+			}
 		}
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.left, game->location.y * 32, game->location.x * 32);

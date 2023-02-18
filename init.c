@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/16 18:23:56 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:46:13 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ void	**xpm_to_image(t_game *game, char *path)
 
 void	init_sprites(t_game *game)
 {
-	int	size;
-
-	size = SIZE;
 	game->sprite.base = xpm_to_image(game, "./Assets/tile2.xpm");
 	game->sprite.play = xpm_to_image(game, "./Assets/character_face.xpm");
 	game->sprite.wal = xpm_to_image(game, "./Assets/tree.xpm");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 18:24:23 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:01:36 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ typedef struct game
 	int			arrow_position;
 	int			moves;
 	t_coordin	location;
+	char		**argv;
 }				t_game;
+
+void	start_game(t_game *game);
 
 /*flood_fill*/
 void		flood_fill(t_game *game);

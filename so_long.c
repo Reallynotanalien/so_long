@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/16 18:26:14 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/17 20:02:55 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	reset_game(t_game *game)
+{
+	mlx_clear_window(game->mlx, game->mlx_win);
+	start_game(game);
+}
 
 void	putnbr_screen(t_game *game, int moves, int position)
 {
@@ -78,7 +84,7 @@ void	arrow_up(t_game *game)
 void	select_option(t_game *game)
 {
 	if (game->arrow_position == 1)
-		ft_putstr_fd("RESTART\n", 1);
+		reset_game(game);
 	else if (game->arrow_position == 2)
 		end_game(game);
 }
@@ -228,23 +234,29 @@ int	deal_key(int key, void *game)
 	return (0);
 }
 
+void	start_game(t_game *game)
+{
+	init_data(game);
+	validate_map(game->argv[1], game);
+	game->mlx = mlx_init();
+	game->mlx_win = mlx_new_window(game->mlx, (SIZE * game->columns),
+			(SIZE * game->lines) + SIZE, "Bonnie & Friends");
+	init_sprites(game);
+	init_game_start(game);
+	mlx_hook(game->mlx_win, 17, 0, end_game, game);
+	mlx_key_hook(game->mlx_win, deal_key, game);
+	mlx_loop(game->mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
 	ft_memset(&game, 0, sizeof(t_game));
+	game.argv = argv;
 	if (argc != 2)
 		ft_putstr_fd("Number of arguments is invalid\n", 2);
-	init_data(&game);
-	validate_map(argv[1], &game);
-	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, (SIZE * game.columns),
-			(SIZE * game.lines) + SIZE, "Bonnie & Friends");
-	init_sprites(&game);
-	init_game_start(&game);
-	mlx_hook(game.mlx_win, 17, 0, end_game, &game);
-	mlx_key_hook(game.mlx_win, deal_key, &game);
-	mlx_loop(game.mlx);
+	start_game(&game);
 	return (0);
 	/*
 	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */

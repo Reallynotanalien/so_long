@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/20 18:19:55 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:26:51 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ typedef struct game
 }				t_game;
 
 void	start_game(t_game *game);
+
+/*end_game_options*/
+int		restart_game(int key, void *game);
 
 /*flood_fill*/
 void	flood_fill(t_game *game);

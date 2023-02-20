@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/20 18:16:42 by kafortin         ###   ########.fr        #
+#    Updated: 2023/02/20 18:25:58 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = so_long
 
-FILES = flood_fill.c \
+FILES = end_game_options.c \
+		flood_fill.c \
 		init.c \
 		moves_counter.c \
 		read_map.c \

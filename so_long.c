@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/17 20:02:55 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/20 18:17:10 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,6 @@ void	reset_game(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->mlx_win);
 	start_game(game);
-}
-
-void	putnbr_screen(t_game *game, int moves, int position)
-{
-	if (moves <= 9 && moves >= 0)
-	{
-		if (moves == 0)
-			put_image(game, game->sprite.zero, game->lines, position);
-		else if (moves == 1)
-			put_image(game, game->sprite.one, game->lines, position);
-		else if (moves == 2)
-			put_image(game, game->sprite.two, game->lines, position);
-		else if (moves == 3)
-			put_image(game, game->sprite.three, game->lines, position);
-		else if (moves == 4)
-			put_image(game, game->sprite.four, game->lines, position);
-		else if (moves == 5)
-			put_image(game, game->sprite.five, game->lines, position);
-		else if (moves == 6)
-			put_image(game, game->sprite.six, game->lines, position);
-		else if (moves == 7)
-			put_image(game, game->sprite.seven, game->lines, position);
-		else if (moves == 8)
-			put_image(game, game->sprite.eight, game->lines, position);
-		else if (moves == 9)
-			put_image(game, game->sprite.nine, game->lines, position);
-	}
-	else if (moves >= 10 && moves <= 99)
-	{
-		putnbr_screen(game, moves / 10, position);
-		putnbr_screen(game, moves % 10, position + 1);
-	}
-	else
-	{
-		putnbr_screen(game, moves / 10, position);
-		putnbr_screen(game, moves % 10, position + 2);
-	}
-}
-
-void	game_moves(t_game *game)
-{
-	game->moves++;
-	putnbr_screen(game, game->moves, 0);
-	ft_putnbr_fd(game->moves, 1);
-	ft_putstr_fd(" ", 1);
 }
 
 void	arrow_down(t_game *game)

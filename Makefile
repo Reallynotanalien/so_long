@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
+#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/14 20:58:16 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/02/20 18:16:42 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ NAME = so_long
 
 FILES = flood_fill.c \
 		init.c \
+		moves_counter.c \
 		read_map.c \
 		so_long.c \
 		utils.c \

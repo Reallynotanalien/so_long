@@ -6,15 +6,15 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:16:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/20 18:22:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:30:52 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    putnbr_screen(t_game *game, int moves, int position)
+void	putnbr_screen(t_game *game, int moves, int position)
 {
-    if (moves == 0)
+	if (moves == 0)
 		put_image(game, game->sprite.zero, game->lines, position);
 	else if (moves == 1)
 		put_image(game, game->sprite.one, game->lines, position);
@@ -39,7 +39,7 @@ void    putnbr_screen(t_game *game, int moves, int position)
 void	putnbr_recursive(t_game *game, int moves, int position)
 {
 	if (moves <= 9 && moves >= 0)
-        putnbr_screen(game, moves, position);
+		putnbr_screen(game, moves, position);
 	else if (moves >= 10 && moves <= 99)
 	{
 		putnbr_recursive(game, moves / 10, position);

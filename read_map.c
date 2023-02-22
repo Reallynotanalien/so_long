@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:26:15 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/14 16:27:20 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/22 18:09:13 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	open_map(char *argv, t_game *game)
 	if (game->fd < 0)
 	{
 		close(game->fd);
-		exit_error("(file could not be opened)\n");
+		map_exit_error("(file could not be opened)\n");
 	}
 }
 
@@ -30,7 +30,7 @@ void	malloc_lines(char *argv, t_game *game)
 	if (game->lines == 0)
 	{
 		close(game->fd);
-		exit_error("(map is empty)\n");
+		map_exit_error("(map is empty)\n");
 	}
 	game->map = malloc(sizeof(char **) * game->lines);
 	close(game->fd);

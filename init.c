@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/17 19:46:13 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/22 18:04:56 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	init_data(t_game *game)
+{
+	game->lines = 0;
+	game->columns = 0;
+	game->player_num = 0;
+	game->collect_num = 0;
+	game->exit_num = 0;
+	game->moves = 0;
+}
 
 void	**xpm_to_image(t_game *game, char *path)
 {
@@ -51,29 +61,18 @@ void	init_sprites(t_game *game)
 	game->sprite.nine = xpm_to_image(game, "./Assets/nine.xpm");
 }
 
-void	init_data(t_game *game)
-{
-	game->lines = 0;
-	game->columns = 0;
-	game->player_num = 0;
-	game->collect_num = 0;
-	game->exit_num = 0;
-	game->moves = 0;
-}
-
 void	put_image(t_game *game, void **image, int x, int y)
 {
 	mlx_put_image_to_window
-		(game->mlx, game->mlx_win, image, y * SIZE, x * SIZE);
+		(game->mlx, game->window, image, y * SIZE, x * SIZE);
 }
 
-void	init_game_start(t_game *game)
+void	init_map(t_game *game)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	y = 0;
 	while (game->lines > x)
 	{
 		y = 0;

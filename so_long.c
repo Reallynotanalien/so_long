@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/20 18:27:48 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:05:09 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,90 +45,10 @@ bool	win(t_game *game, void **player, void **exit)
 		game_moves(game);
 		ft_putstr_fd("\nYOU WIN!!\n", 1);
 		put_arrows(game);
-		mlx_key_hook(game->mlx_win, restart_game, game);
+		mlx_key_hook(game->window, restart_game, game);
 		return (true);
 	}
 	return (false);
-}
-
-void	move_up(t_game *game)
-{
-	game->location.x--;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.x++;
-	else
-	{
-		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
-		{
-			if (!win(game, game->sprite.up_kiss, game->sprite.play))
-				game->location.y--;
-			return ;
-		}
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.up, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
-	}
-}
-
-void	move_down(t_game *game)
-{
-	game->location.x++;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.x--;
-	else
-	{
-		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
-		{
-			if (!win(game, game->sprite.down_kiss, game->sprite.up))
-				game->location.y--;
-			return ;
-		}
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.play, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
-	}
-}
-
-void	move_right(t_game *game)
-{
-	game->location.y++;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.y--;
-	else
-	{
-		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
-		{
-			if (!win(game, game->sprite.right_kiss, game->sprite.left))
-				game->location.y--;
-			return ;
-		}
-		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
-		put_image(game, game->sprite.right, game->location.x, game->location.y);
-		game_moves(game);
-	}
-}
-
-void	move_left(t_game *game)
-{
-	game->location.y--;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.y++;
-	else
-	{
-		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
-		{
-			if (!win(game, game->sprite.left_kiss, game->sprite.right))
-				game->location.y--;
-			return ;
-		}
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.left, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
-	}
 }
 
 int	deal_key(int key, void *game)
@@ -151,12 +71,12 @@ void	start_game(t_game *game)
 	init_data(game);
 	validate_map(game->argv[1], game);
 	game->mlx = mlx_init();
-	game->mlx_win = mlx_new_window(game->mlx, (SIZE * game->columns),
+	game->window = mlx_new_window(game->mlx, (SIZE * game->columns),
 			(SIZE * game->lines) + SIZE, "Bonnie & Friends");
 	init_sprites(game);
-	init_game_start(game);
-	mlx_hook(game->mlx_win, 17, 0, end_game, game);
-	mlx_key_hook(game->mlx_win, deal_key, game);
+	init_map(game);
+	mlx_hook(game->window, 17, 0, end_game, game);
+	mlx_key_hook(game->window, deal_key, game);
 	mlx_loop(game->mlx);
 }
 
@@ -164,12 +84,13 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	if (argc != 2)
+	{
+		ft_putstr_fd("Number of arguments is invalid\n", 2);
+		exit(1);
+	}
 	ft_memset(&game, 0, sizeof(t_game));
 	game.argv = argv;
-	if (argc != 2)
-		ft_putstr_fd("Number of arguments is invalid\n", 2);
 	start_game(&game);
 	return (0);
-	/*
-	- Create an exit function that contains: mlx_destroy_window, mlx_destroy_display + free, mlx_destroy_image */
 }

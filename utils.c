@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 18:28:07 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:02:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	map_exit_error(char *error)
 
 int	end_game(t_game *game)
 {
+	free_map(game->map, game);
 	destroy_images(game);
 	mlx_clear_window(game->mlx, game->window);
 	mlx_destroy_window(game->mlx, game->window);
-	exit(0);
+	exit(1);
 	return (0);
 }
 

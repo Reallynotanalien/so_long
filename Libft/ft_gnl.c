@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:54:58 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/10 14:55:24 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/22 19:24:53 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

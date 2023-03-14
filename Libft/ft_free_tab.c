@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:58:39 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/14 16:59:01 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/02/22 18:23:13 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

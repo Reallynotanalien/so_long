@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 18:27:11 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:33:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	validate_characters(t_game *game)
 			else if (game->map[x][y] != WALL && game->map[x][y] != '0')
 			{
 				free_map(game->map, game);
-				map_exit_error("(invalid character found)\n");
+				exit_error(CHAR_ERROR);
 			}
 			y++;
 		}
@@ -54,13 +54,13 @@ void	validate_walls(t_game *game)
 		if (game->map[0][i] != WALL || game->map[game->lines - 1][i] != WALL)
 		{
 			free_map(game->map, game);
-			map_exit_error("(map should be surrounded by walls)\n");
+			exit_error(WALL_ERROR);
 		}
 		if (i < game->lines && (game->map[i][game->columns - 1] != WALL
 			|| game->map[i][0] != WALL))
 		{
 			free_map(game->map, game);
-			map_exit_error("(map should be surrounded by walls)\n");
+			exit_error(WALL_ERROR);
 		}
 		i++;
 	}
@@ -76,7 +76,7 @@ void	check_if_rectangle(t_game *game)
 		if (ft_strlen(game->map[i]) != (size_t)game->columns)
 		{
 			free_map(game->map, game);
-			map_exit_error("(map should be a rectangle)\n");
+			exit_error(RECTANGLE_ERROR);
 		}
 		i++;
 	}
@@ -88,7 +88,7 @@ void	validate_extension(char *argv)
 
 	i = (ft_strlen(argv) - 4);
 	if (ft_strncmp(".ber", &argv[i], 4) != 0)
-		map_exit_error("(extension should be .ber)\n");
+		exit_error(EXTENSION_ERROR);
 }
 
 void	validate_map(char *argv, t_game *game)
@@ -99,11 +99,11 @@ void	validate_map(char *argv, t_game *game)
 	validate_walls(game);
 	validate_characters(game);
 	if (game->player_num != 1)
-		map_exit_error("(map should contain exactly one player)\n");
+		exit_error(PLAY_ERROR);
 	if (game->collect_num < 1)
-		map_exit_error("(map should have at least one collectible)\n");
+		exit_error(COLL_ERROR);
 	if (game->exit_num != 1)
-		map_exit_error("(map should contain exactly one exit)\n");
+		exit_error(EXIT_ERROR);
 	flood_fill(game);
 	/* FREE MAP LINES + COLUMS + POINTER*/
 }

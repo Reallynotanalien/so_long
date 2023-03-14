@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 18:24:00 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:41:19 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,28 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
-# ifndef SIZE
-#  define SIZE 32
-# endif
+# define SIZE 32
 
-# ifndef PLAYER
-#  define PLAYER 'P'
-# endif
+# define PLAYER 'P'
+# define WALL '1'
+# define EXIT 'E'
+# define COLLECTIBLE 'C'
 
-# ifndef WALL
-#  define WALL '1'
-# endif
+# define ARG_ERROR "Number of arguments is invalid.\n"
+# define OPEN_ERROR "Map is invalid (file could not be opened).\n"
+# define EMPTY_ERROR "Map is invalid (map is empty).\n"
+# define EXIT_ERROR "Map is invalid (map should contain exactly one exit).\n"
+# define COLL_ERROR "Map is invalid \
+(map should contain at least one collectible).\n"
+# define PLAY_ERROR "Map is invalid (map should contain exactly one player).\n"
+# define EXTENSION_ERROR "Map is invalid (extension should be .ber).\n"
+# define RECTANGLE_ERROR "Map is invalid (map should form a rectangle).\n"
+# define WALL_ERROR "Map is invalid (map should be surrounded by walls).\n"
+# define CHAR_ERROR "Map is invalid (invalid character found).\n"
+# define PATH_EXIT_ERROR "Map is invalid (impossible to get to the exit).\n"
+# define PATH_COLL_ERROR "Map is invalid \
+(impossible to get to all the collectibles).\n"
 
-# ifndef EXIT
-#  define EXIT 'E'
-# endif
-
-# ifndef COLLECTIBLE
-#  define COLLECTIBLE 'C'
-# endif
 
 typedef struct coordinates
 {
@@ -125,7 +128,7 @@ void	open_map(char *argv, t_game *game);
 void	read_map(char *argv, t_game *game);
 
 /*utils*/
-void	map_exit_error(char *error);
+void	exit_error(char *error);
 int		end_game(t_game *game);
 void	free_map(char **tab, t_game *game);
 

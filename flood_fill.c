@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/22 18:27:29 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:35:37 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void	flood_fill(t_game *game)
 	{
 		free_map(game->map, game);
 		free_map(map_copy, game);
-		map_exit_error("(impossible to get to all the collectibles)\n");
+		exit_error(PATH_COLL_ERROR);
 	}
 	if (game->exit_num != 0)
 	{
 		free_map(game->map, game);
 		free_map(map_copy, game);
-		map_exit_error("(impossible to get to the exit)\n");
+		exit_error(PATH_EXIT_ERROR);
 	}
 }

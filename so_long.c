@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 18:05:09 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:24:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-	{
-		ft_putstr_fd("Number of arguments is invalid\n", 2);
-		exit(1);
-	}
+		exit_error(ARG_ERROR);
 	ft_memset(&game, 0, sizeof(t_game));
 	game.argv = argv;
 	start_game(&game);

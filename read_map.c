@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:26:15 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/02/22 19:05:10 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:26:39 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	open_map(char *argv, t_game *game)
 	if (game->fd < 0)
 	{
 		close(game->fd);
-		map_exit_error("(file could not be opened)\n");
+		exit_error(OPEN_ERROR);
 	}
 }
 
@@ -30,7 +30,7 @@ void	malloc_lines(char *argv, t_game *game)
 	if (game->lines == 0)
 	{
 		close(game->fd);
-		map_exit_error("(map is empty)\n");
+		exit_error(EMPTY_ERROR);
 	}
 	game->map = malloc(sizeof(char **) * game->lines);
 	close(game->fd);

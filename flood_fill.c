@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/14 18:35:37 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:12:37 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,32 @@ char	**create_map_copy(t_game *game)
 	return (map_copy);
 }
 
+void	exit_flood(char **map, int x, int y, t_game *game)
+{
+	while (map[x][y] != WALL && map[x][y] != 'X' && map[x][y] != EXIT)
+	{
+		if (map[x][y] == COLLECTIBLE)
+			game->temp--;
+		map[x][y] = 'X';
+		exit_flood(map, x + 1, y, game);
+		exit_flood(map, x - 1, y, game);
+		exit_flood(map, x, y + 1, game);
+		exit_flood(map, x, y - 1, game);
+	}
+}
+
+bool	exit_blocks_path(t_game *game)
+{
+	char		**map_copy;
+
+	game->temp = game->collect_num;
+	map_copy = create_map_copy(game);
+	exit_flood(map_copy, game->location.x, game->location.y, game);
+	if (game->temp != 0)
+		return (true);
+	return (false);
+}
+
 void	flood_fill(t_game *game)
 {
 	char		**map_copy;
@@ -62,5 +88,11 @@ void	flood_fill(t_game *game)
 		free_map(game->map, game);
 		free_map(map_copy, game);
 		exit_error(PATH_EXIT_ERROR);
+	}
+	if (exit_blocks_path(game))
+	{
+		free_map(game->map, game);
+		free_map(map_copy, game);
+		exit_error("EXIT IS BLOCKING THE COLLECTIBLES\n");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/15 16:43:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:23:51 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define PATH_EXIT_ERROR "Map is invalid (impossible to get to the exit).\n"
 # define PATH_COLL_ERROR "Map is invalid \
 (impossible to get to all the collectibles).\n"
+# define LINES_ERROR "Map is invalid (too many lines).\n"
 
 typedef struct coordinates
 {

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:26:15 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/14 18:26:39 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:26:39 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void	malloc_columns(char *argv, t_game *game)
 	i = 0;
 	open_map(argv, game);
 	game->columns = ft_strlen(get_next_line(game->fd));
+	if (game->columns >= 128)
+	{
+		free(game->map);
+		close(game->fd);
+		exit_error(LINES_ERROR);
+	}
 	while (game->lines > i)
 	{
 		game->map[i] = ft_calloc(sizeof(char *), game->columns + 1);

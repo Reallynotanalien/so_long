@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/15 18:33:01 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:37:51 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,6 @@ typedef struct game
 
 /*main*/
 void	start_game(t_game *game);
-bool	win(t_game *game, void **player, void **exit);
-void	if_collectible(t_game *game);
-void	destroy_images(t_game *game);
 
 /*end_game_options*/
 int		restart_game(int key, void *game);

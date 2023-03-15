@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/15 17:23:51 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:33:01 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		restart_game(int key, void *game);
 void	flood_fill(t_game *game);
 
 /*init*/
+void	init_game_struct(t_game *game, char **argv);
 void	init_data(t_game *game);
 void	init_sprites(t_game *game);
 void	put_image(t_game *game, void **image, int x, int y);
@@ -131,6 +132,12 @@ void	read_map(char *argv, t_game *game);
 void	exit_error(char *error);
 int		end_game(t_game *game);
 void	free_map(char **tab, t_game *game);
+
+/*utils2*/
+void	if_collectible(t_game *game);
+void	put_arrows(t_game *game);
+bool	win(t_game *game, void **player, void **exit);
+int		deal_key(int key, void *game);
 
 /*validate_map*/
 void	validate_map(char *argv, t_game *game);

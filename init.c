@@ -6,19 +6,21 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/15 18:34:13 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:40:53 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*Initiates the t_game struct without mallocating it, and saves argv in it.*/
+/*Initializes the t_game struct without mallocating it, and saves argv in it.*/
 void	init_game_struct(t_game *game, char **argv)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->argv = argv;
 }
 
+/*Initializes the t_game struct data (number of lines/columns/players/
+collectibles/exits/moves) to zero.*/
 void	init_data(t_game *game)
 {
 	game->lines = 0;

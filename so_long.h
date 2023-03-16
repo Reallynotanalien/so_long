@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 16:23:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:39:25 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,13 @@ void	destroy_images(t_game *game);
 /*end_game_options*/
 int		restart_game(int key, void *game);
 
+/*exit_management*/
+void	exit_error(char *error);
+void	free_map(char **tab, t_game *game);
+void	free_and_exit_error(char *error, t_game *game);
+void	free_close_and_exit_error(char *error, t_game *game, int option);
+int		end_game(t_game *game);
+
 /*flood_fill*/
 void	flood_fill(t_game *game);
 
@@ -127,13 +134,6 @@ void	move_left(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);
-
-/*utils*/
-void	exit_error(char *error);
-void	free_map(char **tab, t_game *game);
-void	free_and_exit_error(char *error, t_game *game);
-void	free_close_and_exit_error(char *error, t_game *game, int option);
-int		end_game(t_game *game);
 
 /*utils2*/
 void	if_collectible(t_game *game);

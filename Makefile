@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/15 18:37:11 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/16 16:39:55 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,13 @@ NAME = so_long
 
 FILES = destroy.c \
 		end_game_options.c \
+		exit_management.c \
 		flood_fill.c \
 		init.c \
 		moves_counter.c \
 		moves.c \
 		read_map.c \
 		so_long.c \
-		utils.c \
 		utils2.c \
 		validate_map.c \
 

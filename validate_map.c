@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/15 17:20:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:20:31 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	validate_characters(t_game *game)
 			else if (game->map[x][y] == EXIT)
 				game->exit_num++;
 			else if (game->map[x][y] != WALL && game->map[x][y] != '0')
-			{
-				free_map(game->map, game);
-				exit_error(CHAR_ERROR);
-			}
+				free_and_exit_error(CHAR_ERROR, game);
 			y++;
 		}
 		x++;
@@ -52,16 +49,10 @@ void	validate_walls(t_game *game)
 	while (i < game->columns)
 	{
 		if (game->map[0][i] != WALL || game->map[game->lines - 1][i] != WALL)
-		{
-			free_map(game->map, game);
-			exit_error(WALL_ERROR);
-		}
+			free_and_exit_error(WALL_ERROR, game);
 		if (i < game->lines && (game->map[i][game->columns - 1] != WALL
 			|| game->map[i][0] != WALL))
-		{
-			free_map(game->map, game);
-			exit_error(WALL_ERROR);
-		}
+			free_and_exit_error(WALL_ERROR, game);
 		i++;
 	}
 }
@@ -74,10 +65,7 @@ void	check_if_rectangle(t_game *game)
 	while (game->lines > i)
 	{
 		if (ft_strlen(game->map[i]) != (size_t)game->columns)
-		{
-			free_map(game->map, game);
-			exit_error(RECTANGLE_ERROR);
-		}
+			free_and_exit_error(RECTANGLE_ERROR, game);
 		i++;
 	}
 }
@@ -99,11 +87,10 @@ void	validate_map(char *argv, t_game *game)
 	validate_walls(game);
 	validate_characters(game);
 	if (game->player_num != 1)
-		exit_error(PLAY_ERROR);
+		free_and_exit_error(PLAY_ERROR, game);
 	if (game->collect_num < 1)
-		exit_error(COLL_ERROR);
+		free_and_exit_error(COLL_ERROR, game);
 	if (game->exit_num != 1)
-		exit_error(EXIT_ERROR);
+		free_and_exit_error(EXIT_ERROR, game);
 	flood_fill(game);
-	/* FREE MAP LINES + COLUMS + POINTER*/
 }

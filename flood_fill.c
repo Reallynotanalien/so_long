@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/15 17:12:37 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:32:30 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ bool	exit_blocks_path(t_game *game)
 	game->temp = game->collect_num;
 	map_copy = create_map_copy(game);
 	exit_flood(map_copy, game->location.x, game->location.y, game);
+	free_map(map_copy, game);
 	if (game->temp != 0)
 		return (true);
 	return (false);
@@ -77,22 +78,11 @@ void	flood_fill(t_game *game)
 	game->temp = game->collect_num;
 	map_copy = create_map_copy(game);
 	flood(map_copy, game->location.x, game->location.y, game);
+	free_map(map_copy, game);
 	if (game->temp != 0)
-	{
-		free_map(game->map, game);
-		free_map(map_copy, game);
-		exit_error(PATH_COLL_ERROR);
-	}
+		free_and_exit_error(PATH_COLL_ERROR, game);
 	if (game->exit_num != 0)
-	{
-		free_map(game->map, game);
-		free_map(map_copy, game);
-		exit_error(PATH_EXIT_ERROR);
-	}
+		free_and_exit_error(PATH_EXIT_ERROR, game);
 	if (exit_blocks_path(game))
-	{
-		free_map(game->map, game);
-		free_map(map_copy, game);
-		exit_error("EXIT IS BLOCKING THE COLLECTIBLES\n");
-	}
+		free_and_exit_error(BLOCKED_ERROR, game);
 }

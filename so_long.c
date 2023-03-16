@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/15 18:42:54 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:10:29 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ and starts the game loop.*/
 void	start_game(t_game *game)
 {
 	init_data(game);
-	//initialized but not malloced: game, game->argv, game->lines,
-	//game->columns, game->player_num, game->collect_num, game->exit_num,
-	//game->moves.
+	//Need to free all the game->map tab.
 	validate_map(game->argv[1], game);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (SIZE * game->columns),

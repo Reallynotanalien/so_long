@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/14 18:24:11 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:37 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ void	exit_error(char *error)
 	ft_putstr_fd("ERROR - ", 2);
 	ft_putstr_fd(error, 2);
 	exit(1);
+}
+
+void	free_close_and_exit_error(char *error, t_game *game, int option)
+{
+	if (option == 0)
+	{
+		free(game->map);
+		game->map = NULL;
+	}
+	else if (option == 1)
+		free_tab(game->map);
+	close(game->fd);
+	exit_error(error);
 }
 
 int	end_game(t_game *game)

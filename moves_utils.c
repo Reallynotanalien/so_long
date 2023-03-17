@@ -6,13 +6,34 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 17:28:50 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:44:16 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	wall(t_game *game, char option)
+bool	is_exit(t_game *game, char option)
+{
+	if (game->map[game->location.x][game->location.y] == EXIT)
+	{
+		if (option == 'L')
+			if (!win(game, game->sprite.left_kiss, game->sprite.right, 1))
+				game->location.y++;
+		if (option == 'R')
+			if (!win(game, game->sprite.right_kiss, game->sprite.left, 2))
+				game->location.y--;
+		if (option == 'D')
+			if (!win(game, game->sprite.down_kiss, game->sprite.up, 3))
+				game->location.x--;
+		if (option == 'U')
+			if (!win(game, game->sprite.up_kiss, game->sprite.play, 4))
+				game->location.x++;
+		return (true);
+	}
+	return (false);
+}
+
+bool	is_wall(t_game *game, char option)
 {
 	if (option == 'L'
 		&& (game->map[game->location.x][game->location.y - 1] != WALL))

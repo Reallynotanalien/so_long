@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 17:30:58 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:47:18 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,69 +14,58 @@
 
 void	move_up(t_game *game)
 {
-	if(!wall(game, 'U'))
+	if(!is_wall(game, 'U'))
 	{
 		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
+		if (!is_exit(game, 'U'))
 		{
-			if (!win(game, game->sprite.up_kiss, game->sprite.play, 4))
-				game->location.x++;
-			return ;
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.up, game->location.y * 32, game->location.x * 32);
+			game_moves(game);
 		}
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, game->location.y * 32, (game->location.x + 1) * 32);
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.up, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
 	}
 }
 
 void	move_down(t_game *game)
 {
-	if (!wall(game, 'D'))
+	if (!is_wall(game, 'D'))
 	{
 		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
+		if (!is_exit(game, 'D'))
 		{
-			if (!win(game, game->sprite.down_kiss, game->sprite.up, 3))
-				game->location.x--;
-			return ;
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.play, game->location.y * 32, game->location.x * 32);
+			game_moves(game);
 		}
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, game->location.y * 32, (game->location.x - 1) * 32);
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.play, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
+
 	}
 }
 
 void	move_right(t_game *game)
 {
-	if (!wall(game, 'R'))
+	if (!is_wall(game, 'R'))
 	{
 		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
+		if (!is_exit(game, 'R'))
 		{
-			if (!win(game, game->sprite.right_kiss, game->sprite.left, 2))
-				game->location.y--;
-			return ;
+			put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
+			put_image(game, game->sprite.right, game->location.x, game->location.y);
+			game_moves(game);
 		}
-		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
-		put_image(game, game->sprite.right, game->location.x, game->location.y);
-		game_moves(game);
 	}
 }
 
 void	move_left(t_game *game)
 {
-	if (!wall(game, 'L'))
+	if (!is_wall(game, 'L'))
 	{
 		if_collectible(game);
-		if (game->map[game->location.x][game->location.y] == EXIT)
+		if (!is_exit(game, 'L'))
 		{
-			if (!win(game, game->sprite.left_kiss, game->sprite.right, 1))
-				game->location.y++;
-			return ;
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.left, game->location.y * 32, game->location.x * 32);
+			game_moves(game);
 		}
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.base, (game->location.y + 1) * 32, game->location.x * 32);
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.left, game->location.y * 32, game->location.x * 32);
-		game_moves(game);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/15 18:40:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:41:51 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,6 @@ void	init_sprites(t_game *game)
 	game->sprite.seven = xpm_to_image(game, "./Assets/seven.xpm");
 	game->sprite.eight = xpm_to_image(game, "./Assets/eight.xpm");
 	game->sprite.nine = xpm_to_image(game, "./Assets/nine.xpm");
-}
-
-void	put_image(t_game *game, void **image, int x, int y)
-{
-	mlx_put_image_to_window
-		(game->mlx, game->window, image, y * SIZE, x * SIZE);
 }
 
 void	init_map(t_game *game)

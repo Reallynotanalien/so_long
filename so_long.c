@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 16:36:02 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:44:36 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	start_game(t_game *game)
 	game->window = mlx_new_window(game->mlx, (SIZE * game->columns),
 			(SIZE * game->lines) + SIZE, "Bonnie & Friends");
 	init_sprites(game);
+	init_map(game);
 	//Need to free all the game->map tab + now need to use mlx_clear_window,
 	//destroy_window and destroy images
-	init_map(game);
 	mlx_hook(game->window, 17, 0, end_game, game);
 	mlx_key_hook(game->window, deal_key, game);
 	mlx_loop(game->mlx);

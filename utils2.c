@@ -6,11 +6,17 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 15:31:33 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:41:56 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	put_image(t_game *game, void **image, int x, int y)
+{
+	mlx_put_image_to_window
+		(game->mlx, game->window, image, y * SIZE, x * SIZE);
+}
 
 void	if_collectible(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 17:35:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:17:46 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,13 @@ void	move_up(t_game *game);
 void	move_down(t_game *game);
 void	move_right(t_game *game);
 void	move_left(t_game *game);
-int		deal_key(int key, void *game);
+int		deal_key(int key, t_game *game);
 
 /*moves_utils*/
+void	move_character(t_game *game, void **player, char option);
 bool	is_exit(t_game *game, char option);
 bool	is_wall(t_game *game, char option);
-void	if_collectible(t_game *game);
-bool	win(t_game *game, void **player, void **exit, int option);
+void	is_collectible(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);

@@ -6,27 +6,64 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 17:44:16 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:17:40 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	is_win(t_game *game, void **player, void **exit, int option)
+{
+	if (game->collect_num == 0)
+	{
+		put_image(game, game->sprite.base, game->location.x, game->location.y);
+		put_image(game, exit, game->location.x, game->location.y);
+		if (option == 1)
+			put_image(game, player, (game->location.x), game->location.y + 1);
+		else if (option == 2)
+			put_image(game, player, (game->location.x), game->location.y - 1);
+		else if (option == 3)
+			put_image(game, player, (game->location.x - 1), game->location.y);
+		else if (option == 4)
+			put_image(game, player, (game->location.x + 1), game->location.y);
+		game_moves(game);
+		ft_putstr_fd("\nYOU WIN!!\n", 1);
+		put_arrows(game);
+		mlx_key_hook(game->window, restart_game, game);
+		return (true);
+	}
+	return (false);
+}
+
+void	move_character(t_game *game, void **player, char option)
+{
+	if (option == 'L')
+		put_image(game, game->sprite.base, game->location.x, (game->location.y + 1));
+	else if (option == 'R')
+		put_image(game, game->sprite.base, game->location.x, (game->location.y - 1));
+	else if (option == 'D')
+		put_image(game, game->sprite.base, game->location.x - 1, (game->location.y));
+	else if (option == 'U')
+		put_image(game, game->sprite.base, game->location.x + 1, (game->location.y));
+	put_image(game, player, game->location.x, game->location.y);
+	game_moves(game);
+}
 
 bool	is_exit(t_game *game, char option)
 {
 	if (game->map[game->location.x][game->location.y] == EXIT)
 	{
 		if (option == 'L')
-			if (!win(game, game->sprite.left_kiss, game->sprite.right, 1))
+			if (!is_win(game, game->sprite.left_kiss, game->sprite.right, 1))
 				game->location.y++;
 		if (option == 'R')
-			if (!win(game, game->sprite.right_kiss, game->sprite.left, 2))
+			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, 2))
 				game->location.y--;
 		if (option == 'D')
-			if (!win(game, game->sprite.down_kiss, game->sprite.up, 3))
+			if (!is_win(game, game->sprite.down_kiss, game->sprite.up, 3))
 				game->location.x--;
 		if (option == 'U')
-			if (!win(game, game->sprite.up_kiss, game->sprite.play, 4))
+			if (!is_win(game, game->sprite.up_kiss, game->sprite.play, 4))
 				game->location.x++;
 		return (true);
 	}
@@ -62,7 +99,7 @@ bool	is_wall(t_game *game, char option)
 	return (true);
 }
 
-void	if_collectible(t_game *game)
+void	is_collectible(t_game *game)
 {
 	if (game->map[game->location.x][game->location.y] == COLLECTIBLE)
 	{
@@ -70,27 +107,4 @@ void	if_collectible(t_game *game)
 		game->collect_num--;
 		put_image(game, game->sprite.base, game->location.x, game->location.y);
 	}
-}
-
-bool	win(t_game *game, void **player, void **exit, int option)
-{
-	if (game->collect_num == 0)
-	{
-		put_image(game, game->sprite.base, game->location.x, game->location.y);
-		put_image(game, exit, game->location.x, game->location.y);
-		if (option == 1)
-			put_image(game, player, (game->location.x), game->location.y + 1);
-		else if (option == 2)
-			put_image(game, player, (game->location.x), game->location.y - 1);
-		else if (option == 3)
-			put_image(game, player, (game->location.x - 1), game->location.y);
-		else if (option == 4)
-			put_image(game, player, (game->location.x + 1), game->location.y);
-		game_moves(game);
-		ft_putstr_fd("\nYOU WIN!!\n", 1);
-		put_arrows(game);
-		mlx_key_hook(game->window, restart_game, game);
-		return (true);
-	}
-	return (false);
 }

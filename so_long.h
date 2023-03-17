@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 16:42:28 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:28:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,14 +132,17 @@ void	move_right(t_game *game);
 void	move_left(t_game *game);
 int		deal_key(int key, void *game);
 
+/*moves_utils*/
+bool	wall(t_game *game, char option);
+void	if_collectible(t_game *game);
+bool	win(t_game *game, void **player, void **exit, int option);
+
 /*read_map*/
 void	read_map(char *argv, t_game *game);
 
 /*utils2*/
 void	put_image(t_game *game, void **image, int x, int y);
-void	if_collectible(t_game *game);
 void	put_arrows(t_game *game);
-bool	win(t_game *game, void **player, void **exit, int option);
 
 /*validate_map*/
 void	validate_map(char *argv, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 16:43:24 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:30:58 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	move_up(t_game *game)
 {
-	game->location.x--;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.x++;
-	else
+	if(!wall(game, 'U'))
 	{
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
@@ -34,10 +31,7 @@ void	move_up(t_game *game)
 
 void	move_down(t_game *game)
 {
-	game->location.x++;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.x--;
-	else
+	if (!wall(game, 'D'))
 	{
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
@@ -54,10 +48,7 @@ void	move_down(t_game *game)
 
 void	move_right(t_game *game)
 {
-	game->location.y++;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.y--;
-	else
+	if (!wall(game, 'R'))
 	{
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
@@ -74,10 +65,7 @@ void	move_right(t_game *game)
 
 void	move_left(t_game *game)
 {
-	game->location.y--;
-	if (game->map[game->location.x][game->location.y] == WALL)
-		game->location.y++;
-	else
+	if (!wall(game, 'L'))
 	{
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)

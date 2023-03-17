@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/16 16:39:55 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/17 16:55:35 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ FILES = destroy.c \
 		init.c \
 		moves_counter.c \
 		moves.c \
+		moves_utils.c \
 		read_map.c \
 		so_long.c \
 		utils2.c \

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 16:37:35 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:43:24 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_up(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (!win(game, game->sprite.up_kiss, game->sprite.play))
+			if (!win(game, game->sprite.up_kiss, game->sprite.play, 4))
 				game->location.x++;
 			return ;
 		}
@@ -42,7 +42,7 @@ void	move_down(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (!win(game, game->sprite.down_kiss, game->sprite.up))
+			if (!win(game, game->sprite.down_kiss, game->sprite.up, 3))
 				game->location.x--;
 			return ;
 		}
@@ -62,7 +62,7 @@ void	move_right(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (!win(game, game->sprite.right_kiss, game->sprite.left))
+			if (!win(game, game->sprite.right_kiss, game->sprite.left, 2))
 				game->location.y--;
 			return ;
 		}
@@ -82,7 +82,7 @@ void	move_left(t_game *game)
 		if_collectible(game);
 		if (game->map[game->location.x][game->location.y] == EXIT)
 		{
-			if (!win(game, game->sprite.left_kiss, game->sprite.right))
+			if (!win(game, game->sprite.left_kiss, game->sprite.right, 1))
 				game->location.y++;
 			return ;
 		}

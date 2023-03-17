@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 16:22:22 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:47:16 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,20 @@ void	put_arrows(t_game *game)
 	game->arrow_position = 1;
 }
 
-bool	win(t_game *game, void **player, void **exit)
+bool	win(t_game *game, void **player, void **exit, int option)
 {
 	if (game->collect_num == 0)
 	{
 		put_image(game, game->sprite.base, game->location.x, game->location.y);
 		put_image(game, exit, game->location.x, game->location.y);
-		put_image(game, player, (game->location.x), game->location.y - 1);
+		if (option == 1)
+			put_image(game, player, (game->location.x), game->location.y + 1);
+		else if (option == 2)
+			put_image(game, player, (game->location.x), game->location.y - 1);
+		else if (option == 3)
+			put_image(game, player, (game->location.x - 1), game->location.y);
+		else if (option == 4)
+			put_image(game, player, (game->location.x + 1), game->location.y);
 		game_moves(game);
 		ft_putstr_fd("\nYOU WIN!!\n", 1);
 		put_arrows(game);

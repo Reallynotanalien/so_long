@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 18:25:30 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:31:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@
 (impossible to get to all the collectibles).\n"
 # define LINES_ERROR "Map is invalid (too many lines).\n"
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
-
-typedef struct coordinates
-{
-	int	x;
-	int	y;
-}				t_coordin;
 
 typedef struct sprites
 {
@@ -97,8 +91,9 @@ typedef struct game
 	int			temp;
 	int			fd;
 	int			arrow_position;
+	int			x;
+	int			y;
 	t_sprites	sprite;
-	t_coordin	location;
 }				t_game;
 
 /*main*/
@@ -133,7 +128,6 @@ void	game_moves(t_game *game);
 int		deal_key(int key, t_game *game);
 
 /*moves_utils*/
-void	move_character(t_game *game, void **player, int option);
 bool	is_exit(t_game *game, int option);
 bool	is_wall(t_game *game, int option);
 void	check_if_collectible(t_game *game);

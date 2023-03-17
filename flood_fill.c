@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/16 16:32:30 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:30:42 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	exit_blocks_path(t_game *game)
 
 	game->temp = game->collect_num;
 	map_copy = create_map_copy(game);
-	exit_flood(map_copy, game->location.x, game->location.y, game);
+	exit_flood(map_copy, game->x, game->y, game);
 	free_map(map_copy, game);
 	if (game->temp != 0)
 		return (true);
@@ -77,7 +77,7 @@ void	flood_fill(t_game *game)
 
 	game->temp = game->collect_num;
 	map_copy = create_map_copy(game);
-	flood(map_copy, game->location.x, game->location.y, game);
+	flood(map_copy, game->x, game->y, game);
 	free_map(map_copy, game);
 	if (game->temp != 0)
 		free_and_exit_error(PATH_COLL_ERROR, game);

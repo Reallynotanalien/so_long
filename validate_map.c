@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 16:20:31 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:30:42 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	validate_characters(t_game *game)
 			if (game->map[x][y] == PLAYER)
 			{
 				game->player_num++;
-				game->location.x = x;
-				game->location.y = y;
+				game->x = x;
+				game->y = y;
 			}
 			else if (game->map[x][y] == COLLECTIBLE)
 				game->collect_num++;

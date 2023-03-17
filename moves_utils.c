@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 18:30:42 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:35:33 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ bool	is_win(t_game *game, void **player, void **exit, int option)
 	{
 		put_image(game, game->sprite.base, game->x, game->y);
 		put_image(game, exit, game->x, game->y);
-		if (option == 1)
+		if (option == LEFT)
 			put_image(game, player, (game->x), game->y + 1);
-		else if (option == 2)
+		else if (option == RIGHT)
 			put_image(game, player, (game->x), game->y - 1);
-		else if (option == 3)
+		else if (option == DOWN)
 			put_image(game, player, (game->x - 1), game->y);
-		else if (option == 4)
+		else if (option == UP)
 			put_image(game, player, (game->x + 1), game->y);
 		game_moves(game);
 		ft_putstr_fd("\nYOU WIN!!\n", 1);
@@ -40,16 +40,16 @@ bool	is_exit(t_game *game, int option)
 	if (game->map[game->x][game->y] == EXIT)
 	{
 		if (option == LEFT)
-			if (!is_win(game, game->sprite.left_kiss, game->sprite.right, 1))
+			if (!is_win(game, game->sprite.left_kiss, game->sprite.right, LEFT))
 				game->y++;
 		if (option == RIGHT)
-			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, 2))
+			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, RIGHT))
 				game->y--;
 		if (option == DOWN)
-			if (!is_win(game, game->sprite.down_kiss, game->sprite.up, 3))
+			if (!is_win(game, game->sprite.down_kiss, game->sprite.up, DOWN))
 				game->x--;
 		if (option == UP)
-			if (!is_win(game, game->sprite.up_kiss, game->sprite.play, 4))
+			if (!is_win(game, game->sprite.up_kiss, game->sprite.play, UP))
 				game->x++;
 		return (true);
 	}

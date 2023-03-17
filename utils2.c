@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 16:41:56 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:22:22 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,4 @@ bool	win(t_game *game, void **player, void **exit)
 		return (true);
 	}
 	return (false);
-}
-
-int	deal_key(int key, void *game)
-{
-	if (key == 123)
-		move_left(game);
-	else if (key == 124)
-		move_right(game);
-	else if (key == 125)
-		move_down(game);
-	else if (key == 126)
-		move_up(game);
-	else if (key == 53)
-		end_game(game);
-	return (0);
 }

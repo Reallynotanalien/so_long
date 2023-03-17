@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 18:17:46 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:25:30 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define WALL '1'
 # define EXIT 'E'
 # define COLLECTIBLE 'C'
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
 
 # define ARG_ERROR "Number of arguments is invalid.\n"
 # define OPEN_ERROR "Map is invalid (file could not be opened).\n"
@@ -126,17 +130,13 @@ void	init_map(t_game *game);
 void	game_moves(t_game *game);
 
 /*moves*/
-void	move_up(t_game *game);
-void	move_down(t_game *game);
-void	move_right(t_game *game);
-void	move_left(t_game *game);
 int		deal_key(int key, t_game *game);
 
 /*moves_utils*/
-void	move_character(t_game *game, void **player, char option);
-bool	is_exit(t_game *game, char option);
-bool	is_wall(t_game *game, char option);
-void	is_collectible(t_game *game);
+void	move_character(t_game *game, void **player, int option);
+bool	is_exit(t_game *game, int option);
+bool	is_wall(t_game *game, int option);
+void	check_if_collectible(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);

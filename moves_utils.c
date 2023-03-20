@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 16:24:41 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:15:49 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ bool	is_win(t_game *game, void **player, void **exit, int option)
 			put_image(game, player, (game->x - 1), game->y);
 		else if (option == UP)
 			put_image(game, player, (game->x + 1), game->y);
-		game_moves(game);
-		ft_putstr_fd("\nYOU WIN!!\n", 1);
+		put_moves(game);
+		ft_putstr_fd("\nYOU WON!!\n", 1);
 		put_arrows(game);
 		mlx_key_hook(game->window, restart_game, game);
 		return (true);
@@ -43,7 +43,7 @@ bool	is_exit(t_game *game, int option)
 			if (!is_win(game, game->sprite.left_kiss, game->sprite.right, LEFT))
 				game->y++;
 		if (option == RIGHT)
-			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, 
+			if (!is_win(game, game->sprite.right_kiss, game->sprite.left,
 					RIGHT))
 				game->y--;
 		if (option == DOWN)
@@ -59,26 +59,22 @@ bool	is_exit(t_game *game, int option)
 
 bool	is_wall(t_game *game, int option)
 {
-	if (option == LEFT
-		&& (game->map[game->x][game->y - 1] != WALL))
+	if (option == LEFT && (game->map[game->x][game->y - 1] != WALL))
 	{
 		game->y--;
 		return (false);
 	}
-	else if (option == RIGHT
-		&& (game->map[game->x][game->y + 1] != WALL))
+	else if (option == RIGHT && (game->map[game->x][game->y + 1] != WALL))
 	{
 		game->y++;
 		return (false);
 	}
-	else if (option == DOWN
-		&& (game->map[game->x + 1][game->y] != WALL))
+	else if (option == DOWN && (game->map[game->x + 1][game->y] != WALL))
 	{
 		game->x++;
 		return (false);
 	}
-	else if (option == UP
-		&& (game->map[game->x - 1][game->y] != WALL))
+	else if (option == UP && (game->map[game->x - 1][game->y] != WALL))
 	{
 		game->x--;
 		return (false);

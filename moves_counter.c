@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:16:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 17:30:52 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:57:41 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	putnbr_recursive(t_game *game, int moves, int position)
 	}
 }
 
-void	game_moves(t_game *game)
+void	put_moves(t_game *game)
 {
 	game->moves++;
 	putnbr_recursive(game, game->moves, 0);

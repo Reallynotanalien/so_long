@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 18:31:07 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:57:51 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,20 @@
 
 # define SIZE 32
 
+/*MAP*/
 # define PLAYER 'P'
 # define WALL '1'
 # define EXIT 'E'
 # define COLLECTIBLE 'C'
+
+/*KEYS*/
 # define LEFT 123
 # define RIGHT 124
 # define DOWN 125
 # define UP 126
+# define ESC 53
 
+/*ERROR MESSAGES*/
 # define ARG_ERROR "Number of arguments is invalid.\n"
 # define OPEN_ERROR "Map is invalid (file could not be opened).\n"
 # define EMPTY_ERROR "Map is invalid (map is empty).\n"
@@ -122,7 +127,7 @@ void	init_sprites(t_game *game);
 void	init_map(t_game *game);
 
 /*moves_counter*/
-void	game_moves(t_game *game);
+void	put_moves(t_game *game);
 
 /*moves*/
 int		deal_key(int key, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/02/22 17:57:52 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:31:02 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	reset_game(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
+	free_map(game->map, game);
 	start_game(game);
 }
 

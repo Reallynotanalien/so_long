@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/17 18:35:33 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:24:41 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ bool	is_exit(t_game *game, int option)
 			if (!is_win(game, game->sprite.left_kiss, game->sprite.right, LEFT))
 				game->y++;
 		if (option == RIGHT)
-			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, RIGHT))
+			if (!is_win(game, game->sprite.right_kiss, game->sprite.left, 
+					RIGHT))
 				game->y--;
 		if (option == DOWN)
 			if (!is_win(game, game->sprite.down_kiss, game->sprite.up, DOWN))

@@ -6,29 +6,22 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 17:39:40 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:24:03 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move(t_game *game, void **player, int option)
+void	move(t_game *game, void **player, int direction)
 {
-	if (!is_wall(game, option))
+	if (!is_wall(game, direction))
 	{
-		change_location_on_map(game, option, TRUE);
+		change_location_on_map(game, direction, TRUE);
 		check_if_collectible(game);
-		if (!is_exit(game, option))
+		if (!is_exit(game, direction))
 		{
-			if (option == LEFT)
-				put_image(game, game->sprite.base, game->x, game->y + 1);
-			else if (option == RIGHT)
-				put_image(game, game->sprite.base, game->x, game->y - 1);
-			else if (option == DOWN)
-				put_image(game, game->sprite.base, game->x - 1, game->y);
-			else if (option == UP)
-				put_image(game, game->sprite.base, game->x + 1, game->y);
-			put_image(game, player, game->x, game->y);
+			put_image_direction(game, game->sprite.base, direction);
+			put_image_direction(game, player, POSITION);
 			put_moves(game);
 		}
 	}

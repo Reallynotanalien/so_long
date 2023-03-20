@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 17:33:37 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:25:40 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define DOWN 125
 # define UP 126
 # define ESC 53
+# define POSITION 0
 
 /*ERROR MESSAGES*/
 # define ARG_ERROR "Number of arguments is invalid.\n"
@@ -135,9 +136,9 @@ void	put_moves(t_game *game);
 int		deal_key(int key, t_game *game);
 
 /*moves_utils*/
-bool	is_exit(t_game *game, int option);
 void	change_location_on_map(t_game *game, int direction, int option);
-bool	is_wall(t_game *game, int option);
+bool	is_exit(t_game *game, int direction);
+bool	is_wall(t_game *game, int direction);
 void	check_if_collectible(t_game *game);
 
 /*read_map*/
@@ -145,6 +146,7 @@ void	read_map(char *argv, t_game *game);
 
 /*utils2*/
 void	put_image(t_game *game, void **image, int x, int y);
+void	put_image_direction(t_game *game, void **image, int direction);
 void	put_arrows(t_game *game);
 
 /*validate_map*/

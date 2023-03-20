@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 16:57:51 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:33:37 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <fcntl.h>
 
 # define SIZE 32
+# define TRUE 0
+# define FALSE 1
 
 /*MAP*/
 # define PLAYER 'P'
@@ -134,6 +136,7 @@ int		deal_key(int key, t_game *game);
 
 /*moves_utils*/
 bool	is_exit(t_game *game, int option);
+void	change_location_on_map(t_game *game, int direction, int option);
 bool	is_wall(t_game *game, int option);
 void	check_if_collectible(t_game *game);
 

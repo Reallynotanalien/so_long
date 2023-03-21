@@ -6,13 +6,13 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 17:06:02 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/21 18:11:34 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long.a
 

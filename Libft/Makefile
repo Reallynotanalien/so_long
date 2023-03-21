@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
+#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/02/14 16:59:22 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/03/21 18:12:34 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 

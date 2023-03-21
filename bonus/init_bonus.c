@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/21 18:48:13 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:52:52 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	init_sprites(t_game *game)
 	game->sprite.black = xpm_to_image(game, "./Assets/black.xpm");
 }
 
+/*Takes the initial state of the map and fills it with the right sprites 
+depending on what the position is.*/
 void	init_map(t_game *game)
 {
 	int	x;

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 15:05:39 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:46:16 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,7 @@ typedef struct sprites
 	void		**exit_sign;
 	void		**start_sign;
 	void		**arrow;
-	void		**zero;
-	void		**one;
-	void		**two;
-	void		**three;
-	void		**four;
-	void		**five;
-	void		**six;
-	void		**seven;
-	void		**eight;
-	void		**nine;
+	void		**black;
 }				t_sprites;
 
 typedef struct game
@@ -129,9 +120,6 @@ void	init_data(t_game *game);
 void	init_sprites(t_game *game);
 void	init_map(t_game *game);
 
-/*moves_counter*/
-void	put_moves(t_game *game);
-
 /*moves_utils*/
 void	change_location_on_map(t_game *game, int direction, int option);
 bool	is_exit(t_game *game, int direction);
@@ -139,6 +127,7 @@ bool	is_wall(t_game *game, int direction);
 void	check_if_collectible(t_game *game);
 
 /*moves*/
+void	put_moves(t_game *game);
 int		deal_key(int key, t_game *game);
 
 /*put_images*/

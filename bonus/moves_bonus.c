@@ -6,11 +6,26 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 15:06:18 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:54:37 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	put_moves(t_game *game)
+{
+	char	*str;
+
+	game->moves++;
+	str = ft_itoa(game->moves);
+	ft_putnbr_fd(game->moves, 1);
+	ft_putstr_fd(" ", 1);
+	mlx_put_image_to_window(game->mlx, game->window,
+		game->sprite.black, (2 * (SIZE - 1)), game->lines * SIZE);
+	mlx_string_put(game->mlx, game->window,
+		(SIZE * 2), (game->lines + 1) * (SIZE - 1), 16777215, str);
+	free(str);
+}
 
 void	move(t_game *game, void **player, int direction)
 {

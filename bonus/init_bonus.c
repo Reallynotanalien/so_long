@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/21 16:09:02 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:46:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,7 @@ void	init_sprites(t_game *game)
 	game->sprite.arrow = xpm_to_image(game, "./Assets/arrow.xpm");
 	game->sprite.exit_sign = xpm_to_image(game, "./Assets/exit_sign.xpm");
 	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");
-	game->sprite.zero = xpm_to_image(game, "./Assets/zero.xpm");
-	game->sprite.one = xpm_to_image(game, "./Assets/one.xpm");
-	game->sprite.two = xpm_to_image(game, "./Assets/two.xpm");
-	game->sprite.three = xpm_to_image(game, "./Assets/three.xpm");
-	game->sprite.four = xpm_to_image(game, "./Assets/four.xpm");
-	game->sprite.five = xpm_to_image(game, "./Assets/five.xpm");
-	game->sprite.six = xpm_to_image(game, "./Assets/six.xpm");
-	game->sprite.seven = xpm_to_image(game, "./Assets/seven.xpm");
-	game->sprite.eight = xpm_to_image(game, "./Assets/eight.xpm");
-	game->sprite.nine = xpm_to_image(game, "./Assets/nine.xpm");
+	game->sprite.black = xpm_to_image(game, "./Assets/black.xpm");
 }
 
 void	init_map(t_game *game)
@@ -106,5 +97,5 @@ void	init_map(t_game *game)
 		}
 		x++;
 	}
-	put_image(game, game->sprite.zero, game->lines, 0);
+	mlx_string_put(game->mlx, game->window, 16, (game->lines + 1) * (SIZE - 1) , 16777215, "Moves:");
 }

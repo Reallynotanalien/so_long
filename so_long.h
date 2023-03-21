@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 14:14:03 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:38:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 (impossible to get to all the collectibles).\n"
 # define LINES_ERROR "Map is invalid (too many lines).\n"
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
+# define IMAGE_ERROR "One of your sprites could not be opened.\n"
 
 typedef struct sprites
 {

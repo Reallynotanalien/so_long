@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/16 16:41:51 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:39:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,21 @@ void	init_data(t_game *game)
 void	**xpm_to_image(t_game *game, char *path)
 {
 	int		size;
+	int		fd;
 	void	**image;
 
 	size = SIZE;
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		// destroy_images(game);
+		mlx_clear_window(game->mlx, game->window);
+		mlx_destroy_window(game->mlx, game->window);
+		free_map(game->map, game);
+		exit_error(IMAGE_ERROR);
+	}
+	close(fd);
 	image = mlx_xpm_file_to_image(game->mlx, path, &size, &size);
 	return (image);
 }

@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 17:04:52 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:32:54 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	move(t_game *game, void **player, int direction)
 
 int	deal_key(int key, t_game *game)
 {
-	if (key == LEFT)
+	if (key == LEFT || key == 0)
 		move(game, game->sprite.left, LEFT);
-	else if (key == RIGHT)
+	else if (key == RIGHT || key == 2)
 		move(game, game->sprite.right, RIGHT);
-	else if (key == DOWN)
+	else if (key == DOWN || key == 1)
 		move(game, game->sprite.play, DOWN);
-	else if (key == UP)
+	else if (key == UP || key == 13)
 		move(game, game->sprite.up, UP);
 	else if (key == ESC)
 		end_game(game);

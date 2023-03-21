@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 18:12:26 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/21 18:25:00 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 NAME_BONUS = so_long_bonus
+
+MAKE_MLX = cd ./minilibx_opengl_20191021/ && make
 
 FILES = end_game_options.c \
 		exit_management.c \
@@ -33,11 +35,12 @@ OBJS = $(FILES:.c=.o)
 
 RM = @rm -f
 
-.SILENT: $(OBJS)
+.SILENT: $(OBJS) $(MAKE_MLX)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+		@$(MAKE_MLX)
 		@$(MAKE) -C ./Libft
 		@echo "Compiling so_long..."
 		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a ./minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
@@ -46,6 +49,7 @@ $(NAME): $(OBJS)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS):
+		@$(MAKE_MLX)
 		@$(MAKE) -C ./Libft
 		@$(MAKE) -C ./bonus
 		@$(CC) $(CFLAGS) ./Libft/libft.a ./bonus/so_long.a ./minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME_BONUS)
@@ -59,6 +63,7 @@ clean:
 fclean: 
 		@$(MAKE) fclean -C ./bonus
 		@$(MAKE) fclean -C ./Libft
+		@$(MAKE) clean -C ./minilibx_opengl_20191021
 		$(RM) $(OBJS)
 		$(RM) $(NAME)
 		$(RM) $(NAME_BONUS)

@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 15:13:20 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/21 15:28:02 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,17 +37,14 @@ RM = @rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		@$(MAKE) -C ../Libft
-		@echo "Compiling so_long..."
-		@$(CC) $(CFLAGS) $(OBJS) ../Libft/libft.a ../minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
-		@echo "Completed! 🤠"
+		@echo "Compiling bonus..."
+		@ar rcs $(NAME) $(OBJS)
+		@echo "Completed!"
 
 clean:
-		@$(MAKE) clean -C ../Libft
 		$(RM) $(OBJS)
 		
 fclean: 
-		@$(MAKE) fclean -C ../Libft
 		$(RM) $(OBJS)
 		$(RM) $(NAME)
 

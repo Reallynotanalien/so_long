@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/21 15:06:24 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:09:02 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,31 @@ void	**xpm_to_image(t_game *game, char *path)
 
 void	init_sprites(t_game *game)
 {
-	game->sprite.base = xpm_to_image(game, "../Assets/tile2.xpm");
-	game->sprite.play = xpm_to_image(game, "../Assets/character_face.xpm");
-	game->sprite.wal = xpm_to_image(game, "../Assets/tree.xpm");
-	game->sprite.coll = xpm_to_image(game, "../Assets/carrot.xpm");
-	game->sprite.exit = xpm_to_image(game, "../Assets/character_face.xpm");
-	game->sprite.left = xpm_to_image(game, "../Assets/character_left.xpm");
-	game->sprite.right = xpm_to_image(game, "../Assets/character_right.xpm");
-	game->sprite.up = xpm_to_image(game, "../Assets/character_back.xpm");
-	game->sprite.right_kiss = xpm_to_image(game, "../Assets/char_rkiss.xpm");
-	game->sprite.down_kiss = xpm_to_image(game, "../Assets/char_dkiss.xpm");
-	game->sprite.up_kiss = xpm_to_image(game, "../Assets/char_ukiss.xpm");
-	game->sprite.left_kiss = xpm_to_image(game, "../Assets/char_lkiss.xpm");
-	game->sprite.arrow = xpm_to_image(game, "../Assets/arrow.xpm");
-	game->sprite.exit_sign = xpm_to_image(game, "../Assets/exit_sign.xpm");
-	game->sprite.start_sign = xpm_to_image(game, "../Assets/start_sign.xpm");
-	game->sprite.zero = xpm_to_image(game, "../Assets/zero.xpm");
-	game->sprite.one = xpm_to_image(game, "../Assets/one.xpm");
-	game->sprite.two = xpm_to_image(game, "../Assets/two.xpm");
-	game->sprite.three = xpm_to_image(game, "../Assets/three.xpm");
-	game->sprite.four = xpm_to_image(game, "../Assets/four.xpm");
-	game->sprite.five = xpm_to_image(game, "../Assets/five.xpm");
-	game->sprite.six = xpm_to_image(game, "../Assets/six.xpm");
-	game->sprite.seven = xpm_to_image(game, "../Assets/seven.xpm");
-	game->sprite.eight = xpm_to_image(game, "../Assets/eight.xpm");
-	game->sprite.nine = xpm_to_image(game, "../Assets/nine.xpm");
+	game->sprite.base = xpm_to_image(game, "./Assets/tile2.xpm");
+	game->sprite.play = xpm_to_image(game, "./Assets/character_face.xpm");
+	game->sprite.wal = xpm_to_image(game, "./Assets/tree.xpm");
+	game->sprite.coll = xpm_to_image(game, "./Assets/carrot.xpm");
+	game->sprite.exit = xpm_to_image(game, "./Assets/character_face.xpm");
+	game->sprite.left = xpm_to_image(game, "./Assets/character_left.xpm");
+	game->sprite.right = xpm_to_image(game, "./Assets/character_right.xpm");
+	game->sprite.up = xpm_to_image(game, "./Assets/character_back.xpm");
+	game->sprite.right_kiss = xpm_to_image(game, "./Assets/char_rkiss.xpm");
+	game->sprite.down_kiss = xpm_to_image(game, "./Assets/char_dkiss.xpm");
+	game->sprite.up_kiss = xpm_to_image(game, "./Assets/char_ukiss.xpm");
+	game->sprite.left_kiss = xpm_to_image(game, "./Assets/char_lkiss.xpm");
+	game->sprite.arrow = xpm_to_image(game, "./Assets/arrow.xpm");
+	game->sprite.exit_sign = xpm_to_image(game, "./Assets/exit_sign.xpm");
+	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");
+	game->sprite.zero = xpm_to_image(game, "./Assets/zero.xpm");
+	game->sprite.one = xpm_to_image(game, "./Assets/one.xpm");
+	game->sprite.two = xpm_to_image(game, "./Assets/two.xpm");
+	game->sprite.three = xpm_to_image(game, "./Assets/three.xpm");
+	game->sprite.four = xpm_to_image(game, "./Assets/four.xpm");
+	game->sprite.five = xpm_to_image(game, "./Assets/five.xpm");
+	game->sprite.six = xpm_to_image(game, "./Assets/six.xpm");
+	game->sprite.seven = xpm_to_image(game, "./Assets/seven.xpm");
+	game->sprite.eight = xpm_to_image(game, "./Assets/eight.xpm");
+	game->sprite.nine = xpm_to_image(game, "./Assets/nine.xpm");
 }
 
 void	init_map(t_game *game)

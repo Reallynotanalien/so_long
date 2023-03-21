@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 13:53:41 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:09:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	start_game(t_game *game);
 void	destroy_images(t_game *game);
 
 /*end_game_options*/
+int		end_game(t_game *game);
 void	put_arrows(t_game *game, int direction);
 int		restart_game(int key, void *game);
 
@@ -120,7 +121,6 @@ void	exit_error(char *error);
 void	free_map(char **tab, t_game *game);
 void	free_and_exit_error(char *error, t_game *game);
 void	free_close_and_exit_error(char *error, t_game *game, int option);
-int		end_game(t_game *game);
 
 /*flood_fill*/
 void	flood_fill(t_game *game);

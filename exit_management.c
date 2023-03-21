@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exit_management.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/16 16:37:34 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:09:24 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,4 @@ void	free_close_and_exit_error(char *error, t_game *game, int option)
 		free_map(game->map, game);
 	close(game->fd);
 	exit_error(error);
-}
-
-//WHY DID I PUT INT END GAME HERE?? Do I need it to return something?
-int	end_game(t_game *game)
-{
-	destroy_images(game);
-	mlx_clear_window(game->mlx, game->window);
-	mlx_destroy_window(game->mlx, game->window);
-	free_and_exit_error("GAME ENDED\n", game);
-	return (0);
 }

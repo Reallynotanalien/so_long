@@ -6,14 +6,24 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 13:59:35 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:09:32 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+int	end_game(t_game *game)
+{
+	destroy_images(game);
+	mlx_clear_window(game->mlx, game->window);
+	mlx_destroy_window(game->mlx, game->window);
+	free_and_exit_error("GAME ENDED\n", game);
+	return (0);
+}
+
 void	reset_game(t_game *game)
 {
+	destroy_images(game);
 	mlx_clear_window(game->mlx, game->window);
 	free_map(game->map, game);
 	start_game(game);
@@ -31,7 +41,7 @@ void	put_arrows(t_game *game, int direction)
 	if (direction == UP)
 	{
 		put_image(game, game->sprite.base, x + 1, y - 1);
-		if (game->map[(game->lines / 2) + 1][(game->columns / 2) - 1] == WALL)
+		if (game->map[x + 1][y - 1] == WALL)
 			put_image(game, game->sprite.wal, x + 1, y - 1);
 		put_image(game, game->sprite.arrow, x, y - 1);
 		game->arrow_position = UP;
@@ -39,7 +49,7 @@ void	put_arrows(t_game *game, int direction)
 	else if (direction == DOWN)
 	{
 		put_image(game, game->sprite.base, x, y - 1);
-		if (game->map[game->lines / 2][(game->columns / 2) - 1] == WALL)
+		if (game->map[x][y - 1] == WALL)
 			put_image(game, game->sprite.wal, x, y - 1);
 		put_image(game, game->sprite.arrow, x + 1, y - 1);
 		game->arrow_position = DOWN;

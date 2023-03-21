@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   put_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 18:24:03 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:59:58 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,4 @@ void	put_image_direction(t_game *game, void **image, int direction)
 	else if (direction == UP)
 		mlx_put_image_to_window
 		(game->mlx, game->window, image, game->y * SIZE, (game->x + 1) * SIZE);
-}
-
-void	put_arrows(t_game *game)
-{
-	int	x;
-	int	y;
-
-	x = game->lines / 2;
-	y = game->columns / 2;
-	put_image(game, game->sprite.start_sign, x, y);
-	put_image(game, game->sprite.exit_sign, x + 1, y);
-	put_image(game, game->sprite.arrow, x, y - 1);
-	game->arrow_position = 1;
 }

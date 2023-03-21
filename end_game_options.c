@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 16:31:02 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:59:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,48 @@ void	reset_game(t_game *game)
 	start_game(game);
 }
 
-void	arrow_down(t_game *game)
+void	put_arrows(t_game *game, int direction)
 {
-	int	mid_lines;
-	int	mid_columns;
+	int	x;
+	int	y;
 
-	mid_lines = game->lines / 2;
-	mid_columns = game->columns / 2;
-	put_image(game, game->sprite.base, mid_lines, mid_columns - 1);
-	if (game->map[game->lines / 2][(game->columns / 2) - 1] == WALL)
-		put_image(game, game->sprite.wal, mid_lines, mid_columns - 1);
-	put_image(game, game->sprite.arrow, mid_lines + 1, mid_columns - 1);
-	game->arrow_position = 2;
-}
-
-void	arrow_up(t_game *game)
-{
-	int	mid_lines;
-	int	mid_columns;
-
-	mid_lines = game->lines / 2;
-	mid_columns = game->columns / 2;
-	put_image(game, game->sprite.base, mid_lines + 1, mid_columns - 1);
-	if (game->map[(game->lines / 2) + 1][(game->columns / 2) - 1] == WALL)
-		put_image(game, game->sprite.wal, mid_lines + 1, mid_columns - 1);
-	put_image(game, game->sprite.arrow, mid_lines, mid_columns - 1);
-	game->arrow_position = 1;
+	x = game->lines / 2;
+	y = game->columns / 2;
+	put_image(game, game->sprite.start_sign, x, y);
+	put_image(game, game->sprite.exit_sign, x + 1, y);
+	if (direction == UP)
+	{
+		put_image(game, game->sprite.base, x + 1, y - 1);
+		if (game->map[(game->lines / 2) + 1][(game->columns / 2) - 1] == WALL)
+			put_image(game, game->sprite.wal, x + 1, y - 1);
+		put_image(game, game->sprite.arrow, x, y - 1);
+		game->arrow_position = UP;
+	}
+	else if (direction == DOWN)
+	{
+		put_image(game, game->sprite.base, x, y - 1);
+		if (game->map[game->lines / 2][(game->columns / 2) - 1] == WALL)
+			put_image(game, game->sprite.wal, x, y - 1);
+		put_image(game, game->sprite.arrow, x + 1, y - 1);
+		game->arrow_position = DOWN;
+	}
 }
 
 void	select_option(t_game *game)
 {
-	if (game->arrow_position == 1)
+	if (game->arrow_position == UP)
 		reset_game(game);
-	else if (game->arrow_position == 2)
+	else if (game->arrow_position == DOWN)
 		end_game(game);
 }
 
 int	restart_game(int key, void *game)
 {
-	if (key == 125)
-		arrow_down(game);
-	if (key == 126)
-		arrow_up(game);
-	if (key == 36)
+	if (key == DOWN)
+		put_arrows(game, DOWN);
+	if (key == UP)
+		put_arrows(game, UP);
+	if (key == ENTER)
 		select_option(game);
 	return (0);
 }

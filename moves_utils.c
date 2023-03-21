@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/20 18:29:54 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:53:52 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	is_win(t_game *game, void **player, void **exit, int direction)
 	put_image_direction(game, player, direction);
 	put_moves(game);
 	ft_putstr_fd("\nYOU WON!!\n", 1);
-	put_arrows(game);
+	put_arrows(game, UP);
 	mlx_key_hook(game->window, restart_game, game);
 }
 

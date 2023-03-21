@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 14:09:47 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:14:03 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,6 @@ typedef struct game
 /*main*/
 void	start_game(t_game *game);
 
-/*destroy*/
-void	destroy_images(t_game *game);
-
 /*end_game_options*/
 int		end_game(t_game *game);
 void	put_arrows(t_game *game, int direction);
@@ -146,6 +143,7 @@ int		deal_key(int key, t_game *game);
 /*put_images*/
 void	put_image(t_game *game, void **image, int x, int y);
 void	put_image_direction(t_game *game, void **image, int direction);
+void	destroy_images(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);

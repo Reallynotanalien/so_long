@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/21 14:53:47 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:45:02 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void	**xpm_to_image(t_game *game, char *path)
 	return (image);
 }
 
+/*Initializes all of the game sprites and stores them each in a separate void **
+contained in the game struct.*/
 void	init_sprites(t_game *game)
 {
 	game->sprite.base = xpm_to_image(game, "./Assets/tile2.xpm");
 	game->sprite.play = xpm_to_image(game, "./Assets/character_face.xpm");
-	game->sprite.wal = xpm_to_image(game, "./Assets/tree.xpm");
+	game->sprite.wall = xpm_to_image(game, "./Assets/tree.xpm");
 	game->sprite.coll = xpm_to_image(game, "./Assets/carrot.xpm");
 	game->sprite.exit = xpm_to_image(game, "./Assets/character_face.xpm");
 	game->sprite.left = xpm_to_image(game, "./Assets/character_left.xpm");
@@ -87,7 +89,7 @@ void	init_map(t_game *game)
 			if (game->map[x][y] == PLAYER)
 				put_image(game, game->sprite.play, x, y);
 			else if (game->map[x][y] == WALL)
-				put_image(game, game->sprite.wal, x, y);
+				put_image(game, game->sprite.wall, x, y);
 			else if (game->map[x][y] == COLLECTIBLE)
 				put_image(game, game->sprite.coll, x, y);
 			else if (game->map[x][y] == EXIT)

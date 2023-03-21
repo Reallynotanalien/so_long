@@ -6,18 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 14:55:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:31:28 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	put_moves(t_game *game)
-{
-	game->moves++;
-	ft_putnbr_fd(game->moves, 1);
-	ft_putstr_fd(" ", 1);
-}
 
 void	move(t_game *game, void **player, int direction)
 {

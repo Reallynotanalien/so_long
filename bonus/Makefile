@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 14:54:24 by kafortin         ###   ########.fr        #
+#    Updated: 2023/03/21 14:14:10 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ FILES = end_game_options.c \
 		exit_management.c \
 		flood_fill.c \
 		init.c \
+		moves_counter.c \
 		moves_utils.c \
 		moves.c \
 		put_images.c \

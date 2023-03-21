@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 14:55:44 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:33:36 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	start_game(t_game *game)
 	validate_map(game->argv[1], game);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, (SIZE * game->columns),
-			(SIZE * game->lines), "Bonnie & Friends");
+			(SIZE * game->lines) + SIZE, "Bonnie & Friends");
 	init_sprites(game);
 	init_map(game);
 	mlx_hook(game->window, 17, 0, end_game, game);

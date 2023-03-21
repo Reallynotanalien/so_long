@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:45:14 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:48:21 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct sprites
 	void		**base;
 	void		**play;
 	void		**wall;
-	void		**coll;
+	void		**collect;
 	void		**exit;
 	void		**left;
 	void		**right;

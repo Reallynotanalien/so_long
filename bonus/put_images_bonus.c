@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:45:02 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/21 18:48:13 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	destroy_images(t_game *game)
 	mlx_destroy_image(game->mlx, game->sprite.base);
 	mlx_destroy_image(game->mlx, game->sprite.play);
 	mlx_destroy_image(game->mlx, game->sprite.wall);
-	mlx_destroy_image(game->mlx, game->sprite.coll);
+	mlx_destroy_image(game->mlx, game->sprite.collect);
 	mlx_destroy_image(game->mlx, game->sprite.exit);
 	mlx_destroy_image(game->mlx, game->sprite.left);
 	mlx_destroy_image(game->mlx, game->sprite.right);

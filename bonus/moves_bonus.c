@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 16:49:21 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:26:32 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	put_moves(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->window,
 		game->sprite.black, (2 * (SIZE - 1)), game->lines * SIZE);
 	mlx_string_put(game->mlx, game->window,
-		(SIZE * 2), (game->lines + 1) * (SIZE - 1), 16777215, str);
+		(SIZE * 2), (game->lines * SIZE) + (SIZE / 2) - 4, 16777215, str);
 	free(str);
 }
 

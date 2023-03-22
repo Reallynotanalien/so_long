@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:06:07 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:24:53 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	end_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->window);
 	free_map(game->map, game);
 	ft_putstr_fd("GAME ENDED\n", 1);
-	exit(1);
+	exit(errno);
 	return (0);
 }
 

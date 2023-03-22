@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:09:46 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:50:31 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,28 @@ void	put_image_direction(t_game *game, void **image, int direction)
 		(game->mlx, game->window, image, game->y * SIZE, (game->x + 1) * SIZE);
 }
 
+void	destroy_if_not_null(t_game *game, void **image)
+{
+	if (image)
+		mlx_destroy_image(game->mlx, image);
+}
+
 /*Destroys all of the image pointers.*/
 void	destroy_images(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->sprite.base);
-	mlx_destroy_image(game->mlx, game->sprite.play);
-	mlx_destroy_image(game->mlx, game->sprite.wall);
-	mlx_destroy_image(game->mlx, game->sprite.collect);
-	mlx_destroy_image(game->mlx, game->sprite.exit);
-	mlx_destroy_image(game->mlx, game->sprite.left);
-	mlx_destroy_image(game->mlx, game->sprite.right);
-	mlx_destroy_image(game->mlx, game->sprite.up);
-	mlx_destroy_image(game->mlx, game->sprite.right_kiss);
-	mlx_destroy_image(game->mlx, game->sprite.down_kiss);
-	mlx_destroy_image(game->mlx, game->sprite.up_kiss);
-	mlx_destroy_image(game->mlx, game->sprite.left_kiss);
-	mlx_destroy_image(game->mlx, game->sprite.arrow);
-	mlx_destroy_image(game->mlx, game->sprite.exit_sign);
-	mlx_destroy_image(game->mlx, game->sprite.start_sign);
+	destroy_if_not_null(game, game->sprite.base);
+	destroy_if_not_null(game, game->sprite.play);
+	destroy_if_not_null(game, game->sprite.wall);
+	destroy_if_not_null(game, game->sprite.collect);
+	destroy_if_not_null(game, game->sprite.exit);
+	destroy_if_not_null(game, game->sprite.left);
+	destroy_if_not_null(game, game->sprite.right);
+	destroy_if_not_null(game, game->sprite.up);
+	destroy_if_not_null(game, game->sprite.right_kiss);
+	destroy_if_not_null(game, game->sprite.down_kiss);
+	destroy_if_not_null(game, game->sprite.up_kiss);
+	destroy_if_not_null(game, game->sprite.left_kiss);
+	destroy_if_not_null(game, game->sprite.arrow);
+	destroy_if_not_null(game, game->sprite.exit_sign);
+	destroy_if_not_null(game, game->sprite.start_sign);
 }

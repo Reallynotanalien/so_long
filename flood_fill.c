@@ -6,12 +6,13 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/17 18:30:42 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:15:40 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Recursive function to flood_fill the map.*/
 void	flood(char **map, int x, int y, t_game *game)
 {
 	while (map[x][y] != WALL && map[x][y] != 'X')
@@ -28,6 +29,7 @@ void	flood(char **map, int x, int y, t_game *game)
 	}
 }
 
+/*Mallocs a char ** and returns a copy of the map stored in it.*/
 char	**create_map_copy(t_game *game)
 {
 	char	**map_copy;
@@ -44,6 +46,7 @@ char	**create_map_copy(t_game *game)
 	return (map_copy);
 }
 
+/*Recursive function to flood_fill the map.*/
 void	exit_flood(char **map, int x, int y, t_game *game)
 {
 	while (map[x][y] != WALL && map[x][y] != 'X' && map[x][y] != EXIT)
@@ -58,6 +61,9 @@ void	exit_flood(char **map, int x, int y, t_game *game)
 	}
 }
 
+/*Basically, another flood fill but this time treats the exit like a wall
+to make sure the exit is not blocking the path. If it does, returns true,
+else it returns false.*/
 bool	exit_blocks_path(t_game *game)
 {
 	char		**map_copy;
@@ -71,6 +77,10 @@ bool	exit_blocks_path(t_game *game)
 	return (false);
 }
 
+/*Creates a copy of the map and floods it starting from the player, until 
+it has nowhere to go due to walls/exit blocking the way. Then, checks if 
+all of the collectibles have been collected and if the exit have been
+found, meaning there is a valid path to all of them.*/
 void	flood_fill(t_game *game)
 {
 	char		**map_copy;

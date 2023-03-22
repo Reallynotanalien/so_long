@@ -6,12 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:26:15 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/16 16:10:47 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:36:08 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Calculates the number of lines and mallocs that amount of strings to the 
+game->map table.*/
 void	malloc_lines(char *argv, t_game *game)
 {
 	game->fd = open(argv, O_RDONLY);
@@ -25,6 +27,8 @@ void	malloc_lines(char *argv, t_game *game)
 	close(game->fd);
 }
 
+/*Calculates the number of columns and if it is less/equal to 128,
+mallocs that amount of characters in each game->map string.*/
 void	malloc_columns(char *argv, t_game *game)
 {
 	int		i;
@@ -44,6 +48,8 @@ void	malloc_columns(char *argv, t_game *game)
 	close(game->fd);
 }
 
+/*Mallocs the lines and the columns of the game->map variable, then uses 
+get_next_line to read the map file and copies it's content to game->map.*/
 void	read_map(char *argv, t_game *game)
 {
 	int	i;

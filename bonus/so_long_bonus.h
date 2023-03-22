@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 17:46:16 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:16:49 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <errno.h>
 
 # define SIZE 32
 # define TRUE 0
@@ -61,8 +62,8 @@ typedef struct sprites
 {
 	void		**base;
 	void		**play;
-	void		**wal;
-	void		**coll;
+	void		**wall;
+	void		**collect;
 	void		**exit;
 	void		**left;
 	void		**right;

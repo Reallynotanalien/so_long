@@ -6,12 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 15:06:32 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:22:04 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+/*Writes ERROR - followed by the error message sent as an argument to the 
+terminal before exiting the program with errno*/
 void	exit_error(char *error)
 {
 	ft_putstr_fd("ERROR - ", 2);
@@ -19,6 +21,7 @@ void	exit_error(char *error)
 	exit(1);
 }
 
+/*Frees the whole game->map variable correctly.*/
 void	free_map(char **tab, t_game *game)
 {
 	int	i;
@@ -37,12 +40,19 @@ void	free_map(char **tab, t_game *game)
 	}
 }
 
+/*Frees the whole game->map variable correctly, before writing ERROR - 
+followed by the error message sent as an argument to the terminal and 
+exiting the program with errno.*/
 void	free_and_exit_error(char *error, t_game *game)
 {
 	free_map(game->map, game);
 	exit_error(error);
 }
 
+/*Depending on the chosen option, either frees the lines in game->map or
+frees the whole game->map variable, then closes the map file before 
+writing ERROR - followed by the error message sent as an argument to the
+terminal and exiting the program with errno.*/
 void	free_close_and_exit_error(char *error, t_game *game, int option)
 {
 	if (option == 0)

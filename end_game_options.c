@@ -6,12 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:46:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:06:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Destroys all the images, clears and destroy the mlx window and frees the map 
+before writing "GAME ENDED" to the terminal and exiting the game.*/
 int	end_game(t_game *game)
 {
 	destroy_images(game);
@@ -23,6 +25,8 @@ int	end_game(t_game *game)
 	return (0);
 }
 
+/*Destroys all the images, clears the mlx window, frees the map and starts a new
+game.*/
 void	reset_game(t_game *game)
 {
 	destroy_images(game);
@@ -31,6 +35,7 @@ void	reset_game(t_game *game)
 	start_game(game);
 }
 
+/*Moves the arrow to the position specified by the direction argument.*/
 void	put_arrows(t_game *game, int direction)
 {
 	int	x;
@@ -58,6 +63,8 @@ void	put_arrows(t_game *game, int direction)
 	}
 }
 
+/*If the game->arrow_position is UP, resets the game. If it is DOWN, the
+game ends.*/
 void	select_option(t_game *game)
 {
 	if (game->arrow_position == UP)
@@ -66,6 +73,9 @@ void	select_option(t_game *game)
 		end_game(game);
 }
 
+/*Linked to the mlx_key_hook function, so each time the allowed key is
+pressed, it activates the associated function to either move the arrow
+up or down, or select an option.*/
 int	restart_game(int key, void *game)
 {
 	if (key == DOWN)

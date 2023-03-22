@@ -6,12 +6,15 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:33:14 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:49:21 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+/*Puts the number of move on the terminal, followed by a space bar. Also, the
+same number is then showed on the bottom of the game window with the use of 
+mlx_string_put.*/
 void	put_moves(t_game *game)
 {
 	char	*str;
@@ -27,6 +30,10 @@ void	put_moves(t_game *game)
 	free(str);
 }
 
+/*Moves the character in the desired direction specified in the arguments if
+it does not encounter a wall or an exit. If it encounters a collectible, the
+number of collectibles decreases. The game->moves counter increments with 
+each move.*/
 void	move(t_game *game, void **player, int direction)
 {
 	if (!is_wall(game, direction))
@@ -42,6 +49,10 @@ void	move(t_game *game, void **player, int direction)
 	}
 }
 
+/*Linked to the mlx key hook function, so each time one of the allowed keys is
+pressed, it activates the associated move function and sends all of the 
+necessary info to it so the character moves in the right direction. If the
+ESC key is pressed, the game ends.*/
 int	deal_key(int key, t_game *game)
 {
 	if (key == LEFT || key == 0)

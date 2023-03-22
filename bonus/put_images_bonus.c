@@ -6,18 +6,24 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:48:13 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:09:53 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+/*Shortens the lenght of the mlx_put_image_to_window function to make the
+norminette happy.*/
 void	put_image(t_game *game, void **image, int x, int y)
 {
 	mlx_put_image_to_window
 		(game->mlx, game->window, image, y * SIZE, x * SIZE);
 }
 
+/*Shortens the lenght of the put_image function to make the norminette happy
+by already having some directions defined instead of re-writing the 
+coordinates all the time. Also makes everything looks cleaner and less 
+confusing.*/
 void	put_image_direction(t_game *game, void **image, int direction)
 {
 	if (direction == POSITION)
@@ -37,6 +43,7 @@ void	put_image_direction(t_game *game, void **image, int direction)
 		(game->mlx, game->window, image, game->y * SIZE, (game->x + 1) * SIZE);
 }
 
+/*Destroys all of the image pointers.*/
 void	destroy_images(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->sprite.base);

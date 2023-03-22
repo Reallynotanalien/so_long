@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 18:48:21 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:16:41 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <errno.h>
 
 # define SIZE 32
 # define TRUE 0

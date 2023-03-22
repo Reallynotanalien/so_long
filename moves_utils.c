@@ -6,12 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 13:53:52 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:00:25 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*Changes the position of the player on the map. This does not impact the
+sprites.*/
 void	change_location_on_map(t_game *game, int direction, int option)
 {
 	if ((direction == LEFT && option == TRUE)
@@ -28,6 +30,8 @@ void	change_location_on_map(t_game *game, int direction, int option)
 		game->x--;
 }
 
+/*Puts the heart image and turns the exit character so that it faces the
+player. Then, the restart_game options appear.*/
 void	is_win(t_game *game, void **player, void **exit, int direction)
 {
 	put_image_direction(game, game->sprite.base, POSITION);
@@ -39,6 +43,11 @@ void	is_win(t_game *game, void **player, void **exit, int direction)
 	mlx_key_hook(game->window, restart_game, game);
 }
 
+/*Checks if the position that we are on is the exit. If so, checks if all
+collectibles have been collected and executes the is_win function if that is
+the case. Else, the position will change for the last one to make it appear
+as if the character never moved at all and the function will return true. If 
+the position is not an exit, then it returns false.*/
 bool	is_exit(t_game *game, int direction)
 {
 	if (game->map[game->x][game->y] == EXIT)
@@ -60,16 +69,21 @@ bool	is_exit(t_game *game, int direction)
 	return (false);
 }
 
-bool	is_wall(t_game *game, int option)
+/*Checks if the next position (depending of the direction sent as an argument)
+is a wall. Returns true if it is, false if it is not.*/
+bool	is_wall(t_game *game, int direction)
 {
-	if ((option == LEFT && (game->map[game->x][game->y - 1] != WALL))
-		|| (option == RIGHT && (game->map[game->x][game->y + 1] != WALL))
-		|| (option == DOWN && (game->map[game->x + 1][game->y] != WALL))
-		|| (option == UP && (game->map[game->x - 1][game->y] != WALL)))
+	if ((direction == LEFT && (game->map[game->x][game->y - 1] != WALL))
+		|| (direction == RIGHT && (game->map[game->x][game->y + 1] != WALL))
+		|| (direction == DOWN && (game->map[game->x + 1][game->y] != WALL))
+		|| (direction == UP && (game->map[game->x - 1][game->y] != WALL)))
 		return (false);
 	return (true);
 }
 
+/*Checks if the position that we are on is a collectible. If so, changes the 
+position for the char '0' and reduces the number of collectibles missing,
+then changes the sprite for a base one to make the collectible disappear.*/
 void	check_if_collectible(t_game *game)
 {
 	if (game->map[game->x][game->y] == COLLECTIBLE)

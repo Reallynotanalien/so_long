@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/22 18:25:45 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:12:21 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_sprites(t_game *game)
 	game->sprite.exit_sign = xpm_to_image(game, "./Assets/exit_sign.xpm");
 	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");
 	game->sprite.black = xpm_to_image(game, "./Assets/black.xpm");
+	game->sprite.fox = xpm_to_image(game, "./Assets/fox.xpm");
 }
 
 /*Takes the initial state of the map and fills it with the right sprites 
@@ -93,6 +94,8 @@ void	init_map(t_game *game)
 			put_image(game, game->sprite.base, x, y);
 			if (game->map[x][y] == PLAYER)
 				put_image(game, game->sprite.play, x, y);
+			else if (game->map[x][y] == FOX)
+				put_image(game, game->sprite.fox, x, y);
 			else if (game->map[x][y] == WALL)
 				put_image(game, game->sprite.wall, x, y);
 			else if (game->map[x][y] == COLLECTIBLE)

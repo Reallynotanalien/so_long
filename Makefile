@@ -6,7 +6,7 @@
 #    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/24 09:59:24 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/03/24 10:12:59 by katherinefo      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ clean:
 fclean: 
 		@$(MAKE) fclean -C ./bonus
 		@$(MAKE) fclean -C ./Libft
-		@$(MAKE) clean -C ./minilibx_opengl_20191021
 		$(RM) $(OBJS)
 		$(RM) $(NAME)
 		$(RM) $(NAME_BONUS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_images_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:53:23 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:07:26 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	destroy_images(t_game *game)
 	destroy_if_not_null(game, game->sprite.arrow);
 	destroy_if_not_null(game, game->sprite.exit_sign);
 	destroy_if_not_null(game, game->sprite.start_sign);
+	destroy_if_not_null(game, game->sprite.fox);
 }

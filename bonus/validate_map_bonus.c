@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 16:40:37 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:10:26 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	validate_characters(t_game *game)
 				game->player_num++;
 				game->x = x;
 				game->y = y;
+			}
+			else if (game->map[x][y] == FOX)
+			{
+				game->fox.x = x;
+				game->fox.y = y;
 			}
 			else if (game->map[x][y] == COLLECTIBLE)
 				game->collect_num++;

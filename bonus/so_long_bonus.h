@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:16:49 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:09:00 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 /*MAP*/
 # define PLAYER 'P'
+# define FOX 'F'
 # define WALL '1'
 # define EXIT 'E'
 # define COLLECTIBLE 'C'
@@ -58,6 +59,12 @@
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
 # define IMAGE_ERROR "One of your sprites could not be opened.\n"
 
+typedef struct fox
+{
+	int	x;
+	int	y;
+}				t_fox;
+
 typedef struct sprites
 {
 	void		**base;
@@ -76,6 +83,7 @@ typedef struct sprites
 	void		**start_sign;
 	void		**arrow;
 	void		**black;
+	void		**fox;
 }				t_sprites;
 
 typedef struct game
@@ -96,6 +104,7 @@ typedef struct game
 	int			x;
 	int			y;
 	t_sprites	sprite;
+	t_fox		fox;
 }				t_game;
 
 /*main*/

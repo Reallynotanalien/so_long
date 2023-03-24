@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 09:58:47 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 10:20:15 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,17 @@ void	move(t_game *game, void **player, int direction)
 		check_if_collectible(game);
 		if (!is_exit(game, direction))
 		{
-			put_image_direction(game, game->sprite.base, direction);
-			put_image_direction(game, player, POSITION);
-			put_moves(game);
+			if (game->map[game->x][game->y] == FOX)
+			{
+				put_arrows(game, UP);
+				mlx_key_hook(game->window, restart_game, game);
+			}
+			else
+			{
+				put_image_direction(game, game->sprite.base, direction);
+				put_image_direction(game, player, POSITION);
+				put_moves(game);
+			}
 		}
 	}
 }

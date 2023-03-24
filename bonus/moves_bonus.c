@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 13:54:19 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 14:03:19 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,10 @@ int	fox_hook(t_game *game)
 			game->map[game->fox.x][game->fox.y] = '0';
 			game->fox.x = game->fox.x + random_x;
 			game->map[game->fox.x][game->fox.y] = 'F';
-			put_image(game, game->sprite.fox, game->fox.x, game->fox.y);
+			if (random_x < 0)
+				put_image(game, game->sprite.fox_up, game->fox.x, game->fox.y);
+			else
+				put_image(game, game->sprite.fox_down, game->fox.x, game->fox.y);
 		}
 		else if (game->map [game->fox.x + random_x][game->fox.y] == 'P')
 		{

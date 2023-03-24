@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 14:03:19 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 16:49:54 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	flood_map(t_game *game)
 	{
 		y = 0;
 		while (y < game->columns)
-		{	
+		{
+			put_image(game, game->sprite.black, x, y);
 			if (game->map[x][y] == '0')
 				game->map[x][y] = 'X';
 			y++;
@@ -115,7 +116,7 @@ int	fox_hook(t_game *game)
 	game->loop++;
 	random_x = (rand() % 3) - 1;
 	random_y = (rand() % 3) - 1;
-	speed = 6555;
+	speed = 5555;
 	game->ennemy = game->loop % speed;
 	if (game->ennemy == 0 && game->status != OVER)
 	{

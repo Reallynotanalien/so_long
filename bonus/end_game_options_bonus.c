@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 09:47:48 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 16:52:00 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,13 @@ void	put_arrows(t_game *game, int direction)
 	put_image(game, game->sprite.exit_sign, x + 1, y);
 	if (direction == UP)
 	{
-		put_image(game, game->sprite.base, x + 1, y - 1);
-		if (game->map[x + 1][y - 1] == WALL)
-			put_image(game, game->sprite.wall, x + 1, y - 1);
+		put_image(game, game->sprite.black, x + 1, y - 1);
 		put_image(game, game->sprite.arrow, x, y - 1);
 		game->arrow_position = UP;
 	}
 	else if (direction == DOWN)
 	{
-		put_image(game, game->sprite.base, x, y - 1);
-		if (game->map[x][y - 1] == WALL)
-			put_image(game, game->sprite.wall, x, y - 1);
+		put_image(game, game->sprite.black, x, y - 1);
 		put_image(game, game->sprite.arrow, x + 1, y - 1);
 		game->arrow_position = DOWN;
 	}

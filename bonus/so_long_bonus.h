@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 14:01:58 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 16:40:07 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int		fox_hook(t_game *game);
 void	put_image(t_game *game, void **image, int x, int y);
 void	put_image_direction(t_game *game, void **image, int direction);
 void	destroy_images(t_game *game);
+int		carrot_hook(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);

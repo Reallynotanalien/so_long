@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 14:02:21 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 16:45:15 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,12 @@ void	destroy_images(t_game *game)
 	destroy_if_not_null(game, game->sprite.fox_left);
 	destroy_if_not_null(game, game->sprite.fox_up);
 	destroy_if_not_null(game, game->sprite.fox_down);
+}
+
+void	game_over(t_game *game)
+{
+	flood_map(game);
+	game->status = OVER;
+	put_arrows(game, UP);
+	mlx_key_hook(game->window, restart_game, game);
 }

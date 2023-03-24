@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 11:35:39 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 12:42:31 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	move(t_game *game, void **player, int direction)
 		{
 			if (game->map[game->x][game->y] == FOX)
 			{
+				flood_map(game);
+				game->status = OVER;
 				put_arrows(game, UP);
 				mlx_key_hook(game->window, restart_game, game);
 			}
@@ -85,17 +87,37 @@ int	deal_key(int key, t_game *game)
 	return (0);
 }
 
+void	flood_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (game->lines > x)
+	{
+		y = 0;
+		while (y < game->columns)
+		{	
+			if (game->map[x][y] == '0')
+				game->map[x][y] = 'X';
+			y++;
+		}
+		x++;
+	}
+}
+
 int	fox_hook(t_game *game)
 {
 	int	random_x;
 	int	random_y;
 	int	speed;
 
+	game->loop++;
 	random_x = (rand() % 3) - 1;
 	random_y = (rand() % 3) - 1;
-	speed = 1;
+	speed = 80;
 	game->ennemy = game->loop % speed;
-	if (game->ennemy == speed - 1)
+	if (game->ennemy == speed - 1 && game->status != OVER)
 	{
 		if (random_x > 0)
 		{
@@ -109,6 +131,8 @@ int	fox_hook(t_game *game)
 			}
 			else if (game->map [game->fox.x + 1][game->fox.y] == 'P')
 			{
+				flood_map(game);
+				game->status = OVER;
 				put_arrows(game, UP);
 				mlx_key_hook(game->window, restart_game, game);
 			}
@@ -125,6 +149,8 @@ int	fox_hook(t_game *game)
 			}
 			else if (game->map [game->fox.x - 1][game->fox.y] == 'P')
 			{
+				flood_map(game);
+				game->status = OVER;
 				put_arrows(game, UP);
 				mlx_key_hook(game->window, restart_game, game);
 			}
@@ -141,6 +167,8 @@ int	fox_hook(t_game *game)
 			}
 			else if (game->map [game->fox.x][game->fox.y - 1] == 'P')
 			{
+				flood_map(game);
+				game->status = OVER;
 				put_arrows(game, UP);
 				mlx_key_hook(game->window, restart_game, game);
 			}
@@ -157,6 +185,8 @@ int	fox_hook(t_game *game)
 			}
 			else if (game->map [game->fox.x][game->fox.y + 1] == 'P')
 			{
+				flood_map(game);
+				game->status = OVER;
 				put_arrows(game, UP);
 				mlx_key_hook(game->window, restart_game, game);
 			}

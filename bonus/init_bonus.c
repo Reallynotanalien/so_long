@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/24 11:15:41 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 12:33:49 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_game_struct(t_game *game, char **argv)
 }
 
 /*Initializes the t_game struct data (number of lines/columns/players/
-collectibles/exits/moves/loop) to zero.*/
+collectibles/exits/moves/loop/status) to zero.*/
 void	init_data(t_game *game)
 {
 	game->lines = 0;
@@ -30,6 +30,7 @@ void	init_data(t_game *game)
 	game->exit_num = 0;
 	game->moves = 0;
 	game->loop = 0;
+	game->status = 0;
 }
 
 /*Checks if the path to the asset can be opened. If not, frees the map and

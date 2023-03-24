@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 11:15:18 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 12:33:26 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define SIZE 32
 # define TRUE 0
 # define FALSE 1
+# define OVER 1
 
 /*MAP*/
 # define PLAYER 'P'
@@ -107,6 +108,7 @@ typedef struct game
 	t_fox		fox;
 	int			ennemy;
 	int			loop;
+	int			status;
 }				t_game;
 
 /*main*/
@@ -141,6 +143,7 @@ void	check_if_collectible(t_game *game);
 /*moves*/
 void	put_moves(t_game *game);
 int		deal_key(int key, t_game *game);
+void	flood_map(t_game *game);
 int		fox_hook(t_game *game);
 
 /*put_images*/

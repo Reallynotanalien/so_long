@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 10:17:01 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 12:39:12 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	is_win(t_game *game, void **player, void **exit, int direction)
 	put_image_direction(game, player, direction);
 	put_moves(game);
 	ft_putstr_fd("\nYOU WON!!\n", 1);
+	flood_map(game);
+	game->status = OVER;
 	put_arrows(game, UP);
 	mlx_key_hook(game->window, restart_game, game);
 }

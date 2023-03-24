@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/24 12:33:49 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 13:52:04 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	init_sprites(t_game *game)
 	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");
 	game->sprite.black = xpm_to_image(game, "./Assets/black.xpm");
 	game->sprite.fox = xpm_to_image(game, "./Assets/fox.xpm");
+	game->sprite.fox_left = xpm_to_image(game, "./Assets/fox_left.xpm");
 }
 
 /*Takes the initial state of the map and fills it with the right sprites 

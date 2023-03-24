@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 13:03:41 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 13:54:19 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,33 @@ int	fox_hook(t_game *game)
 	game->ennemy = game->loop % speed;
 	if (game->ennemy == 0 && game->status != OVER)
 	{
-		if (game->map[game->fox.x + random_x][game->fox.y + random_y] == '0')
+		if (game->map[game->fox.x][game->fox.y + random_y] == '0')
+		{
+			put_image(game, game->sprite.base, game->fox.x, game->fox.y);
+			game->map[game->fox.x][game->fox.y] = '0';
+			game->fox.y = game->fox.y + random_y;
+			game->map[game->fox.x][game->fox.y] = 'F';
+			if (random_y < 0)
+				put_image(game, game->sprite.fox_left, game->fox.x, game->fox.y);
+			else
+				put_image(game, game->sprite.fox, game->fox.x, game->fox.y);
+		}
+		else if (game->map [game->fox.x][game->fox.y + random_y] == 'P')
+		{
+			flood_map(game);
+			game->status = OVER;
+			put_arrows(game, UP);
+			mlx_key_hook(game->window, restart_game, game);
+		}
+		else if (game->map[game->fox.x + random_x][game->fox.y] == '0')
 		{
 			put_image(game, game->sprite.base, game->fox.x, game->fox.y);
 			game->map[game->fox.x][game->fox.y] = '0';
 			game->fox.x = game->fox.x + random_x;
-			game->fox.y = game->fox.y + random_y;
 			game->map[game->fox.x][game->fox.y] = 'F';
 			put_image(game, game->sprite.fox, game->fox.x, game->fox.y);
 		}
-		else if (game->map [game->fox.x + 1][game->fox.y] == 'P')
+		else if (game->map [game->fox.x + random_x][game->fox.y] == 'P')
 		{
 			flood_map(game);
 			game->status = OVER;

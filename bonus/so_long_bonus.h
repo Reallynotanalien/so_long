@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 12:33:26 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 13:52:14 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct sprites
 	void		**arrow;
 	void		**black;
 	void		**fox;
+	void		**fox_left;
 }				t_sprites;
 
 typedef struct game

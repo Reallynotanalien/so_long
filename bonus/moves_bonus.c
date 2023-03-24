@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 18:26:32 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 09:58:47 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_moves(t_game *game)
 	game->moves++;
 	str = ft_itoa(game->moves);
 	ft_putnbr_fd(game->moves, 1);
-	ft_putstr_fd(" ", 1);
+	ft_putstr_fd("\n", 1);
 	mlx_put_image_to_window(game->mlx, game->window,
 		game->sprite.black, (2 * (SIZE - 1)), game->lines * SIZE);
 	mlx_string_put(game->mlx, game->window,

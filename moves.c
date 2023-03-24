@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 16:47:38 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 09:58:54 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	put_moves(t_game *game)
 {
 	game->moves++;
 	ft_putnbr_fd(game->moves, 1);
-	ft_putstr_fd(" ", 1);
+	ft_putstr_fd("\n", 1);
 }
 
 /*Moves the character in the desired direction specified in the arguments if

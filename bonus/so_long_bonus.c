@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 18:14:34 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 10:41:56 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	start_game(t_game *game)
 	init_sprites(game);
 	init_map(game);
 	mlx_hook(game->window, 17, 0, end_game, game);
+	mlx_loop_hook(game->mlx, fox_hook, game);
 	mlx_key_hook(game->window, deal_key, game);
 	mlx_loop(game->mlx);
 }

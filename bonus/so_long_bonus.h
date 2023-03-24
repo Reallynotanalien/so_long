@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 10:09:00 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/24 11:15:18 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ typedef struct game
 	int			y;
 	t_sprites	sprite;
 	t_fox		fox;
+	int			ennemy;
+	int			loop;
 }				t_game;
 
 /*main*/
@@ -139,6 +141,7 @@ void	check_if_collectible(t_game *game);
 /*moves*/
 void	put_moves(t_game *game);
 int		deal_key(int key, t_game *game);
+int		fox_hook(t_game *game);
 
 /*put_images*/
 void	put_image(t_game *game, void **image, int x, int y);

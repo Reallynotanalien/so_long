@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_game_options.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:24:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/03/24 09:47:08 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	reset_game(t_game *game)
 {
 	destroy_images(game);
 	mlx_clear_window(game->mlx, game->window);
+	mlx_destroy_window(game->mlx, game->window);
 	free_map(game->map, game);
 	start_game(game);
 }

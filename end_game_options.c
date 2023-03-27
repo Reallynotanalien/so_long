@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 09:47:08 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/27 15:56:48 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ pressed, it activates the associated function to either move the arrow
 up or down, or select an option.*/
 int	restart_game(int key, void *game)
 {
-	if (key == DOWN)
+	if (key == DOWN || key == 1)
 		put_arrows(game, DOWN);
-	if (key == UP)
+	if (key == UP || key == 13)
 		put_arrows(game, UP);
 	if (key == ENTER)
 		select_option(game);

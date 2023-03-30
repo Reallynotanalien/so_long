@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/29 18:41:10 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/30 18:22:42 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void	destroy_images(t_game *game)
 	destroy_if_not_null(game, game->sprite.fox_down);
 	destroy_if_not_null(game, game->sprite.game_over);
 	destroy_if_not_null(game, game->sprite.dead);
+	destroy_if_not_null(game, game->sprite.exit);
+	destroy_if_not_null(game, game->sprite.restart);
+	destroy_if_not_null(game, game->sprite.arrow_bonus);
 }
 
 void	game_over(t_game *game)

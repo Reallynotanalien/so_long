@@ -6,7 +6,7 @@
 /*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/29 18:40:29 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/03/30 18:23:52 by katherinefo      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void	init_sprites(t_game *game)
 	game->sprite.fox_down = xpm_to_image(game, "./Assets/fox_down.xpm");
 	game->sprite.game_over = xpm_to_image(game, "./Assets/game_over.xpm");
 	game->sprite.dead = xpm_to_image(game, "./Assets/dead.xpm");
+	game->sprite.exit_ = xpm_to_image(game, "./Assets/exit.xpm");
+	game->sprite.restart = xpm_to_image(game, "./Assets/restart.xpm");
+	game->sprite.arrow_bonus = xpm_to_image(game, "./Assets/arrow_bonus.xpm");
 }
 
 /*Takes the initial state of the map and fills it with the right sprites 

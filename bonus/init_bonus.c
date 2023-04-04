@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/04/04 17:48:57 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:58:49 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_game_struct(t_game *game, char **argv)
 }
 
 /*Initializes the t_game struct data (number of lines/columns/players/
-collectibles/exits/moves/loop/status) to zero.*/
+collectibles/exits/ennemies/moves/loop/status) to zero.*/
 void	init_data(t_game *game)
 {
 	game->lines = 0;

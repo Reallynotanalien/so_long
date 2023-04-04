@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_game_options_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/30 18:24:42 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:47:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,48 @@ void	put_arrows(t_game *game, int direction)
 
 	x = game->lines / 2;
 	y = game->columns / 2;
-	put_image(game, game->sprite.start_sign, x, y);
-	put_image(game, game->sprite.exit_sign, x + 1, y);
+	if (game->status == OVER)
+	{
+		flood_map(game);	
+		if (game->lines > 3)
+		{
+			put_image(game, game->sprite.game_over, x - 2, y);
+			put_image(game, game->sprite.dead, x - 2, y - 2);
+		}
+		mlx_string_put(game->mlx, game->window, (y - 1) * SIZE, x * SIZE, 16777215, "RESTART");
+		mlx_string_put(game->mlx, game->window, (y - 1) * SIZE, (x + 1) * SIZE, 16777215, "EXIT");
+	}
+	else
+	{
+		put_image(game, game->sprite.start_sign, x, y);
+		put_image(game, game->sprite.exit_sign, x + 1, y);
+	}
 	if (direction == UP)
 	{
-		put_image(game, game->sprite.black, x + 1, y - 1);
-		put_image(game, game->sprite.arrow, x, y - 1);
+		if (game->status == OVER)
+		{
+			put_image(game, game->sprite.black, x + 1, y - 2);
+			mlx_string_put(game->mlx, game->window, (y - 2) * SIZE, x * SIZE, 16777215, ">");
+		}
+		else
+		{
+			put_image(game, game->sprite.black, x + 1, y - 1);
+			put_image(game, game->sprite.arrow, x, y - 1);
+		}
 		game->arrow_position = UP;
 	}
 	else if (direction == DOWN)
 	{
-		put_image(game, game->sprite.black, x, y - 1);
-		put_image(game, game->sprite.arrow, x + 1, y - 1);
+		if (game->status == OVER)
+		{
+			put_image(game, game->sprite.black, x, y - 2);
+			mlx_string_put(game->mlx, game->window, (y - 2) * SIZE, (x + 1) * SIZE, 16777215, ">");
+		}
+		else
+		{
+			put_image(game, game->sprite.black, x, y - 1);
+			put_image(game, game->sprite.arrow, x + 1, y - 1);
+		}
 		game->arrow_position = DOWN;
 	}
 }

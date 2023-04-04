@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/30 18:23:42 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:48:43 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ typedef struct sprites
 	void		**fox_down;
 	void		**game_over;
 	void		**dead;
-	void		**exit_;
-	void		**restart;
-	void		**arrow_bonus;
 }				t_sprites;
 
 typedef struct game
@@ -106,6 +103,7 @@ typedef struct game
 	int			player_num;
 	int			collect_num;
 	int			exit_num;
+	int			fox_num;
 	int			moves;
 	int			temp;
 	int			fd;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 10:10:26 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:49:58 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	validate_characters(t_game *game)
 			{
 				game->fox.x = x;
 				game->fox.y = y;
+				game->fox_num++;
 			}
 			else if (game->map[x][y] == COLLECTIBLE)
 				game->collect_num++;
@@ -112,5 +113,7 @@ void	validate_map(char *argv, t_game *game)
 		free_and_exit_error(COLL_ERROR, game);
 	if (game->exit_num != 1)
 		free_and_exit_error(EXIT_ERROR, game);
+	if (game->fox_num != 1)
+		free_and_exit_error("SHOULD BE ONE FOX", game);
 	flood_fill(game);
 }

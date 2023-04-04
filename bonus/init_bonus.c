@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/30 18:23:52 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:48:57 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_data(t_game *game)
 	game->player_num = 0;
 	game->collect_num = 0;
 	game->exit_num = 0;
+	game->fox_num = 0;
 	game->moves = 0;
 	game->loop = 0;
 	game->status = 0;
@@ -83,9 +84,6 @@ void	init_sprites(t_game *game)
 	game->sprite.fox_down = xpm_to_image(game, "./Assets/fox_down.xpm");
 	game->sprite.game_over = xpm_to_image(game, "./Assets/game_over.xpm");
 	game->sprite.dead = xpm_to_image(game, "./Assets/dead.xpm");
-	game->sprite.exit_ = xpm_to_image(game, "./Assets/exit.xpm");
-	game->sprite.restart = xpm_to_image(game, "./Assets/restart.xpm");
-	game->sprite.arrow_bonus = xpm_to_image(game, "./Assets/arrow_bonus.xpm");
 }
 
 /*Takes the initial state of the map and fills it with the right sprites 

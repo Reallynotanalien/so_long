@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 16:59:42 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:17:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	destroy_images(t_game *game)
 	destroy_if_not_null(game, game->sprite.dead);
 }
 
+/*Resets the whole screen and make it all black by replacing every sprite with
+a black square.*/
 void	flood_map_with_black(t_game *game)
 {
 	int	x;

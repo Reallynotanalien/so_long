@@ -6,11 +6,27 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 16:59:35 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:19:34 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+/*Changes the last location of the player on the map for a '0', meaning it is
+now an empty space, according to the direction in which the character moved
+and also changes the new location of the player on the map for a 'P'.*/
+void	move_player_on_map(t_game *game, int direction)
+{
+	game->map[game->x][game->y] = 'P';
+	if (direction == LEFT)
+		game->map[game->x][game->y + 1] = '0';
+	else if (direction == RIGHT)
+		game->map[game->x][game->y - 1] = '0';
+	else if (direction == UP)
+		game->map[game->x + 1][game->y] = '0';
+	else if (direction == DOWN)
+		game->map[game->x - 1][game->y] = '0';
+}
 
 /*Puts the number of move on the terminal, followed by a space bar. Also, the
 same number is then showed on the bottom of the game window with the use of 
@@ -71,58 +87,5 @@ int	deal_key(int key, t_game *game)
 		move(game, game->sprite.up, UP);
 	else if (key == ESC)
 		end_game(game);
-	return (0);
-}
-
-int	fox_hook(t_game *game)
-{
-	int	random_x;
-	int	random_y;
-	int	speed;
-
-	game->loop++;
-	random_x = (rand() % 3) - 1;
-	random_y = (rand() % 3) - 1;
-	speed = 5555;
-	game->ennemy = game->loop % speed;
-	if (game->ennemy == 0 && game->status != OVER)
-	{
-		if (game->map[game->fox.x][game->fox.y + random_y] == '0')
-		{
-			put_image(game, game->sprite.base, game->fox.x, game->fox.y);
-			game->map[game->fox.x][game->fox.y] = '0';
-			game->fox.y = game->fox.y + random_y;
-			game->map[game->fox.x][game->fox.y] = 'F';
-			if (random_y < 0)
-				put_image(game, game->sprite.fox_left, game->fox.x, game->fox.y);
-			else
-				put_image(game, game->sprite.fox, game->fox.x, game->fox.y);
-		}
-		else if (game->map [game->fox.x][game->fox.y + random_y] == 'P')
-		{
-			flood_map_with_black(game);
-			game->status = OVER;
-			put_arrows(game, UP);
-			mlx_key_hook(game->window, restart_game, game);
-		}
-		else if (game->map[game->fox.x + random_x][game->fox.y] == '0')
-		{
-			put_image(game, game->sprite.base, game->fox.x, game->fox.y);
-			game->map[game->fox.x][game->fox.y] = '0';
-			game->fox.x = game->fox.x + random_x;
-			game->map[game->fox.x][game->fox.y] = 'F';
-			if (random_x < 0)
-				put_image(game, game->sprite.fox_up, game->fox.x, game->fox.y);
-			else
-				put_image(game, game->sprite.fox_down, game->fox.x, game->fox.y);
-		}
-		else if (game->map [game->fox.x + random_x][game->fox.y] == 'P')
-		{
-			flood_map_with_black(game);
-			game->status = OVER;
-			put_arrows(game, UP);
-			mlx_key_hook(game->window, restart_game, game);
-		}
-	}
 	return (0);
 }

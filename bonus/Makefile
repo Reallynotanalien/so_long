@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/04/07 16:26:12 by kafortin         ###   ########.fr        #
+#    Updated: 2023/04/07 17:18:12 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long.a
 
 FILES = end_game_options_bonus.c \
+		ennemy_bonus.c \
 		exit_management_bonus.c \
 		flood_fill_bonus.c \
 		init_bonus.c \

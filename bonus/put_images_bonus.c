@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/04 17:28:52 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:59:42 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	put_image_direction(t_game *game, void **image, int direction)
 		(game->mlx, game->window, image, game->y * SIZE, (game->x + 1) * SIZE);
 }
 
+/*Shortens the lenght of the destroy_image function to make the norminette happy
+by directly sending the image we want to destroy as an argument, then checking 
+if the image sent is not empty before destroying it.*/
 void	destroy_if_not_null(t_game *game, void **image)
 {
 	if (image)
@@ -75,10 +78,22 @@ void	destroy_images(t_game *game)
 	destroy_if_not_null(game, game->sprite.dead);
 }
 
-void	game_over(t_game *game)
+void	flood_map_with_black(t_game *game)
 {
-	flood_map(game);
-	game->status = OVER;
-	put_arrows(game, UP);
-	mlx_key_hook(game->window, restart_game, game);
+	int	x;
+	int	y;
+
+	x = 0;
+	while (game->lines > x)
+	{
+		y = 0;
+		while (y < game->columns)
+		{
+			put_image(game, game->sprite.black, x, y);
+			if (game->map[x][y] == '0')
+				game->map[x][y] = 'X';
+			y++;
+		}
+		x++;
+	}
 }

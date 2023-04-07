@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/04 17:01:11 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:59:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	change_location_on_map(t_game *game, int direction, int option)
 player. Then, the restart_game options appear.*/
 void	is_win(t_game *game, void **player, void **exit, int direction)
 {
-	flood_map(game);
+	flood_map_with_black(game);
 	put_image_direction(game, exit, POSITION);
 	put_image_direction(game, player, direction);
 	put_moves(game);

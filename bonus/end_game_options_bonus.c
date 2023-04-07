@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/04 17:47:35 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:14:15 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	put_arrows(t_game *game, int direction)
 	y = game->columns / 2;
 	if (game->status == OVER)
 	{
-		flood_map(game);	
+		flood_map_with_black(game);	
 		if (game->lines > 3)
 		{
 			put_image(game, game->sprite.game_over, x - 2, y);
@@ -112,4 +112,12 @@ int	restart_game(int key, void *game)
 	if (key == ENTER)
 		select_option(game);
 	return (0);
+}
+
+void	game_over(t_game *game)
+{
+	flood_map_with_black(game);
+	game->status = OVER;
+	put_arrows(game, UP);
+	mlx_key_hook(game->window, restart_game, game);
 }

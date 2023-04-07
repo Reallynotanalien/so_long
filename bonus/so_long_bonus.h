@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/04 17:48:43 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:13:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void	start_game(t_game *game);
 int		end_game(t_game *game);
 void	put_arrows(t_game *game, int direction);
 int		restart_game(int key, void *game);
+void	game_over(t_game *game);
 
 /*exit_management*/
 void	exit_error(char *error);
@@ -149,17 +150,21 @@ void	check_if_collectible(t_game *game);
 /*moves*/
 void	put_moves(t_game *game);
 int		deal_key(int key, t_game *game);
-void	flood_map(t_game *game);
 int		fox_hook(t_game *game);
 
 /*put_images*/
 void	put_image(t_game *game, void **image, int x, int y);
 void	put_image_direction(t_game *game, void **image, int direction);
 void	destroy_images(t_game *game);
-int		carrot_hook(t_game *game);
+void	flood_map_with_black(t_game *game);
 
 /*read_map*/
 void	read_map(char *argv, t_game *game);
+
+/*utils*/
+void	is_fox(t_game *game, int x, int y);
+void	is_player(t_game *game, int x, int y);
+void	move_player_on_map(t_game *game, int direction);
 
 /*validate_map*/
 void	validate_map(char *argv, t_game *game);

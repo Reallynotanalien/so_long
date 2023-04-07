@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:49:54 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/07 16:59:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,12 @@ void	move(t_game *game, void **player, int direction)
 		if (!is_exit(game, direction))
 		{
 			if (game->map[game->x][game->y] == FOX)
-			{
-				flood_map(game);
-				game->status = OVER;
-				put_arrows(game, UP);
-				mlx_key_hook(game->window, restart_game, game);
-			}
+				game_over(game);
 			else
 			{
 				put_image_direction(game, game->sprite.base, direction);
-				if (direction == LEFT)
-					game->map[game->x][game->y + 1] = '0';
-				else if (direction == RIGHT)
-					game->map[game->x][game->y - 1] = '0';
-				else if (direction == UP)
-					game->map[game->x + 1][game->y] = '0';
-				else if (direction == DOWN)
-					game->map[game->x - 1][game->y] = '0';
+				move_player_on_map(game, direction);
 				put_image_direction(game, player, POSITION);
-				game->map[game->x][game->y] = 'P';
 				put_moves(game);
 			}
 		}
@@ -85,26 +72,6 @@ int	deal_key(int key, t_game *game)
 	else if (key == ESC)
 		end_game(game);
 	return (0);
-}
-
-void	flood_map(t_game *game)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (game->lines > x)
-	{
-		y = 0;
-		while (y < game->columns)
-		{
-			put_image(game, game->sprite.black, x, y);
-			if (game->map[x][y] == '0')
-				game->map[x][y] = 'X';
-			y++;
-		}
-		x++;
-	}
 }
 
 int	fox_hook(t_game *game)
@@ -133,7 +100,7 @@ int	fox_hook(t_game *game)
 		}
 		else if (game->map [game->fox.x][game->fox.y + random_y] == 'P')
 		{
-			flood_map(game);
+			flood_map_with_black(game);
 			game->status = OVER;
 			put_arrows(game, UP);
 			mlx_key_hook(game->window, restart_game, game);
@@ -151,7 +118,7 @@ int	fox_hook(t_game *game)
 		}
 		else if (game->map [game->fox.x + random_x][game->fox.y] == 'P')
 		{
-			flood_map(game);
+			flood_map_with_black(game);
 			game->status = OVER;
 			put_arrows(game, UP);
 			mlx_key_hook(game->window, restart_game, game);

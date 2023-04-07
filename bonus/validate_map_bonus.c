@@ -6,14 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/04 18:00:00 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:35:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-/*Goes through the whole map and counts the number of exits, players, and
-collectibles and stores them in the game structure. If it finds a character
+/*Goes through the whole map and counts the number of exits, players, ennemies
+and collectibles and stores them in the game structure. If it finds a character
 that is not permitted in the map, the program exits.*/
 void	validate_characters(t_game *game)
 {
@@ -27,17 +27,9 @@ void	validate_characters(t_game *game)
 		while (game->columns > y)
 		{
 			if (game->map[x][y] == PLAYER)
-			{
-				game->player_num++;
-				game->x = x;
-				game->y = y;
-			}
+				is_player(game, x, y);
 			else if (game->map[x][y] == FOX)
-			{
-				game->fox_num++;
-				game->fox.x = x;
-				game->fox.y = y;
-			}
+				is_fox(game, x, y);
 			else if (game->map[x][y] == COLLECTIBLE)
 				game->collect_num++;
 			else if (game->map[x][y] == EXIT)

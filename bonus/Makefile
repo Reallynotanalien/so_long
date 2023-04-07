@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 18:11:34 by kafortin         ###   ########.fr        #
+#    Updated: 2023/04/07 16:26:12 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ FILES = end_game_options_bonus.c \
 		read_map_bonus.c \
 		so_long_bonus.c \
 		validate_map_bonus.c \
+		utils_bonus.c \
 
 OBJS = $(FILES:.c=.o)
 

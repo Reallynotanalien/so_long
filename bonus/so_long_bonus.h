@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:59:46 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:10:41 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define TRUE 0
 # define FALSE 1
 # define OVER 1
+# define WIN 2
 
 /*MAP*/
 # define PLAYER 'P'

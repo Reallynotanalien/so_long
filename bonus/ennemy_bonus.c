@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:18:25 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 18:33:10 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:11:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@ shows the game over screen with the arrows. Activates the restart hook function
 so the player can select if they want to exit or restart the game.*/
 void	game_over(t_game *game)
 {
+	int	x;
+	int	y;
+
+	x = ((SIZE * game->columns) / 2);
+	y = ((SIZE * game->lines) / 2);
 	flood_map_with_black(game);
 	game->status = OVER;
-	if (game->lines > 3)
+	if (game->lines > 4)
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.game_over, ((SIZE * game->columns) / 2) , ((SIZE * game->lines) / 2) - (2 * SIZE));
-		mlx_put_image_to_window(game->mlx, game->window, game->sprite.dead, ((SIZE * game->columns) / 2) - (2 * SIZE), ((SIZE * game->lines) / 2) - (2 * SIZE));
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.game_over,
+			x, y - (2 * SIZE));
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.dead,
+			x - (2 * SIZE), y - (2 * SIZE));
 	}
-	mlx_string_put(game->mlx, game->window, (((SIZE * game->columns) / 2)), ((SIZE * game->lines) / 2), 16777215, "RESTART");
-	mlx_string_put(game->mlx, game->window, (((SIZE * game->columns) / 2)), ((SIZE * game->lines) / 2) + SIZE, 16777215, "EXIT");
 	put_arrows(game, UP);
 	mlx_key_hook(game->window, restart_game, game);
 }
@@ -86,7 +91,7 @@ int	fox_hook(t_game *game)
 		random_direction = -1;
 	speed = 5555;
 	game->ennemy = game->loop % speed;
-	if (game->ennemy == 0 && game->status != OVER)
+	if (game->ennemy == 0 && game->status != OVER && game->status != WIN)
 	{
 		if (random_value == 0)
 			move_fox_horizontally(game, random_direction);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 16:39:54 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/07 19:07:44 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	start_game(t_game *game)
 			(SIZE * game->lines) + (SIZE / 2), "Bonnie & Friends");
 	init_sprites(game);
 	init_map(game);
+	mlx_string_put(game->mlx, game->window,
+		8, (game->lines * SIZE) + (SIZE / 2) - 4, 16777215, "Moves:");
 	mlx_hook(game->window, 17, 0, end_game, game);
 	mlx_loop_hook(game->mlx, fox_hook, game);
 	mlx_key_hook(game->window, deal_key, game);

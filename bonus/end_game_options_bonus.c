@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 18:43:19 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:09:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,39 +42,23 @@ void	put_arrows(t_game *game, int direction)
 	int	x;
 	int	y;
 
-	x = game->lines / 2;
-	y = game->columns / 2;
-	if (game->status != OVER)
-	{
-		put_image(game, game->sprite.start_sign, x, y);
-		put_image(game, game->sprite.exit_sign, x + 1, y);
-	}
+	x = ((SIZE * game->columns) / 2) - (SIZE / 2);
+	y = ((SIZE * game->lines) / 2);
+	mlx_string_put(game->mlx, game->window, x, y, 16777215, "RESTART");
+	mlx_string_put(game->mlx, game->window, x, y + SIZE, 16777215, "EXIT");
 	if (direction == UP)
 	{
-		if (game->status == OVER)
-		{
-			mlx_put_image_to_window(game->mlx, game->window, game->sprite.black, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2));
-			mlx_string_put(game->mlx, game->window, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2), 16777215, ">");
-		}
-		else
-		{
-			put_image(game, game->sprite.black, x + 1, y - 1);
-			put_image(game, game->sprite.arrow, x, y - 1);
-		}
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.black,
+			x - SIZE, y);
+		mlx_string_put(game->mlx, game->window, x - SIZE, y, 16777215, ">");
 		game->arrow_position = UP;
 	}
 	else if (direction == DOWN)
 	{
-		if (game->status == OVER)
-		{
-			mlx_put_image_to_window(game->mlx, game->window, game->sprite.black, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2) - SIZE);
-			mlx_string_put(game->mlx, game->window, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2) + SIZE, 16777215, ">");
-		}
-		else
-		{
-			put_image(game, game->sprite.black, x, y - 1);
-			put_image(game, game->sprite.arrow, x + 1, y - 1);
-		}
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.black,
+			x - SIZE, y - SIZE);
+		mlx_string_put(game->mlx, game->window, x - SIZE,
+			y + SIZE, 16777215, ">");
 		game->arrow_position = DOWN;
 	}
 }

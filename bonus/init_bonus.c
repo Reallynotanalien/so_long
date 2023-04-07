@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/04/04 17:58:49 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:07:24 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,4 @@ void	init_map(t_game *game)
 		}
 		x++;
 	}
-	mlx_string_put(game->mlx, game->window,
-		8, (game->lines * SIZE) + (SIZE / 2) - 4, 16777215, "Moves:");
 }

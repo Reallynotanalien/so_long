@@ -6,12 +6,32 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:18:25 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:46:48 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:33:10 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+/*Sets the game status to OVER, fills the whole map with the black sprite and
+shows the game over screen with the arrows. Activates the restart hook function
+so the player can select if they want to exit or restart the game.*/
+void	game_over(t_game *game)
+{
+	flood_map_with_black(game);
+	game->status = OVER;
+	if (game->lines > 3)
+	{
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.game_over, ((SIZE * game->columns) / 2) , ((SIZE * game->lines) / 2) - (2 * SIZE));
+		mlx_put_image_to_window(game->mlx, game->window, game->sprite.dead, ((SIZE * game->columns) / 2) - (2 * SIZE), ((SIZE * game->lines) / 2) - (2 * SIZE));
+	}
+	mlx_string_put(game->mlx, game->window, (((SIZE * game->columns) / 2)), ((SIZE * game->lines) / 2), 16777215, "RESTART");
+	mlx_string_put(game->mlx, game->window, (((SIZE * game->columns) / 2)), ((SIZE * game->lines) / 2) + SIZE, 16777215, "EXIT");
+	put_arrows(game, UP);
+	mlx_key_hook(game->window, restart_game, game);
+}
+
+/*Moves the fox horizontally on the map and also changes all of the associated
+sprites, unless the fox collides with the player, then the game is over.*/
 void	move_fox_horizontally(t_game *game, int random)
 {
 	if (game->map[game->fox.x][game->fox.y + random] == '0')
@@ -29,6 +49,8 @@ void	move_fox_horizontally(t_game *game, int random)
 		game_over(game);
 }
 
+/*Moves the fox vertically on the map and also changes all of the associated
+sprites, unless the fox collides with the player, then the game is over.*/
 void	move_fox_vertically(t_game *game, int random)
 {
 	if (game->map[game->fox.x + random][game->fox.y] == '0')
@@ -46,6 +68,11 @@ void	move_fox_vertically(t_game *game, int random)
 		game_over(game);
 }
 
+/*Moves the fox in a random direction by creating two random numbers, one that
+will define if the fox will move vertically or horizontally, and to other to
+define whether it will move forward or backwards in that direction. This loop
+continues until the game status is set to OVER. The speed is set so that it
+does not move too fast, so the fox does not move on each loop.*/
 int	fox_hook(t_game *game)
 {
 	int	random_direction;

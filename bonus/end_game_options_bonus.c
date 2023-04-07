@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:14:15 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 18:43:19 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,7 @@ void	put_arrows(t_game *game, int direction)
 
 	x = game->lines / 2;
 	y = game->columns / 2;
-	if (game->status == OVER)
-	{
-		flood_map_with_black(game);	
-		if (game->lines > 3)
-		{
-			put_image(game, game->sprite.game_over, x - 2, y);
-			put_image(game, game->sprite.dead, x - 2, y - 2);
-		}
-		mlx_string_put(game->mlx, game->window, (y - 1) * SIZE, x * SIZE, 16777215, "RESTART");
-		mlx_string_put(game->mlx, game->window, (y - 1) * SIZE, (x + 1) * SIZE, 16777215, "EXIT");
-	}
-	else
+	if (game->status != OVER)
 	{
 		put_image(game, game->sprite.start_sign, x, y);
 		put_image(game, game->sprite.exit_sign, x + 1, y);
@@ -64,8 +53,8 @@ void	put_arrows(t_game *game, int direction)
 	{
 		if (game->status == OVER)
 		{
-			put_image(game, game->sprite.black, x + 1, y - 2);
-			mlx_string_put(game->mlx, game->window, (y - 2) * SIZE, x * SIZE, 16777215, ">");
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.black, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2));
+			mlx_string_put(game->mlx, game->window, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2), 16777215, ">");
 		}
 		else
 		{
@@ -78,8 +67,8 @@ void	put_arrows(t_game *game, int direction)
 	{
 		if (game->status == OVER)
 		{
-			put_image(game, game->sprite.black, x, y - 2);
-			mlx_string_put(game->mlx, game->window, (y - 2) * SIZE, (x + 1) * SIZE, 16777215, ">");
+			mlx_put_image_to_window(game->mlx, game->window, game->sprite.black, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2) - SIZE);
+			mlx_string_put(game->mlx, game->window, ((SIZE * game->columns) / 2) - SIZE, ((SIZE * game->lines) / 2) + SIZE, 16777215, ">");
 		}
 		else
 		{
@@ -112,12 +101,4 @@ int	restart_game(int key, void *game)
 	if (key == ENTER)
 		select_option(game);
 	return (0);
-}
-
-void	game_over(t_game *game)
-{
-	flood_map_with_black(game);
-	game->status = OVER;
-	put_arrows(game, UP);
-	mlx_key_hook(game->window, restart_game, game);
 }

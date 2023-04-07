@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:19:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/07 17:59:46 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ void	start_game(t_game *game);
 int		end_game(t_game *game);
 void	put_arrows(t_game *game, int direction);
 int		restart_game(int key, void *game);
-void	game_over(t_game *game);
 
 /*ennemy*/
+void	game_over(t_game *game);
 int		fox_hook(t_game *game);
 
 /*exit_management*/

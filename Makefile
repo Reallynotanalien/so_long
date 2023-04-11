@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/04/11 16:39:17 by kafortin         ###   ########.fr        #
+#    Updated: 2023/04/11 16:46:19 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
-MAKE_LIBFT = libft.a
+MAKE_LIBFT = cd ./Libft/ && make
+
+MAKE_MLX = cd ./Minilibx/ && make
 
 BONUS_NAME = so_long_bonus
 
@@ -52,19 +54,20 @@ RM = @rm -f
 
 .SILENT: $(OBJS) $(BONUS_OBJS) $(MAKE_MLX)
 
-all: $(MAKE_LIBFT) $(NAME)
+all: $(NAME)
 		
 $(NAME): $(OBJS)
+		@$(MAKE_LIBFT)
+		@$(MAKE_MLX)
 		@echo "Compiling so_long..."
 		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a ./Minilibx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 		@echo "Completed! 🤠"
 		
-$(MAKE_LIBFT): 
-		@$(MAKE) -C ./Libft
-		
-bonus: $(MAKE_LIBFT) $(BONUS_NAME)
+bonus: $(BONUS_NAME)
 
 $(BONUS_NAME): $(BONUS_OBJS)
+		@$(MAKE_LIBFT)
+		@$(MAKE_MLX)
 		@echo "Compiling bonus..."
 		@$(CC) $(CFLAGS) $(BONUS_OBJS) ./Libft/libft.a ./Minilibx/libmlx.a -framework OpenGL -framework AppKit -o $(BONUS_NAME)
 		@echo "Completed! 🤠"
@@ -76,6 +79,7 @@ clean:
 		
 fclean: 
 		@$(MAKE) fclean -C ./Libft
+		@$(MAKE) clean -C ./Minilibx
 		$(RM) $(OBJS)
 		$(RM) $(BONUS_OBJS)
 		$(RM) $(NAME)

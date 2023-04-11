@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:16:41 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:12:44 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include "./Libft/libft.h"
-# include "./minilibx_opengl_20191021/mlx.h"
+# include "./Minilibx/mlx.h"
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>

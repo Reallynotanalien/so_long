@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+         #
+#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/24 10:12:59 by katherinefo      ###   ########.fr        #
+#    Updated: 2023/04/11 16:39:17 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
-NAME_BONUS = so_long_bonus
+MAKE_LIBFT = libft.a
+
+BONUS_NAME = so_long_bonus
 
 FILES = end_game_options.c \
 		exit_management.c \
@@ -29,44 +31,61 @@ FILES = end_game_options.c \
 		so_long.c \
 		validate_map.c \
 
+BONUS_FILES = 	./bonus/end_game_options_bonus.c \
+				./bonus/ennemy_bonus.c \
+				./bonus/exit_management_bonus.c \
+				./bonus/flood_fill_bonus.c \
+				./bonus/init_bonus.c \
+				./bonus/moves_bonus.c \
+				./bonus/moves_utils_bonus.c \
+				./bonus/put_images_bonus.c \
+				./bonus/read_map_bonus.c \
+				./bonus/so_long_bonus.c \
+				./bonus/utils_bonus.c \
+				./bonus/validate_map_bonus.c \
+
 OBJS = $(FILES:.c=.o)
+
+BONUS_OBJS = $(BONUS_FILES:.c=.o)
 
 RM = @rm -f
 
-.SILENT: $(OBJS) $(MAKE_MLX)
+.SILENT: $(OBJS) $(BONUS_OBJS) $(MAKE_MLX)
 
-all: $(NAME)
-
+all: $(MAKE_LIBFT) $(NAME)
+		
 $(NAME): $(OBJS)
-		@$(MAKE) -C ./Libft
 		@echo "Compiling so_long..."
-		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a ./minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJS) ./Libft/libft.a ./Minilibx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME)
 		@echo "Completed! 🤠"
-
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS):
+		
+$(MAKE_LIBFT): 
 		@$(MAKE) -C ./Libft
-		@$(MAKE) -C ./bonus
-		@$(CC) $(CFLAGS) ./Libft/libft.a ./bonus/so_long.a ./minilibx_opengl_20191021/libmlx.a -framework OpenGL -framework AppKit -o $(NAME_BONUS)
+		
+bonus: $(MAKE_LIBFT) $(BONUS_NAME)
+
+$(BONUS_NAME): $(BONUS_OBJS)
+		@echo "Compiling bonus..."
+		@$(CC) $(CFLAGS) $(BONUS_OBJS) ./Libft/libft.a ./Minilibx/libmlx.a -framework OpenGL -framework AppKit -o $(BONUS_NAME)
 		@echo "Completed! 🤠"
 		
 clean:
 		@$(MAKE) clean -C ./Libft
-		@$(MAKE) clean -C ./bonus
+		$(RM) $(BONUS_OBJS)
 		$(RM) $(OBJS)
 		
 fclean: 
-		@$(MAKE) fclean -C ./bonus
 		@$(MAKE) fclean -C ./Libft
 		$(RM) $(OBJS)
+		$(RM) $(BONUS_OBJS)
 		$(RM) $(NAME)
-		$(RM) $(NAME_BONUS)
+		$(RM) $(BONUS_NAME)
 
 re: fclean all
 
 add:
 	git add $(FILES)
+	git add $(BONUS_FILES)
 	git add *.h
 	git add Makefile
 

@@ -19,6 +19,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <sys/stat.h>
 
 # define SIZE 32
 # define TRUE 0
@@ -57,6 +58,7 @@
 # define LINES_ERROR "Map is invalid (too many lines).\n"
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
 # define IMAGE_ERROR "One of your sprites could not be opened.\n"
+# define FOLDER_ERROR "Argument sent is not a file.\n"
 
 typedef struct sprites
 {

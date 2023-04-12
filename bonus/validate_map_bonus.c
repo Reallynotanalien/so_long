@@ -81,10 +81,13 @@ Exits the program if it is not the case.*/
 void	validate_extension(char *argv)
 {
 	int	i;
+	struct stat	dir;
 
 	i = (ft_strlen(argv) - 4);
 	if (ft_strncmp(".ber", &argv[i], 4) != 0)
 		exit_error(EXTENSION_ERROR);
+	if (stat(argv, &dir) == -1 || stat(ft_strjoin("/", argv), &dir) == -1)
+		exit_error(FOLDER_ERROR);
 }
 
 /*Checks if the extension of the map sent as an argument to the 

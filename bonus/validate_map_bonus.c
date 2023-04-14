@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 16:35:47 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:08:26 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ void	validate_map(char *argv, t_game *game)
 	if (game->exit_num != 1)
 		free_and_exit_error(EXIT_ERROR, game);
 	if (game->fox_num != 1)
-		free_and_exit_error("SHOULD BE ONE FOX", game);
+		free_and_exit_error(FOX_ERROR, game);
 	flood_fill(game);
 }

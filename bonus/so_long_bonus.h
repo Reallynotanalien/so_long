@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/11 16:12:29 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:07:47 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
 # define IMAGE_ERROR "One of your sprites could not be opened.\n"
 # define FOLDER_ERROR "Argument sent is not a file.\n"
+# define FOX_ERROR "Map is invalid (map should contain exactly one fox).\n"
 
 typedef struct fox
 {

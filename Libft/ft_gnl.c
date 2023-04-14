@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:54:58 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/04/14 17:45:35 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:46:40 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_next_line(int fd)
 	while (read(fd, &c, 1) && (c != '\n' || text == NULL))
 	{
 		if (text == NULL && c == '\n')
-			return("\n");
+			return ("\n");
 		if (c == '\n')
 			continue ;
 		text = join(text, c);

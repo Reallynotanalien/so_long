@@ -17,6 +17,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
+# include <errno.h>
+
+# define MALLOC_ERROR "ERROR - Malloc did not work for some reason.\n"
 
 int		ft_isalpha(int a);
 int		ft_isdigit(char a);

@@ -80,14 +80,20 @@ void	check_if_rectangle(t_game *game)
 Exits the program if it is not the case.*/
 void	validate_extension(char *argv)
 {
-	int	i;
-	struct stat	dir;
+	int		i;
+	int		fd;
+	void	*buf;
 
 	i = (ft_strlen(argv) - 4);
 	if (ft_strncmp(".ber", &argv[i], 4) != 0)
 		exit_error(EXTENSION_ERROR);
-	if (stat(argv, &dir) == -1 || stat(ft_strjoin("/", argv), &dir) == -1)
+	fd = open(argv, O_RDONLY);
+	if (read(fd, &buf, 1) == -1)
+	{
+		close(fd);
 		exit_error(FOLDER_ERROR);
+	}
+	close (fd);
 }
 
 /*Checks if the extension of the map sent as an argument to the 

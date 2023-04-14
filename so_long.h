@@ -19,7 +19,6 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <sys/stat.h>
 
 # define SIZE 32
 # define TRUE 0

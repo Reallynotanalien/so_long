@@ -6,4 +6,6 @@
 <h2>Table of contents</h2>
 <p></p>
 <h2>Project overview</h2>
+<h2>Bonus</h2>
+<h2>What I learned</h2>
 </header>

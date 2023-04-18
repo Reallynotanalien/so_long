@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:25:26 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:19:24 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:29:35 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../../includes/so_long_bonus.h"
 
 /*If the character found in the map is a fox, the position is saved and the 
 number of foxes is updated in the game struct.*/

@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:43:10 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/22 17:15:46 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:29:49 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../../includes/so_long_bonus.h"
 
 /*Recursive function to flood_fill the map.*/
 void	flood(char **map, int x, int y, t_game *game)

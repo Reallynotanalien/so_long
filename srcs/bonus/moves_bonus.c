@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 17:19:34 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:29:45 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../../includes/so_long_bonus.h"
 
 /*Changes the last location of the player on the map for a '0', meaning it is
 now an empty space, according to the direction in which the character moved

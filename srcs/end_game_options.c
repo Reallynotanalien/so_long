@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:25:33 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/18 16:04:36 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:20:43 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 /*Destroys all the images, clears and destroy the mlx window and frees the map 
 before writing "GAME ENDED" to the terminal and exiting the game.*/

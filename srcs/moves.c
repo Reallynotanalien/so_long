@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/18 16:05:07 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:21:15 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 /*Puts the number of moves on the terminal, followed by a space bar.*/
 void	put_moves(t_game *game)

@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:49:11 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/18 16:04:53 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:20:52 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../includes/so_long.h"
 
 /*Writes ERROR - followed by the error message sent as an argument to the 
 terminal before exiting the program with errno.*/

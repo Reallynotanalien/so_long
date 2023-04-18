@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 17:18:25 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/07 19:11:07 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:29:52 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../../includes/so_long_bonus.h"
 
 /*Sets the game status to OVER, fills the whole map with the black sprite and
 shows the game over screen with the arrows. Activates the restart hook function

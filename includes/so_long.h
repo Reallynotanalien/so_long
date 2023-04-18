@@ -6,15 +6,15 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/11 16:12:44 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:22:05 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./Libft/libft.h"
-# include "./Minilibx/mlx.h"
+# include "../Libft/libft.h"
+# include "../Minilibx/mlx.h"
 # include <stdio.h>
 # include <stdbool.h>
 # include <fcntl.h>

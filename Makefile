@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/04/18 16:04:21 by kafortin         ###   ########.fr        #
+#    Updated: 2023/04/18 16:19:49 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,18 +33,18 @@ FILES = ./srcs/end_game_options.c \
 		./srcs/so_long.c \
 		./srcs/validate_map.c \
 
-BONUS_FILES = 	./bonus/end_game_options_bonus.c \
-				./bonus/ennemy_bonus.c \
-				./bonus/exit_management_bonus.c \
-				./bonus/flood_fill_bonus.c \
-				./bonus/init_bonus.c \
-				./bonus/moves_bonus.c \
-				./bonus/moves_utils_bonus.c \
-				./bonus/put_images_bonus.c \
-				./bonus/read_map_bonus.c \
-				./bonus/so_long_bonus.c \
-				./bonus/utils_bonus.c \
-				./bonus/validate_map_bonus.c \
+BONUS_FILES = 	./srcs/bonus/end_game_options_bonus.c \
+				./srcs/bonus/ennemy_bonus.c \
+				./srcs/bonus/exit_management_bonus.c \
+				./srcs/bonus/flood_fill_bonus.c \
+				./srcs/bonus/init_bonus.c \
+				./srcs/bonus/moves_bonus.c \
+				./srcs/bonus/moves_utils_bonus.c \
+				./srcs/bonus/put_images_bonus.c \
+				./srcs/bonus/read_map_bonus.c \
+				./srcs/bonus/so_long_bonus.c \
+				./srcs/bonus/utils_bonus.c \
+				./srcs/bonus/validate_map_bonus.c \
 
 OBJS = $(FILES:.c=.o)
 

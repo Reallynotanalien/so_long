@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 17:44:23 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 16:40:27 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:05:20 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Goes through the whole map and counts the number of exits, players, and
 collectibles and stores them in the game structure. If it finds a character

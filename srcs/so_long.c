@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:26:32 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/21 17:04:56 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:05:17 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Initiates all of the necessary t_game struct data and saves the map after 
 validating it. Then, initiates a new mlx window with the map and sprites

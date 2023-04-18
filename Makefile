@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/04/11 16:46:19 by kafortin         ###   ########.fr        #
+#    Updated: 2023/04/18 16:04:21 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,16 @@ MAKE_MLX = cd ./Minilibx/ && make
 
 BONUS_NAME = so_long_bonus
 
-FILES = end_game_options.c \
-		exit_management.c \
-		flood_fill.c \
-		init.c \
-		moves_utils.c \
-		moves.c \
-		put_images.c \
-		read_map.c \
-		so_long.c \
-		validate_map.c \
+FILES = ./srcs/end_game_options.c \
+		./srcs/exit_management.c \
+		./srcs/flood_fill.c \
+		./srcs/init.c \
+		./srcs/moves_utils.c \
+		./srcs/moves.c \
+		./srcs/put_images.c \
+		./srcs/read_map.c \
+		./srcs/so_long.c \
+		./srcs/validate_map.c \
 
 BONUS_FILES = 	./bonus/end_game_options_bonus.c \
 				./bonus/ennemy_bonus.c \

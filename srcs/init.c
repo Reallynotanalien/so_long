@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/04/18 15:55:13 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:04:59 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Initializes the t_game struct without mallocating it, and saves argv in it.*/
 void	init_game_struct(t_game *game, char **argv)

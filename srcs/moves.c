@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katherinefortin <katherinefortin@studen    +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:31:55 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/24 09:58:54 by katherinefo      ###   ########.fr       */
+/*   Updated: 2023/04/18 16:05:07 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Puts the number of moves on the terminal, followed by a space bar.*/
 void	put_moves(t_game *game)

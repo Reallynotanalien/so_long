@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:26:15 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/22 16:36:08 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:05:14 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Calculates the number of lines and mallocs that amount of strings to the 
 game->map table.*/

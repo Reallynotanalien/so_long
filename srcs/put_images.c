@@ -6,11 +6,11 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:31:41 by kafortin          #+#    #+#             */
-/*   Updated: 2023/03/22 17:50:31 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:05:10 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 /*Shortens the lenght of the mlx_put_image_to_window function to make the
 norminette happy.*/

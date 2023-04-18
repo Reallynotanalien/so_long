@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:50:01 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/18 16:21:10 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:41:49 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	is_win(t_game *game, void **player, void **exit, int direction)
 {
 	put_image_direction(game, game->sprite.base, POSITION);
 	put_image_direction(game, exit, POSITION);
+	put_image_direction(game, game->sprite.base, direction);
 	put_image_direction(game, player, direction);
 	put_moves(game);
 	ft_putstr_fd("\nYOU WON!!\n", 1);

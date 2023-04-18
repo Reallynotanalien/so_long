@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:56:49 by katherinefo       #+#    #+#             */
-/*   Updated: 2023/03/22 17:51:54 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:55:13 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,21 @@ void	**xpm_to_image(t_game *game, char *path)
 contained in the game struct.*/
 void	init_sprites(t_game *game)
 {
-	game->sprite.base = xpm_to_image(game, "./Assets/tile2.xpm");
-	game->sprite.play = xpm_to_image(game, "./Assets/character_face.xpm");
-	game->sprite.wall = xpm_to_image(game, "./Assets/tree.xpm");
-	game->sprite.collect = xpm_to_image(game, "./Assets/carrot.xpm");
-	game->sprite.exit = xpm_to_image(game, "./Assets/character_face.xpm");
-	game->sprite.left = xpm_to_image(game, "./Assets/character_left.xpm");
-	game->sprite.right = xpm_to_image(game, "./Assets/character_right.xpm");
-	game->sprite.up = xpm_to_image(game, "./Assets/character_back.xpm");
-	game->sprite.right_kiss = xpm_to_image(game, "./Assets/char_rkiss.xpm");
-	game->sprite.down_kiss = xpm_to_image(game, "./Assets/char_dkiss.xpm");
-	game->sprite.up_kiss = xpm_to_image(game, "./Assets/char_ukiss.xpm");
-	game->sprite.left_kiss = xpm_to_image(game, "./Assets/char_lkiss.xpm");
-	game->sprite.arrow = xpm_to_image(game, "./Assets/arrow.xpm");
-	game->sprite.exit_sign = xpm_to_image(game, "./Assets/exit_sign.xpm");
-	game->sprite.start_sign = xpm_to_image(game, "./Assets/start_sign.xpm");
+	game->sprite.base = xpm_to_image(game, "./assets/tile2.xpm");
+	game->sprite.play = xpm_to_image(game, "./assets/character_face.xpm");
+	game->sprite.wall = xpm_to_image(game, "./assets/tree.xpm");
+	game->sprite.collect = xpm_to_image(game, "./assets/carrot.xpm");
+	game->sprite.exit = xpm_to_image(game, "./assets/character_face.xpm");
+	game->sprite.left = xpm_to_image(game, "./assets/character_left.xpm");
+	game->sprite.right = xpm_to_image(game, "./assets/character_right.xpm");
+	game->sprite.up = xpm_to_image(game, "./assets/character_back.xpm");
+	game->sprite.right_kiss = xpm_to_image(game, "./assets/char_rkiss.xpm");
+	game->sprite.down_kiss = xpm_to_image(game, "./assets/char_dkiss.xpm");
+	game->sprite.up_kiss = xpm_to_image(game, "./assets/char_ukiss.xpm");
+	game->sprite.left_kiss = xpm_to_image(game, "./assets/char_lkiss.xpm");
+	game->sprite.arrow = xpm_to_image(game, "./assets/arrow.xpm");
+	game->sprite.exit_sign = xpm_to_image(game, "./assets/exit_sign.xpm");
+	game->sprite.start_sign = xpm_to_image(game, "./assets/start_sign.xpm");
 }
 
 /*Takes the initial state of the map and fills it with the right sprites 

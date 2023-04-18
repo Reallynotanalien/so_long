@@ -17,4 +17,6 @@
 </div>
 
 ## Bonus
+<p> NO WORRIES! NO BUNNIES WERE HARMED IN THE MAKING OF THIS GAME!</p>
+
 ## What I learned

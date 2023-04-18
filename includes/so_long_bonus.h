@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 17:25:03 by kafortin          #+#    #+#             */
-/*   Updated: 2023/04/14 18:07:47 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:50:20 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define FALSE 1
 # define OVER 1
 # define WIN 2
+# define LENGHT 82
+# define HEIGHT 44
 
 /*MAP*/
 # define PLAYER 'P'
@@ -57,7 +59,8 @@
 # define PATH_EXIT_ERROR "Map is invalid (impossible to get to the exit).\n"
 # define PATH_COLL_ERROR "Map is invalid \
 (impossible to get to all the collectibles).\n"
-# define LINES_ERROR "Map is invalid (too many lines).\n"
+# define LENGHT_ERROR "Map is invalid (the lenght is too big for your screen).\n"
+# define HEIGHT_ERROR "Map is invalid (the height is too big for your screen).\n"
 # define BLOCKED_ERROR "Map is invalid (exit is blocking the collectibles.)\n"
 # define IMAGE_ERROR "One of your sprites could not be opened.\n"
 # define FOLDER_ERROR "Argument sent is not a file.\n"

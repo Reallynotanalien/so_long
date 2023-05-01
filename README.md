@@ -13,7 +13,7 @@
 ## Project overview
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/101518532/232165984-6239ea29-c76c-421e-a882-8df1058b5a6c.png" alt="Gameplay screenshot" width="830" height="416">
+<img src="https://user-images.githubusercontent.com/101518532/235535445-db7cb863-fd05-439b-af49-a259f1343cac.gif" alt="Gameplay screenshot" width="830" height="416">
 </div>
 
 ## Bonus

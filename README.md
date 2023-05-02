@@ -44,6 +44,9 @@ Example:
 <img src="https://user-images.githubusercontent.com/101518532/235535445-db7cb863-fd05-439b-af49-a259f1343cac.gif" alt="Gameplay screenshot" width="830" height="416">
 </div>
 
+### Minilibx
+This project had to be done using a simple graphic library called the MLX, which was provided with the subject. I have included the library here with my code but you can find more info on here: [https://harm-smits.github.io/42docs/libs/minilibx](https://harm-smits.github.io/42docs/libs/minilibx).
+
 ### Map requirements
 * The map can only be composed of these characters:
 

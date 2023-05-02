@@ -40,10 +40,9 @@ Example:
 </div>
 
 ## Bonus
-<p> NO WORRIES! NO BUNNIES WERE HARMED IN THE MAKING OF THIS GAME!</p>
-
 <div align="center">
 <img src="https://user-images.githubusercontent.com/101518532/235703038-8d4188d5-e9d7-4f3b-9892-e8e519673f91.gif" alt="Bonus gameplay screenshot" width="830" height="416">
+<p><b>DON'T WORRY! NO BUNNIES WERE HARMED IN THE MAKING OF THIS GAME!</b></p>
 </div>
 
 ## What I learned

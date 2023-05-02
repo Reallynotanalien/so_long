@@ -48,6 +48,8 @@ Example:
 <img src="https://user-images.githubusercontent.com/101518532/235535445-db7cb863-fd05-439b-af49-a259f1343cac.gif" alt="Gameplay screenshot" width="830" height="416">
 </div>
 
+So_long is a small 2D Game made using the MiniLibX Graphics Library - Textures, sprites and tiles included.
+
 ### Minilibx
 This project had to be done using a simple graphic library called the MLX, which was provided with the subject. I have included the [library](https://github.com/42Paris/minilibx-linux) here with my code but you can find more info on here: [https://harm-smits.github.io/42docs/libs/minilibx](https://harm-smits.github.io/42docs/libs/minilibx).
 
@@ -68,6 +70,9 @@ This project had to be done using a simple graphic library called the MLX, which
 * The map must contain exactly one player and one exit, and at least one collectible. For the bonus map, you will also need an enemy.
 * There has to be a valid path in the map. If the exit or one of the collectibles is blocked by walls, the map is invalid. The player cannot go through walls!
 
+### Norminette
+This project was written in accordance to the Norm, as set of rules every 42 students need to follow for the C-projects. You can find it here: [https://github.com/42School/norminette](https://github.com/42School/norminette).
+
 ## Bonus
 <div align="center">
 <img src="https://user-images.githubusercontent.com/101518532/235703038-8d4188d5-e9d7-4f3b-9892-e8e519673f91.gif" alt="Bonus gameplay screenshot" width="830" height="416">
@@ -85,9 +90,21 @@ I also decided to create a GAME OVER screen as well as making it possible to res
 Shout out to DALL-E for the fox sprites!
 
 ## What I learned
+
+* How to use a simple graphic interface (MLX).
+* How to handle events (hook functions).
+* How to use the random number generation function from the math library.
+* How to better define my variables and error messages to make my code more readable.
+* How to create gifs from screen capture recordings.
+
+I also got better at making my own tests, and at asking for help from fellow students. 
+
 ### Problems I faced
 * **Animations**: It was quite challenging to get the fox to move in random directions with a speed that made sense. It was mostly alot of trial and error, and in the end I managed to get a respectable result but it is still not as I hoped it would. I might make some changes someday if I have the time, but for now I need to concentrate my efforts on my other projects! :)
 * **Infinite loop**: I ran into some trouble when it came the time to stop the enemy loop. I use the mlx_loop_hook function from the MLX and I could not for the life of me stop the loop after the game was over. Then out of nowhere it hit me: I just needed to define a game status, which could be set to default, OVER or WIN and the loop function would check if the status is set to default and stop if it is not the case. 
+* **Endless MLX warnings**: This was mostly annoying more than anything else, but everytime the MLX would compile it would print a multitude of warnings. I had to dig deep to find how to silence them as I was not able to do it with the .SILENT makefile variable or the @.
+
+I would say this is my favorite project so far as I could finally see a real result everytime I added something to my code. It was not as challenging for me as the other projects of this circle (URGHHH pipex!!) but I had alot of fun creating this little game! :)
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/101518532/232920368-79a3e996-c0ee-4b94-b4c5-f4529dba9daa.jpg" alt="Bonnie laying down" width="900" height="450">

@@ -1,7 +1,7 @@
 # so_long <img src="https://user-images.githubusercontent.com/101518532/235779896-b6c8680e-22e2-485c-ad04-88c1ce38c0a3.png" alt="Project note" width="50" height="37">
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/101518532/232920360-1a51d988-3b3f-4f54-b361-1b8a80a572a7.jpg" alt="Gameplay screenshot" width="200" height="150">
+<img src="https://user-images.githubusercontent.com/101518532/232920360-1a51d988-3b3f-4f54-b361-1b8a80a572a7.jpg" alt="Bonnie in a plate" width="200" height="150">
 <p><em>This is Bonnie. She is my sister's little rabbit and the inspiration for this project. How adorable is she? 😍</em></p>
 </div>
 
@@ -89,4 +89,9 @@ Shout out to DALL-E for the fox sprites!
 * **Animations**: It was quite challenging to get the fox to move in random directions with a speed that made sense. It was mostly alot of trial and error, and in the end I managed to get a respectable result but it is still not as I hoped it would. I might make some changes someday if I have the time, but for now I need to concentrate my efforts on my other projects! :)
 * **Infinite loop**: I ran into some trouble when it came the time to stop the enemy loop. I use the mlx_loop_hook function from the MLX and I could not for the life of me stop the loop after the game was over. Then out of nowhere it hit me: I just needed to define a game status, which could be set to default, OVER or WIN and the loop function would check if the status is set to default and stop if it is not the case. 
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/101518532/232920368-79a3e996-c0ee-4b94-b4c5-f4529dba9daa.jpg" alt="Bonnie laying down" width="900" height="450">
+  
 #### Thank you so much for checking out my project! If you have any questions or comments regarding improvements I could make, do not hesitate to contact me (links on my profile).
+  
+</div>

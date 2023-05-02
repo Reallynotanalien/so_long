@@ -6,14 +6,10 @@
 </div>
 
 ## Table of contents
-* [Disclaimer](#disclaimer-for-42-students)
 * [Instructions](#instructions)
 * [Project overview](#project-overview)
 * [Bonus](#bonus)
 * [What I learned](#what-i-learned)
-
-## Disclaimer for 42 students
-This project was not made public so that you could copy/paste it and claim it as your own! Just remember that the projects are made so that you can learn new concepts on your own, I am happy to share this project so it might give you ideas/guidance but you will not gain anything from copying. 
 
 ## Instructions
 ### Compilation

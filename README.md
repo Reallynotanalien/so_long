@@ -6,6 +6,11 @@
 </div>
 
 ## Table of contents
+* [Instructions](#instructions)
+* [Project overview](#project-overview)
+* [Bonus](#bonus)
+* [What I learned](#what-i-learned)
+
 ## Instructions
 <p>To compile the mandatory part, simply go into the cloned repository and use the <code>make</code> command. Then, you can execute the program with this <code>./so_long maps/</code> and add the map you want to try after the '/'. I suggest using the laby.ber map or creating your own!</p>
 <p>As for the bonus part, you can write <code>make bonus</code> into the terminal to compile and then execute with <code>./so_long_bonus maps/bonus_maps/</code>. Note that you will need a map that contains an enemy, or you will get an error message.</p>

@@ -62,6 +62,7 @@ This project had to be done using a simple graphic library called the MLX, which
 * The map must be rectangular and surrounded by walls.
 * The map has to be a .ber file. Not a folder. A file!
 * The map must contain exactly one player and one exit, and at least one collectible. For the bonus map, you will also need an enemy.
+* There has to be a valid path in the map. If the exit or one of the collectibles is blocked by walls, the map is invalid. The player cannot go through walls!
 
 ## Bonus
 <div align="center">

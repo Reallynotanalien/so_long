@@ -31,7 +31,13 @@ Example:
 <p>In the bonus part, there is a fox looking out for you though. Watch out!</p>
 
 #### Controls
-<p>You can either use <code>WASD</code> to move your character or you can use the arrows. You can move only one tile at a time.</p>
+| Key | Action |
+|---|---|
+| <kbd>W</kbd>, <kbd>↑</kbd>| Move up |
+| <kbd>S</kbd>, <kbd>↓</kbd>| Move down |
+| <kbd>A</kbd>, <kbd>←</kbd>| Move to the left |
+| <kbd>D</kbd>, <kbd>→</kbd>| Move to the right |
+| <kbd>ESC</kbd>, `⎋`| Close the game |
 
 ## Project overview
 ### Map requirements

@@ -6,10 +6,14 @@
 </div>
 
 ## Table of contents
+* [Disclaimer](#disclaimer-for-42-students)
 * [Instructions](#instructions)
 * [Project overview](#project-overview)
 * [Bonus](#bonus)
 * [What I learned](#what-i-learned)
+
+## Disclaimer for 42 students
+This project was not made public so that you could copy/paste it and claim it as your own! Just remember that the projects are made so that you can learn new concepts on your own, I am happy to share this project so it might give you ideas/guidance but you will not gain anything from copying. 
 
 ## Instructions
 ### Compilation
@@ -45,7 +49,7 @@ Example:
 </div>
 
 ### Minilibx
-This project had to be done using a simple graphic library called the MLX, which was provided with the subject. I have included the library here with my code but you can find more info on here: [https://harm-smits.github.io/42docs/libs/minilibx](https://harm-smits.github.io/42docs/libs/minilibx).
+This project had to be done using a simple graphic library called the MLX, which was provided with the subject. I have included the [library](https://github.com/42Paris/minilibx-linux) here with my code but you can find more info on here: [https://harm-smits.github.io/42docs/libs/minilibx](https://harm-smits.github.io/42docs/libs/minilibx).
 
 ### Map requirements
 * The map can only be composed of these characters:
@@ -70,4 +74,19 @@ This project had to be done using a simple graphic library called the MLX, which
 <p><b>DON'T WORRY! NO BUNNIES WERE HARMED IN THE MAKING OF THIS GAME!</b></p>
 </div>
 
+For the bonus part, it was up to our imagination to add some features. Here were some of the suggested additions:
+
+* Make the player lose when they touch an enemy patrol.
+* Add some sprite animation.
+* Display the movement count directly on screen instead of writing it in the shell.
+
+I also decided to create a GAME OVER screen as well as making it possible to restart the game.
+
+Shout out to DALL-E for the fox sprites!
+
 ## What I learned
+### Problems I faced
+* **Animations**: It was quite challenging to get the fox to move in random directions with a speed that made sense. It was mostly alot of trial and error, and in the end I managed to get a respectable result but it is still not as I hoped it would. I might make some changes someday if I have the time, but for now I need to concentrate my efforts on my other projects! :)
+* **Infinite loop**: I ran into some trouble when it came the time to stop the enemy loop. I use the mlx_loop_hook function from the MLX and I could not for the life of me stop the loop after the game was over. Then out of nowhere it hit me: I just needed to define a game status, which could be set to default, OVER or WIN and the loop function would check if the status is set to default and stop if it is not the case. 
+
+#### Thank you so much for checking out my project! If you have any questions or comments regarding improvements I could make, do not hesitate to contact me (links on my profile).

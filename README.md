@@ -13,7 +13,7 @@
 
 ## Instructions
 ### Compilation
-To compile the mandatory part, simply go into the cloned repository and use the <code>make</code> command. Then, you can execute the program like this: <code>./so_long maps/</code> and add the map you want to try after the '/'. I suggest using the laby.ber map or creating your own, but do not forget the [map requirements](#map-requirements)!
+To compile the mandatory part, simply go into the cloned repository and use the <code>make</code> command. Then, you can execute the program like this: <code>./so_long maps/</code> and add the map you want to try after the '/'. I suggest using the laby.ber map or creating your own, but first go check out the [map requirements](#map-requirements)!
 
 Example:
 ```

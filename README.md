@@ -40,7 +40,13 @@ Example:
 | <kbd>ESC</kbd>, `⎋`| Close the game |
 
 ## Project overview
+<div align="center">
+<img src="https://user-images.githubusercontent.com/101518532/235535445-db7cb863-fd05-439b-af49-a259f1343cac.gif" alt="Gameplay screenshot" width="830" height="416">
+</div>
+
 ### Map requirements
+* The map can only be composed of these characters:
+
 | Description | Character|
 |--|--|
 | Empty space | `0` |
@@ -49,9 +55,10 @@ Example:
 | Exit | `E` |
 | Collectible | `C` |
 | Enemy | `F` |
-<div align="center">
-<img src="https://user-images.githubusercontent.com/101518532/235535445-db7cb863-fd05-439b-af49-a259f1343cac.gif" alt="Gameplay screenshot" width="830" height="416">
-</div>
+
+* The map must be rectangular and surrounded by walls.
+* The map has to be a .ber file. Not a folder. A file!
+* The map must contain exactly one player and one exit, and at least one collectible. For the bonus map, you will also need an enemy.
 
 ## Bonus
 <div align="center">

@@ -1,4 +1,4 @@
-# so_long
+# so_long <img src="https://user-images.githubusercontent.com/101518532/235779896-b6c8680e-22e2-485c-ad04-88c1ce38c0a3.png" alt="Project note" width="50" height="37">
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/101518532/232920360-1a51d988-3b3f-4f54-b361-1b8a80a572a7.jpg" alt="Gameplay screenshot" width="200" height="150">

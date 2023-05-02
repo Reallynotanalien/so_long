@@ -19,7 +19,9 @@ Example:
 ```
 ./so_long maps/laby.ber
 ```
-As for the bonus part, you can write <code>make bonus</code> into the terminal to compile and then execute with <code>./so_long_bonus maps/bonus_maps/</code>. Note that you will need a map that contains an enemy, or you will get an error message.
+As for the bonus part, you can write <code>make bonus</code> into the terminal to compile and then execute as showed below. Note that you will need a map that contains an enemy, or you will get an error message.
+
+Example:
 ```
 ./so_long_bonus maps/bonus_maps/bonus_emptier.ber
 ```
